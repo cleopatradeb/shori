@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :artpieces
   has_many :artforms, through :artpieces
-  has_many :matches
-  has_many :pacts
+  has_and_belongs_to_many :matches
+  has_and_belongs_to_many :pacts
 end
