@@ -53,6 +53,7 @@ GEM
       activerecord (>= 3.2, < 5)
     angularjs-rails (1.3.14)
     arel (6.0.0)
+    bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -81,6 +82,13 @@ GEM
     columnize (0.9.0)
     commonjs (0.2.7)
     debug_inspector (0.0.2)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     equalizer (0.0.10)
     erubis (2.7.0)
     execjs (2.4.0)
@@ -127,6 +135,7 @@ GEM
     multi_json (1.11.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
     pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -172,6 +181,8 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     ruby_parser (3.6.5)
       sexp_processor (~> 4.1)
     sass (3.4.13)
@@ -207,6 +218,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     underscore-rails (1.8.2)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.1.2)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -224,6 +237,7 @@ DEPENDENCIES
   biz
   byebug
   coffee-rails (~> 4.1.0)
+  devise
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails
