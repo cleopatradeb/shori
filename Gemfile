@@ -7,6 +7,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'accountingjs-rails'
 gem 'devise'
 gem 'faker'
+gem 'therubyracer'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'
