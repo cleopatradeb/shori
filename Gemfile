@@ -1,9 +1,15 @@
 source 'https://rubygems.org'
 
+# MY GEMS
+gem 'biz'
+gem 'underscore-rails'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'accountingjs-rails'
 
+# RAILS GEMS
 gem 'rails', '4.2.0'
 gem 'pg'
-gem "haml-rails", "~> 0.9"
+gem 'haml-rails', "~> 0.9"
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'

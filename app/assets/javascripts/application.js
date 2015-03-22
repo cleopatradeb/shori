@@ -16,5 +16,7 @@
 //= require angular
 //= require angular-animate
 //= require angular-resource
+//= require underscore
+//= require accountingjs
 //= require turbolinks
 //= require_tree .
