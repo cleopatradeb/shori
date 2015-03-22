@@ -1,6 +1,4 @@
-Rails.application.routes.draw do
-  resources :styles
-  resources :artforms
+Rails.application.routes.draw do  resources :artforms
   resources :artpieces
   resources :matches
 
