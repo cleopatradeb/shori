@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :artpieces
-  has_many :artforms, through :artpieces
   has_and_belongs_to_many :matches
   has_and_belongs_to_many :pacts
 end
