@@ -1,6 +1,9 @@
 Rails.application.routes.draw do  resources :artforms
   resources :artpieces
   resources :matches
+  resources :artforms
+  resources :matches
+  resources :pacts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
