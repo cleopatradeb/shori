@@ -3,6 +3,7 @@
 Artform.delete_all
 Artpiece.delete_all
 User.delete_all
+User.artpieces.delete_all
 
 af1 = Artform.create(name: 'sculpture')
 af2 = Artform.create(name: 'craft')
@@ -33,7 +34,7 @@ af5 = Artform.create(name: 'installation')
   )
 end
 
-100.times do |n|
+200.times do |n|
   Artpiece.create(
   name: Faker::Lorem.word,
   height: (1..35).to_a.sample.to_i,
@@ -46,7 +47,7 @@ end
   )
 end
 
-100.times do |n|
+200.times do |n|
   Artpiece.create(
   name: Faker::Lorem.word,
   height: (1..35).to_a.sample.to_i,
@@ -59,8 +60,16 @@ end
   )
 end
 
+# users = User.all
+# artpieces = Artpiece.all.shuffle.to_a.in_groups_of(4, false)
+
 100.times do |n|
-  users = User.all
-  artpieces = Artpiece.all.shuffle.to_a.in_groups_of(4, false)
-  users[n-1].artpieces = artpieces[n-1]
+  m = 4*(n-1)
+  user = User.all[n-1]
+  art1 = Artpiece.all[m]
+  art2 = Artpiece.all[m+1]
+  art3 = Artpiece.all[m+2]
+  art4 = Artpiece.all[m+3]
+  user.artpieces << [art1, art2, art3, art4]
+  user.save
 end

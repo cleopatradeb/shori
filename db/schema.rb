@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323105054) do
+ActiveRecord::Schema.define(version: 20150322221743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,10 @@ ActiveRecord::Schema.define(version: 20150323105054) do
     t.integer  "width"
     t.integer  "depth"
     t.integer  "circumference"
-    t.integer  "artist_id"
+    t.integer  "user_id"
     t.integer  "price"
     t.boolean  "insurance"
     t.text     "description"
-    t.integer  "user_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150323105054) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "prefix"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 20150323105054) do
     t.string   "links"
     t.boolean  "verified"
     t.text     "bioraphy"
-    t.string   "prefix"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
