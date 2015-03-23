@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322221743) do
+ActiveRecord::Schema.define(version: 20150323115306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150322221743) do
     t.integer  "price"
     t.boolean  "insurance"
     t.text     "description"
+    t.integer  "artform_id"
   end
 
   create_table "matches", force: :cascade do |t|
