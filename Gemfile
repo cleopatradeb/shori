@@ -7,7 +7,6 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'accountingjs-rails'
 gem 'devise'
 gem 'faker'
-gem 'therubyracer'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'
@@ -21,7 +20,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
 
 group :development, :test do
