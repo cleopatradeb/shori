@@ -1,6 +1,6 @@
 class ArtpiecesController < ApplicationController
   before_action :set_artpiece, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /artpieces
   # GET /artpieces.json
   def index
