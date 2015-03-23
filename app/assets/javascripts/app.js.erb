@@ -1,14 +1,18 @@
 var app = angular.module('shoriApp', ['ngAnimate', 'ngRoute', 'ngResource']);
+console.log('ANGULAR RUNNING');
 app.config(function($routeProvider, $locationProvider){
-  $routeProvider.
-  when('/home', {
-    controller: 'HomeController',
+  $routeProvider
+  .when('/home', {
+    controller: "HomeController",
     templateUrl: "<%= asset_path('home.html') %>"
-  }).
-  otherwise({
+  })
+  .when('/browse', {
+    controller: "BrowseController",
+    templateUrl: "<%= asset_path('browse.html') %>"
+  })
+  .otherwise({
     redirectTo: '/home'
   });
 
   $locationProvider.html5Mode(true);
-
 });
