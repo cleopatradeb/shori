@@ -1,14 +1,17 @@
 Rails.application.routes.draw do  resources :artforms
   devise_for :users
+  root 'static#index'
+  get '/shori/*path' => 'static#index'
+  get '/shori/home' => 'static#index', as: 'home'
   resources :artpieces
   resources :matches
   resources :artforms
-  resources :pacts  
+  resources :pacts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'artpieces#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
