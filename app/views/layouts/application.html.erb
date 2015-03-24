@@ -30,12 +30,10 @@
     <%= yield %>
   <% end %> -->
   
-  <% if user_signed_in? %>
-    <% if current_page? edit_user_registration_path %>
-      <%= yield %>
-    <% end %>
-    <ng-view></ng-view>
+  <% if (current_page? edit_user_registration_path) || (current_page? new_user_registration_path)%>
+    <%= yield %>
   <% end %>
+  <ng-view></ng-view>
 
 </body>
 </html>
