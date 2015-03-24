@@ -1,4 +1,5 @@
 Rails.application.routes.draw do  resources :artforms
+
   devise_for :users
   get '/shori/*path' => 'static#index'
   root 'static#index'
