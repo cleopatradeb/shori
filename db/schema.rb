@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323115306) do
+ActiveRecord::Schema.define(version: 20150323193335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150323115306) do
     t.boolean  "insurance"
     t.text     "description"
     t.integer  "artform_id"
+    t.string   "image"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -76,6 +77,10 @@ ActiveRecord::Schema.define(version: 20150323115306) do
     t.string   "links"
     t.boolean  "verified"
     t.text     "bioraphy"
+    t.string   "role"
+    t.string   "venue_name"
+    t.string   "venue_facebook"
+    t.string   "venue_image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

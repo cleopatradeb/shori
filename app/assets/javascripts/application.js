@@ -14,10 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require angular
-//= require angular-route-1-2-0
 //= require angular-animate
+//= require angular-route-1-2-0
 //= require angular-resource
-//= require underscore
-//= require accountingjs
-//= require app
+// = require underscore
+// = require accountingjs
 //= require_tree .

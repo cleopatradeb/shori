@@ -25,6 +25,7 @@ af4 = Artform.create(name: 'installation')
   email: email,
   password: 'password',
   password_confirmation: 'password',
+  role: 'artist',
   address: Faker::Address.street_address,
   postcode: "#{area.shuffle.pop} #{number}#{alphabet.shuffle.pop}#{alphabet.shuffle.pop}",
   bioraphy: Faker::Lorem.paragraph(3),
