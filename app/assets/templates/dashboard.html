@@ -1,0 +1,27 @@
+<h1>Angular Dashboard</h1>
+<div class="user-info">
+  <h2>Profile Details</h2>
+  <p>Aloha, {{user.first_name}} {{user.last_name}}!</p>
+  <p>Verified account: {{user.verified}}</p>
+  <p>Account type: {{user.role | ucfirst}}</p>
+  <p>{{user.biography}}</p>
+  <p>Address: {{user.address}} {{user.postcode}}</p>
+</div>
+
+<div class="user-matches">
+  <h2>My matches</h2>
+</div>
+
+<div class="user-pacts">
+  <h2>My Pacts</h2>
+</div>
+
+<div class="new-user-feed">
+  <h2>New User Feed</h2>
+</div>
+
+<div class="user-gallery">
+  <p ng-repeat="artpiece in artpieces">
+    Artpiece Name: {{artpiece.name}}
+  </p>
+</div>

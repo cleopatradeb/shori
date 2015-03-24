@@ -1,10 +1,14 @@
-var app = angular.module('shoriApp', ['ngAnimate', 'ngRoute', 'ngResource']);
+var app = angular.module('shoriApp', ['ngAnimate', 'ngRoute', 'ngResource', 'angular.filter']);
 console.log('ANGULAR RUNNING');
 app.config(function($routeProvider, $locationProvider){
   $routeProvider
   .when('/home', {
     controller: "HomeController",
     templateUrl: "<%= asset_path('home.html') %>"
+  })
+  .when('/dashboard', {
+    controller: "DashboardController",
+    templateUrl: "<%= asset_path('dashboard.html') %>"
   })
   .when('/browse', {
     controller: "BrowseController",
@@ -13,6 +17,10 @@ app.config(function($routeProvider, $locationProvider){
   .otherwise({
     redirectTo: '/home'
   });
-
   $locationProvider.html5Mode(true);
 });
+
+
+a = [1,2,3]
+a.first
+console.log(a.first)

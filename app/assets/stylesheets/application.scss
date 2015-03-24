@@ -14,9 +14,17 @@
  *= require_self
  */
 
-* {
+*, p, div {
   font-family: 'Roboto Slab', serif;
   font-weight: 300;
   text-align: center;
   margin: 0 auto;
+}
+
+.artist-signup {
+  display: none;
+}
+
+.venue-signup {
+  display: none;
 }
