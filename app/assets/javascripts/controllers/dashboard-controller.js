@@ -5,7 +5,7 @@ app.controller('DashboardController', function($scope, $http, User){
     $scope.currentUser = data.data.current_user
     $scope.allUsers = data.data.all_users;
     usersHash = JSON.parse($scope.allUsers)
-    console.log(usersHash);
+    console.log(_.where(usersHash, {created_at === }));
   })
 });
 

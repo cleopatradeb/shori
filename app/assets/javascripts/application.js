@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require moment
+//= require underscore
 //= require twitter/bootstrap
 //= require angular
 //= require angular-animate
 //= require angular-route-1-2-0
 //= require angular-resource
-// = require underscore
 // = require accountingjs
 //= require_tree .

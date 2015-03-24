@@ -2,11 +2,12 @@ source 'https://rubygems.org'
 
 # MY GEMS
 gem 'biz'
-gem 'underscore-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'accountingjs-rails'
 gem 'devise'
 gem 'faker'
+gem 'underscore-rails'
+gem 'momentjs-rails'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'
