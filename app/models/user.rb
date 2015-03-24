@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :artpieces, dependent: :destroy
-  has_and_belongs_to_many :matches
+  has_many :followings
   has_and_belongs_to_many :pacts
 end
