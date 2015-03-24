@@ -19,5 +19,5 @@
 //= require angular-animate
 //= require angular-route-1-2-0
 //= require angular-resource
-// = require accountingjs
+//= require accountingjs
 //= require_tree .
