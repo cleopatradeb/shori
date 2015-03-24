@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20150323193335) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "prefix"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
@@ -76,7 +75,7 @@ ActiveRecord::Schema.define(version: 20150323193335) do
     t.integer  "contact_number",         limit: 8
     t.string   "links"
     t.boolean  "verified"
-    t.text     "bioraphy"
+    t.text     "biography"
     t.string   "role"
     t.string   "venue_name"
     t.string   "venue_facebook"

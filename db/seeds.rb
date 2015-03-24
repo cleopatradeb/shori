@@ -19,7 +19,6 @@ af4 = Artform.create(name: 'installation')
   first_name = Faker::Name.first_name
   email = Faker::Internet.safe_email(first_name)
   User.create(
-  prefix: Faker::Name.prefix,
   first_name: first_name,
   last_name: Faker::Name.last_name,
   email: email,
@@ -28,7 +27,7 @@ af4 = Artform.create(name: 'installation')
   role: 'artist',
   address: Faker::Address.street_address,
   postcode: "#{area.shuffle.pop} #{number}#{alphabet.shuffle.pop}#{alphabet.shuffle.pop}",
-  bioraphy: Faker::Lorem.paragraph(3),
+  biography: Faker::Lorem.paragraph(3),
   verified: true,
   links: Faker::Internet.url, 
   contact_number: Faker::Number.number(10)
