@@ -1,4 +1,4 @@
-<h1>Angular Dashboard</h1>
+<h1>Dashboard</h1>
 <div class="user-info">
   <h2>Profile Details</h2>
   <p>Aloha, {{currentUser.first_name}} {{currentUser.last_name}}!</p>
@@ -10,8 +10,8 @@
 
 <div class="user-followings">
   <h2>My Followings</h2>
-  <div ng-repeat="following in followings">
-    <p>{{following.user.id}}</p>
+  <div ng-repeat="user in followingsUsers">
+    <p>{{user.first_name}} {{user.last_name}}</p>
   </div>
 </div>
 
@@ -22,13 +22,18 @@
 <div class="new-user-feed">
   <h2>New User Feed</h2>
   <div ng-repeat="user in filteredArr | limitTo: 5">
-    <p>{{user.first_name}}</p>
+    <p>{{user.first_name}} {{user.last_name}}</p>
   </div>
 </div>
 
-<div class="user-gallery">
-  <h2>My Gallery</h2>
-  <p ng-repeat="artpiece in artpieces">
-    Artpiece Name: {{artpiece.name}}
-  </p>
+<div ng-if="user.role === 'artist'">
+  <div class="user-gallery">
+    <h2>My Gallery</h2>
+    <p ng-repeat="artpiece in artpieces">
+      Artpiece Name: {{artpiece.name}}
+    </p>
+  </div>
 </div>
+<div ng-if="user.role === 'venue'">
+</div>
+

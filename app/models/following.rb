@@ -1,6 +1,7 @@
 class Following < ActiveRecord::Base
   belongs_to :user
 
+  # VALIDATIONS
   validates_uniqueness_of :user_id, :scope => :following_id
   validates_uniqueness_of :following_id, :scope => :user_id
   validate :cannot_follow_self
