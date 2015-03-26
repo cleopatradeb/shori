@@ -15,7 +15,7 @@
 <div ng-if="currentUser.id != profileUser.id">
   <!-- Followers -->
   <p>Their Count: {{profileUserFollowersCount}}</p>
-  <h5>Followers</h5>
+  <h3>Followers</h3>
   <!-- If follower = artist -->
   <p ng-repeat="follower in profileUserFollowers" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
   <!-- If follower = venue -->
@@ -27,7 +27,7 @@
 <div ng-if="currentUser.id === profileUser.id">
   <!-- Followers -->
   <p>Followers Count: {{currentUserFollowersCount}}</p>
-  <h5>Followers</h5>
+  <h3>Followers</h3>
   <!-- If follower = artist -->
   <p ng-repeat="follower in currentUserFollowers" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
   <!-- If follower = venue -->
@@ -44,20 +44,24 @@
 
 <!-- <message></message> -->
 
+<!-- User's Pacts -->
+
+
 <!-- Create Pact Form -->
 <div ng-controller="PactController">
   <h3>Make a Pact</h3>
-  <form novalidate>
-    Start Date: <input type="text" name="startDate" ng-model="pact.startDate"><br/>
-    End Date: <input type="text" name="endDate"  ng-model="pact.endDate"><br/>
+  <form name="pactForm" novalidate>
+    Start Date: <input type="text" name="startDate" ng-model="newPact.startDate" pick-a-date="date" placeholder="Select Date" required><br/>
+    End Date: <input type="text" name="endDate"  ng-model="newPact.endDate" pick-a-date="date" placeholder="Select Date" required><br/>
     <input type="button" ng-click="reset()" value="Reset" />
-    <input type="submit" ng-click="makePact(pact)" value="Make Pact" />
+    <input type="submit" ng-click="makePact(newPact)" value="Make Pact" />
+    <datepicker></datepicker>
   </form>
 
   <div>
-    {{pact.startDate}} {{pact.endDate}}
+    {{newPact.startDate | date }} {{newPact.endDate | date }}
   </div>
 
-  <pre>form = {{pact | json}}</pre>
+  <pre>form = {{newPact | json}}</pre>
   <pre>master = {{master | json}}</pre>
 </div>

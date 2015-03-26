@@ -29,6 +29,7 @@ app.controller('ProfileController', function($scope, $http, $compile, $templateC
     console.log($scope.profileUserFollowers);
     }
   
+  // Dynamically add Following
   UserService.userHash()
   .then(function(data){
     $scope.getProfileUserFollowers(data.data);

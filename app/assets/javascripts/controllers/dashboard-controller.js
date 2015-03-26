@@ -1,4 +1,5 @@
 app.controller('DashboardController', function($scope, $http, UserService){
+
   UserService.userHash()
   .then(function(data){
     // Defining general JSON variables 
