@@ -38,6 +38,6 @@
 <!-- Follow & Message Buttons -->
 <div ng-if="currentUser.id != profileUser.id">
   <button ng-click="followMe(); makeAFollowing()" ng-show="follow">Follow</button>
-  <button ng-click="unfollowMe()" ng-if="!follow">Following</button>
+  <button ng-click="unfollowMe(); unmakeAFollowing()" ng-if="!follow">Unfollow</button>
   <button>Message</button>
 </div>

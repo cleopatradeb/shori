@@ -46,7 +46,7 @@ app.controller('ProfileController', function($scope, $http, $location, $routePar
       }
     });
   });
-  
+
   // Button - Follow this user
   $scope.follow = true
   $scope.followMe = (function(){
@@ -72,4 +72,22 @@ app.controller('ProfileController', function($scope, $http, $location, $routePar
       })
     });
   }
+  // Unfollow User
+  $scope.unmakeAFollowing = function() {
+    $scope.followingToDelete = _.where($scope.profileUser.followings, {follower_id: $scope.currentUser.id})
+    console.log($scope.followingToDelete[0].id)
+    data = {following_id: $scope.followingToDelete[0].id}
+    FollowService.destroyFollowing(data)
+    .then(function(response){
+      $http.get('/users/user_data')
+      .success(function(data){
+        console.log(data);
+        $scope.getProfileUserFollowers(data);
+        $scope.currentUserFollowers = JSON.parse(data.all_users);
+      })
+    });
+  }
+
+
+
 });

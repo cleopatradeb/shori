@@ -1,11 +1,17 @@
 class FollowingsController < ApplicationController
-  before_action :set_match, only: [:show, :edit, :update, :destroy]
+  # before_action :set_match, only: [:show, :edit, :update, :destroy]
 
   def create
     @following = Following.create(
       follower_id: params[:follower_id],
       user_id: params[:user_id]
       )
+    render json: Following.all
+  end
+
+  def destroy
+    @following = Following.find(params[:id])
+    @following.destroy
     render json: Following.all
   end
 
