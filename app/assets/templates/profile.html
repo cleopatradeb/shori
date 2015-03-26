@@ -44,6 +44,20 @@
 
 <!-- <message></message> -->
 
+<!-- Create Pact Form -->
+<div ng-controller="PactController">
+  <h3>Make a Pact</h3>
+  <form novalidate>
+    Start Date: <input type="text" name="startDate" ng-model="pact.startDate"><br/>
+    End Date: <input type="text" name="endDate"  ng-model="pact.endDate"><br/>
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="makePact(pact)" value="Make Pact" />
+  </form>
 
+  <div>
+    {{pact.startDate}} {{pact.endDate}}
+  </div>
 
-
+  <pre>form = {{pact | json}}</pre>
+  <pre>master = {{master | json}}</pre>
+</div>
