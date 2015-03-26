@@ -6,6 +6,7 @@ class FollowingsController < ApplicationController
       follower_id: params[:follower_id],
       user_id: params[:user_id]
       )
+    render json: Following.all
   end
 
   private
