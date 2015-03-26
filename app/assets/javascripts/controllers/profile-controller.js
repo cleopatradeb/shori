@@ -45,7 +45,7 @@ app.controller('ProfileController', function($scope, $http, $location, $routePar
 
   // Follow User
   $scope.makeAFollowing = function() {
-    data = {user_id: $scope.currentUser.id, following_id: $scope.userId}
+    data = {user_id: $scope.userId, follower_id: $scope.currentUser.id}
     FollowService.createFollowing(data);
     console.log('made A Following');
   }

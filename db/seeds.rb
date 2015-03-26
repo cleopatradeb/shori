@@ -50,7 +50,7 @@ end
 # ARTPIECES (SCULPTURE)
 100.times do |n|
   Artpiece.create(
-  name: Faker::Lorem.word,
+  name: Faker::Address.street_name,
   height: (1..35).to_a.sample.to_i,
   width: (1..35).to_a.sample.to_i,
   depth: nil,
@@ -65,7 +65,7 @@ end
 # ARTPIECES (CRAFT)
 100.times do |n|
   Artpiece.create(
-  name: Faker::Lorem.word,
+  name: Faker::Commerce.color + ' ' + Faker::Lorem.word,
   height: (1..12).to_a.sample.to_i,
   width: (1..12).to_a.sample.to_i,
   depth: (1..7).to_a.sample.to_i,
@@ -80,7 +80,7 @@ end
 # ARTPIECES (INSTALLATION)
 100.times do |n|
   Artpiece.create(
-  name: Faker::Lorem.word,
+  name: Faker::Commerce.product_name,
   height: (1..70).to_a.sample.to_i,
   width: (1..70).to_a.sample.to_i,
   depth: (1..70).to_a.sample.to_i,
@@ -119,38 +119,38 @@ end
 end
 
 all_venues = User.where(role: 'venue')
-all_artists = User.where(role: 'artist')
+all_artists = User.wh, follower_id: venue.idere(role: 'artist')
 # ARTISTS FOLLOWING VENUES
-all_artists.each do |artist|
-  fo1 = Following.create(following_id:all_venues.sample.id)
+all_artists.each do |, follower_id: venue.idartist|
+  fo1 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
   artist.followings << fo1
-  fo2 = Following.create(following_id:all_venues.sample.id)
+  fo2 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
   artist.followings << fo2
-  fo3 = Following.create(following_id:all_venues.sample.id)
+  fo3 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
   artist.followings << fo3
-  fo4 = Following.create(following_id:all_venues.sample.id)
+  fo4 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
   artist.followings << fo4
-  fo5 = Following.create(following_id:all_venues.sample.id)
+  fo5 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
   artist.followings << fo5
-  fo6 = Following.create(following_id:all_venues.sample.id)
+  fo6 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
   artist.followings << fo6
-  fo7 = Following.create(following_id:all_venues.sample.id)
+  fo7 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
   artist.followings << fo7
 end
 # VENUES FOLLOWING ARTISTS
 all_venues.each do |venue|
-  fo1 = Following.create(following_id:all_artists.sample.id)
+  fo1 = Following.create(user_id:all_artists.sample.id, follower_id: venue.id)
   venue.followings << fo1
-  fo2 = Following.create(following_id:all_artists.sample.id)
+  fo2 = Following.create(user_id:all_artists.sample.id, follower_id: venue.id)
   venue.followings << fo2
-  fo3 = Following.create(following_id:all_artists.sample.id)
+  fo3 = Following.create(user_id:all_artists.sample.id, follower_id: venue.id)
   venue.followings << fo3
-  fo4 = Following.create(following_id:all_artists.sample.id)
+  fo4 = Following.create(user_id:all_artists.sample.id, follower_id: venue.id)
   venue.followings << fo4
-  fo5 = Following.create(following_id:all_artists.sample.id)
+  fo5 = Following.create(user_id:all_artists.sample.id, follower_id: venue.id)
   venue.followings << fo5
-  fo6 = Following.create(following_id:all_artists.sample.id)
+  fo6 = Following.create(user_id:all_artists.sample.id, follower_id: venue.id)
   venue.followings << fo6
-  fo7 = Following.create(following_id:all_artists.sample.id)
+  fo7 = Following.create(user_id:all_artists.sample.id, follower_id: venue.id)
   venue.followings << fo7
 end

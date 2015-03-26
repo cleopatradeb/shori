@@ -3,7 +3,7 @@ class FollowingsController < ApplicationController
 
   def create
     @following = Following.create(
-      following_id: params[:following_id],
+      follower_id: params[:follower_id],
       user_id: params[:user_id]
       )
   end
@@ -11,6 +11,6 @@ class FollowingsController < ApplicationController
   private
 
     def following_params
-      params.require(:following).permit(:following_id, :user_id)
+      params.require(:following).permit(:follower_id, :user_id)
     end
 end
