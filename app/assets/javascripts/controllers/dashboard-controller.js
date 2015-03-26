@@ -23,5 +23,4 @@ app.controller('DashboardController', function($scope, $http, UserService){
   })
 });
 
-// underscore functions to try out _.filter _.toArray _.invert & _.findKey
 // create a moment-formatted join date

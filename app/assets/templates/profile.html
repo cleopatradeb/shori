@@ -1,13 +1,41 @@
 <h1>Profile Page</h1>
+<!-- Basic Information -->
+<div ng-if="profileUser.role === 'artist'">
+  <h3><span ng-if="currentUser.id === profileUser.id">Hello, </span>{{profileUser.first_name}} {{profileUser.last_name}}</h3>
+</div>
+<div ng-if="profileUser.role === 'venue'">
+  <h3><span ng-if="currentUser.id === profileUser.id">Hello, </span>{{profileUser.venue_name}}</h3>
+  <h4>{{profileUser.first_name}} {{profile_user.last_name}}</h4>
+</div>
 
-<h3><span ng-if="currentUser.id === profileUser.id">Hello, </span>{{profileUser.first_name}} {{profileUser.last_name}}</h3>
 <p>{{profileUser.biography}}</p>
 <p>{{profileUser.role | ucfirst}}</p>
-<p>Followers Count: {{followersCount}}</p>
-<h5>Followers</h5>
-<p ng-repeat="follower in followersNamesArr">{{follower.first_name}}</p>
-<p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
 
+<!-- If logged in user viewing others' profile page -->
+<div ng-if="currentUser.id != profileUser.id">
+  <!-- Followers -->
+  <p>Their Count: {{profileUserFollowersCount}}</p>
+  <h5>Followers</h5>
+  <!-- If follower = artist -->
+  <p ng-repeat="follower in profileUserFollowers" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
+  <!-- If follower = venue -->
+  <p ng-repeat="follower in profileUserFollowers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
+  <p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
+</div>
+
+<!-- If profile page belongs to logged in user -->
+<div ng-if="currentUser.id === profileUser.id">
+  <!-- Followers -->
+  <p>Followers Count: {{currentUserFollowersCount}}</p>
+  <h5>Followers</h5>
+  <!-- If follower = artist -->
+  <p ng-repeat="follower in currentUserFollowers" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
+  <!-- If follower = venue -->
+  <p ng-repeat="follower in currentUserFollowers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
+  <p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
+</div>
+
+<!-- Follow & Message Buttons -->
 <div ng-if="currentUser.id != profileUser.id">
   <button ng-click="followMe(); makeAFollowing()" ng-show="follow">Follow</button>
   <button ng-click="unfollowMe()" ng-if="!follow">Following</button>

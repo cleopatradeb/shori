@@ -2,35 +2,49 @@ app.controller('ProfileController', function($scope, $http, $location, $routePar
   console.log('I am the PROFILE controller');
   UserService.userHash()
   .then(function(data){
-    // Profile Page Info
-    $scope.allUsers = data.data.all_users;
-    $scope.usersArr = JSON.parse($scope.allUsers);
+    // All Users
+    $scope.usersArr = JSON.parse(data.data.all_users);
+    // User whose page we are on
     $scope.userId = JSON.parse($routeParams.id);
-    $scope.profileUser = _.where($scope.usersArr, {id: $scope.userId})[0]
-
-    // Current User Info
+    // Current User Info - Own Profile Page
     $scope.currentUser = JSON.parse(data.data.current_user);
-    // Current user's followers
-    $scope.followingsArr = _.map($scope.usersArr, function(user){return user.followings})
-    $scope.flatFollowingsArr = _.flatten($scope.followingsArr);
-    console.log($scope.flatFollowingsArr);
-    $scope.followersArr = _.where($scope.flatFollowingsArr, {following_id: $scope.currentUser.id})
-    console.log($scope.followersArr);
-    // ID of all user's followers
-    $scope.followers = _.map($scope.followersArr, function(followers){return followers.user_id})
-    // Number of followers user has 
-    $scope.followersCount = $scope.followers.length
-    console.log($scope.followersCount)
-    // Name of user's followers
-    $scope.followersNamesArr = [];
-    // Getting user's followings user instances
+    // Current user's followers - Own Profile Page
+    $scope.currentUserFollowings = $scope.currentUser.followings
+    // Number of followers user has - Own Profile Page 
+    $scope.currentUserFollowersCount = $scope.currentUserFollowings.length
+    // ID of all user's followers - Own Profile Page
+    $scope.currentUserFollwersIds = _.map($scope.currentUserFollowings, function(following){return following.follower_id})
+    // Name of user's followers - Own Profile Page
+    $scope.currentUserFollowers = [];
     _.map($scope.usersArr, function(user){
-      if (_.contains($scope.followers, user.id) === true) {
-        $scope.followersNamesArr.push(user);
+      if (_.contains($scope.currentUserFollwersIds, user.id) === true) {
+        $scope.currentUserFollowers.push(user);
       }
     });
-    console.log($scope.followersNamesArr);
+
+    // Profile User Info - Others' Profile Page
+    $scope.profileUser = _.filter($scope.usersArr, function(user){ return user.id === $scope.userId;})[0]
+    console.log($scope.profileUser)
+    // Profile user's followers - Others' Profile Page
+    $scope.profileUserFollowings = $scope.profileUser.followings
+    console.log($scope.profileUserFollowings);
+    // Number of followers profile has - Others' Profile Page 
+    $scope.profileUserFollowersCount = $scope.profileUserFollowings.length
+    console.log($scope.profileUserFollowersCount);
+    // // ID of all profile's followers - Others' Profile Page
+    $scope.profileUserFollwersIds = _.map($scope.profileUserFollowings, function(following){return following.follower_id})
+    console.log($scope.profileUserFollwersIds);
+    // Name of profile's followers - Others' Profile Page
+    $scope.profileUserFollowers = [];
+    _.map($scope.usersArr, function(user){
+      if (_.contains($scope.profileUserFollwersIds, user.id) === true) {
+        $scope.profileUserFollowers.push(user);
+      }
+    });
+    console.log($scope.profileUserFollowers);
   });
+
+
   // Button - Follow this user
   $scope.follow = true
   $scope.followMe = (function(){
