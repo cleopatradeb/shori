@@ -6,6 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :artpieces, dependent: :destroy
   has_many :followings
-  has_many :users, through: :followings
   has_and_belongs_to_many :pacts
 end
