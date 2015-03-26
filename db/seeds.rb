@@ -119,9 +119,9 @@ end
 end
 
 all_venues = User.where(role: 'venue')
-all_artists = User.wh, follower_id: venue.idere(role: 'artist')
+all_artists = User.where(role: 'artist')
 # ARTISTS FOLLOWING VENUES
-all_artists.each do |, follower_id: venue.idartist|
+all_artists.each do |artist|
   fo1 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
   artist.followings << fo1
   fo2 = Following.create(user_id:all_venues.sample.id, follower_id: artist.id)
