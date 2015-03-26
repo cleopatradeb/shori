@@ -1,4 +1,4 @@
-app.controller('ProfileController', function($scope, $http, $location, $routeParams, UserService, FollowService){
+app.controller('ProfileController', function($scope, $http, $compile, $templateCache, $location, $routeParams, UserService, FollowService){
   console.log('I am the PROFILE controller');
     // Profile User Info - Others' Profile Page
     $scope.getProfileUserFollowers = function(data){
@@ -45,19 +45,28 @@ app.controller('ProfileController', function($scope, $http, $location, $routePar
         $scope.currentUserFollowers.push(user);
       }
     });
+    // Setting conditions for follow/un-follow button
+    if ((_.contains($scope.profileUserFollwersIds, $scope.currentUser.id)) === false) {
+      console.log('i am not following this person')
+      $scope.follow = true
+      $scope.unfollow = false
+    }
+    else {
+      $scope.follow = false
+      $scope.unfollow = true
+    }
+    // Button - Follow this user
+    $scope.followMe = (function(){
+      $scope.follow = !$scope.follow;
+    });
+    // Button - Un-follow this user
+    
+    $scope.unfollowMe = (function(){
+      $scope.follow = true;
+      $scope.unfollow = false;
+    });
   });
 
-  // Button - Follow this user
-  $scope.follow = true
-  $scope.followMe = (function(){
-    $scope.follow = !$scope.follow;
-  });
-  // Button - Unfollow this user
-  $scope.unfollow = false
-  $scope.unfollowMe = (function(){
-    $scope.follow = true;
-    $scope.unfollow = false;
-  });
 
   // Follow User
   $scope.makeAFollowing = function() {
@@ -75,7 +84,7 @@ app.controller('ProfileController', function($scope, $http, $location, $routePar
   // Unfollow User
   $scope.unmakeAFollowing = function() {
     $scope.followingToDelete = _.where($scope.profileUser.followings, {follower_id: $scope.currentUser.id})
-    console.log($scope.followingToDelete[0].id)
+    // console.log($scope.followingToDelete[0].id)
     data = {following_id: $scope.followingToDelete[0].id}
     FollowService.destroyFollowing(data)
     .then(function(response){
@@ -88,6 +97,9 @@ app.controller('ProfileController', function($scope, $http, $location, $routePar
     });
   }
 
-
-
+  $scope.messageClicked = function() {
+    console.log('message button clicked');
+    // $scope.messageTemplate = $compile($templateCache.get('message.html'));
+    // console.log($templateCache.get('message.html')($scope));
+  }
 });
