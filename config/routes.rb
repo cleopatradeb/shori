@@ -6,9 +6,8 @@ Rails.application.routes.draw do  resources :artforms
   get '/shori/home' => 'static#index', as: 'home'
   get '/shori/dashboard' => 'static#index', as: 'dashboard'
   get 'users/user_data' => 'users#user_data'
-  get 'users/create_following' => 'users#create_following'
   resources :artpieces
-  resources :matches
+  resources :followings
   resources :artforms
   resources :pacts
 

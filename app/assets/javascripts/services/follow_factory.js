@@ -1,7 +1,8 @@
 app.factory('FollowService', ['$http', function ($http) {
   var FollowService = {
-    createFollowing: function(user){
-      return $http.post('users/create_following');
+    createFollowing: function(data){
+      return $http.post('/followings', data)
+      .success(console.log('hit controller'))
     }
   }
   return FollowService;

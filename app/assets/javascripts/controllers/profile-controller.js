@@ -44,13 +44,10 @@ app.controller('ProfileController', function($scope, $http, $location, $routePar
   });
 
   // Follow User
-  $scope.navNewPost = $location.url('/post/new')
-  $scope.addFollowing = function() {
-    FollowService.createFollowing()
-    .then(function(response) {
-      $scope. = response.data;
-    });
+  $scope.makeAFollowing = function() {
+    data = {user_id: $scope.currentUser.id, following_id: $scope.userId}
+    FollowService.createFollowing(data);
+    console.log('made A Following');
   }
-});
 
 });

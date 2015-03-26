@@ -9,7 +9,7 @@
 <p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
 
 <div ng-if="currentUser.id != profileUser.id">
-  <button ng-click="followMe(); " ng-show="follow">Follow</button>
+  <button ng-click="followMe(); makeAFollowing()" ng-show="follow">Follow</button>
   <button ng-click="unfollowMe()" ng-if="!follow">Following</button>
   <button>Message</button>
 </div>
