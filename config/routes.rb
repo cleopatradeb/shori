@@ -10,6 +10,7 @@ Rails.application.routes.draw do  resources :artforms
   resources :followings
   resources :artforms
   resources :pacts
+  resources :pacts_users
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

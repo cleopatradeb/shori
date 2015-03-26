@@ -33,6 +33,9 @@
   <!-- If follower = venue -->
   <p ng-repeat="follower in currentUserFollowers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
   <p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
+
+  <h3>My Upcoming Pacts</h3>
+  <p ng-repeat="pact in myPacts">{{pact}}</p>
 </div>
 
 <!-- Follow & Message Buttons -->

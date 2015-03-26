@@ -27,6 +27,10 @@ app.controller('ProfileController', function($scope, $http, $compile, $templateC
       }
     });
     console.log($scope.profileUserFollowers);
+
+    // Pacts
+    $scope.myPacts = $scope.currentUser.pacts
+    console.log($scope.currentUser);
     }
   
   // Dynamically add Following
