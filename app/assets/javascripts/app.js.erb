@@ -14,6 +14,10 @@ app.config(function($routeProvider, $locationProvider){
     controller: "BrowseController",
     templateUrl: "<%= asset_path('browse.html') %>"
   })
+  .when('/users/:id', {
+    controller: 'ProfileController',
+    templateUrl: '<%= asset_path('profile.html') %>'
+  })
   .otherwise({
     redirectTo: '/home'
   });

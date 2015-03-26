@@ -1,1 +1,20 @@
 <h1>ANGULAR FILTERED BROWSE</h1>
+
+
+<form class="search-form">
+  <input ng-model="query" type="text" placeholder="search anything" autofocus>
+  <input type="checkbox" ng-model="roletype.all">All
+  <input type="checkbox" ng-model="roletype.artist">Artist
+  <input type="checkbox" ng-model="roletype.venue">Venue
+
+  <div ng-if="roletype.artist || roletype.venue || all">
+    <div ng-repeat="user in usersArr| filter:{first_name:query} | roleFilter:roletype | orderBy: 'first_name'">
+        <h2 ng-if="user.role === 'artist'"><a ng-href="users/{{ user.id }}">{{ user.first_name }}</a></h2>
+        <div ng-repeat="artpiece in user.artpieces" ng-if="user.role === 'artist'">{{artpiece.name}}</div>
+        <div ng-if="user.role === 'venue'">
+        <h2>{{user.venue_name}}</h2>
+        <p>{{user.biography}}</p>
+        </div>
+    </div>
+  </div>
+</form>

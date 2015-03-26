@@ -1,5 +1,4 @@
 Rails.application.routes.draw do  resources :artforms
-
   devise_for :users
   get "/" => redirect("/shori/home")
   get '/shori/*path' => 'static#index'
@@ -7,18 +6,12 @@ Rails.application.routes.draw do  resources :artforms
   get '/shori/home' => 'static#index', as: 'home'
   get '/shori/dashboard' => 'static#index', as: 'dashboard'
   get 'users/user_data' => 'users#user_data'
+  get 'users/create_following' => 'users#create_following'
   resources :artpieces
   resources :matches
   resources :artforms
   resources :pacts
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

@@ -1,0 +1,15 @@
+<h1>Profile Page</h1>
+
+<h3><span ng-if="currentUser.id === profileUser.id">Hello, </span>{{profileUser.first_name}} {{profileUser.last_name}}</h3>
+<p>{{profileUser.biography}}</p>
+<p>{{profileUser.role | ucfirst}}</p>
+<p>Followers Count: {{followersCount}}</p>
+<h5>Followers</h5>
+<p ng-repeat="follower in followersNamesArr">{{follower.first_name}}</p>
+<p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
+
+<div ng-if="currentUser.id != profileUser.id">
+  <button ng-click="followMe(); " ng-show="follow">Follow</button>
+  <button ng-click="unfollowMe()" ng-if="!follow">Following</button>
+  <button>Message</button>
+</div>
