@@ -1,33 +1,45 @@
-app.controller('PactController', function($scope, $http, UserService, PactService){
+app.controller('PactController', function($scope, $http, $routeParams, UserService, PactService){
   console.log('I am the PACT controller');
-  $scope.reset = function(){
-    $scope.newPact = angular.copy($scope.master);
-  }
-  // Date Options
-  $scope.options = {
-    format: 'yyyy-mm-dd',
-    onClose: function(e) {
-      // do something when the picker closes   
-    }
-  }
-
-  // Make a Pact instance
-  $scope.pactForm = {};
-  $scope.makePact = function(newPact) {
-    $scope.start_date = $scope.pactForm.$$success.parse[0].$viewValue
-    $scope.end_date = $scope.pactForm.$$success.parse[1].$viewValue
-    console.log($scope.pactForm.$$success.parse[0].$viewValue);
-    console.log($scope.pactForm.$$success.parse[1].$viewValue);
-    pact_data = {start_date: $scope.start_date, end_date:$scope.end_date}
-    console.log(pact_data);
-    // get pact data from form
-    PactService.createPact(pact_data)
-    .then(function(response){
-      // dynamically show pact
-      console.log('passed pact factory');
+  UserService.userHash()
+  .then(function(data){
+    $scope.usersArr = JSON.parse(data.data.all_users);
+    // User whose page we are on
+    $scope.userId = JSON.parse($routeParams.id);
+    // Current User Info - Own Profile Page
+    $scope.currentUser = JSON.parse(data.data.current_user);
+    $scope.profileUser = _.filter($scope.usersArr, function(user){ return user.id === $scope.userId;})[0]
+    $scope.reset = function(){
       $scope.newPact = angular.copy($scope.master);
-    })
-    // console.log('make pact')
-  };
+    }
+    // Make a Pact instance
+    if($scope.currentUser.role === 'artist') {
+      $scope.artistId = $scope.currentUser.id
+      $scope.venueId = $scope.profileUser.id
+    }
+    else {
+      $scope.artistId = $scope.profileUser.id
+      $scope.venueId = $scope.currentUser.id
+    }
+
+    console.log($scope.artistId)
+    console.log($scope.venueId)
+    $scope.pactForm = {};
+    $scope.makePact = function(newPact) {
+      $scope.start_date = pactForm.startDate.value
+      $scope.end_date = pactForm.endDate.value
+      console.log(pactForm.startDate.value);
+      console.log(pactForm.endDate.value);
+      pact_data = {start_date: $scope.start_date, end_date:$scope.end_date, user_id:$scope.currentUser.id, venue_id:$scope.venueId, artist_id:$scope.artistId}
+      console.log(pact_data);
+      // get pact data from form
+      PactService.createPact(pact_data)
+      .then(function(response){
+        // dynamically show pact
+        console.log('passed pact factory');
+        $scope.newPact = angular.copy($scope.master);
+      })
+      // console.log('make pact')
+    };
+  })
 });
 

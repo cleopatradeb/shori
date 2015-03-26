@@ -3,7 +3,10 @@ class PactsController < ApplicationController
   def create
     @pact = Pact.create(
       start_date: params[:start_date],
-      end_date: params[:end_date]
+      end_date: params[:end_date],
+      user_id: params[:user_id],
+      venue_id: params[:venue_id],
+      artist_id: params[:artist_id]
       )
     render json: Pact.all
   end
