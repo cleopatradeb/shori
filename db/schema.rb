@@ -17,61 +17,60 @@ ActiveRecord::Schema.define(version: 20150327142149) do
   enable_extension "plpgsql"
 
   create_table "artforms", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "name"
   end
 
   create_table "artpieces", force: :cascade do |t|
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
     t.string   "name"
+    t.integer  "user_id"
+    t.integer  "artform_id"
+    t.text     "description"
     t.integer  "height"
     t.integer  "width"
     t.integer  "depth"
     t.integer  "circumference"
-    t.integer  "user_id"
     t.integer  "price"
     t.boolean  "insurance"
-    t.text     "description"
-    t.integer  "artform_id"
     t.string   "image"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "followings", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "venue_id"
+    t.integer  "artist_id"
     t.integer  "follower_id"
     t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "pacts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer  "venue_id"
     t.integer  "artist_id"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "revenue"
-    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pacts_users", force: :cascade do |t|
-    t.integer  "artist_id"
-    t.integer  "venue_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer  "pact_id"
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                            default: "", null: false
-    t.string   "encrypted_password",               default: "", null: false
+    t.string   "email",                            default: "",    null: false
+    t.string   "encrypted_password",               default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                    default: 0,  null: false
+    t.integer  "sign_in_count",                    default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -83,13 +82,12 @@ ActiveRecord::Schema.define(version: 20150327142149) do
     t.string   "address"
     t.string   "postcode"
     t.integer  "contact_number",         limit: 8
-    t.string   "links"
-    t.boolean  "verified"
+    t.string   "website"
+    t.boolean  "verified",                         default: false
     t.text     "biography"
     t.string   "role"
     t.string   "venue_name"
-    t.string   "venue_facebook"
-    t.string   "venue_image"
+    t.string   "social_media"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -97,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150327142149) do
 
   create_table "venuepics", force: :cascade do |t|
     t.string   "url"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

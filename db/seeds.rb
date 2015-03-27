@@ -27,7 +27,7 @@ af3 = Artform.create(name: 'Photography')
   postcode: "#{area.shuffle.pop} #{number}#{alphabet.shuffle.pop}#{alphabet.shuffle.pop}",
   biography: Faker::Lorem.paragraph(3),
   verified: true,
-  links: Faker::Internet.url, 
+  social_media: Faker::Internet.url, 
   contact_number: Faker::Number.number(10)
   )
 end
@@ -47,7 +47,7 @@ end
   image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/illu_#{n}.jpg"
   )
 end
-# ARTPIECES (PHOTOGRAPHY})
+# ARTPIECES (PHOTOGRAPHY)
 100.times do |n|
   Artpiece.create(
   name: Faker::Address.street_name,
@@ -100,9 +100,8 @@ end
   postcode: "#{area.shuffle.pop} #{number}#{alphabet.shuffle.pop}#{alphabet.shuffle.pop}",
   biography: Faker::Lorem.paragraph(3),
   verified: true,
-  links: Faker::Internet.url, 
-  contact_number: Faker::Number.number(10),
-  venue_image: "https://s3-eu-west-1.amazonaws.com/shori/store_picture/store#{n}.jpg"
+  social_media: Faker::Internet.url, 
+  contact_number: Faker::Number.number(10)
   )
 end
 
