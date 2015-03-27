@@ -5,5 +5,10 @@ class UsersController < ApplicationController
     response = {current_user: @current_user, all_users: @all_users}
     render json: response
   end
+
+  def gon 
+    gon.current_user_id = current_user.id
+    gon.current_user = current_user
+  end
   
 end

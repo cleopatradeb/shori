@@ -1,11 +1,26 @@
 <h2>I am the GALLERY</h2>
 <div ng-repeat="art in profileUserArtpieces" class="gallery-container">
   <li class="gallery-item">
-    <img-wit ng-src="{{art.image | trusted}}" w="200"></img-wit>
+    <img-wit ng-src="{{art.image | trusted}}" w="300"></img-wit>
     <h4>Title: {{art.name | ucfirst}}</h4>
     <p>Price: {{art.price | currency:"£"}}</p>
     <p>Dimensions: {{art.width}} in x {{art.height}} in x {{art.depth}} in</p>
     <p>Circumference: {{art.circumference || "nil"}}</p>
     <p>Description: {{art.description}}</p>
   </li>
+</div>
+
+<div class="gallery-add-photo">
+  <form name="new-artpiece-form" novalidate>  
+    Name: <input type="text" name="name" ng-model="newArtpiece.name" placeholder="Name"><br/>
+    Description: <input type="text" name="description" ng-model="newArtpiece.description" placeholder="Description"><br/>
+    Price: <input type="text" name="price" ng-model="newArtpiece.price" placeholder="price"><br/>
+    Type: <input type="radio" ng-model="newArtpiece.type" name="type-illustration" value="illustration">Illustration</input><input type="radio" name="type-photography" ng-model="newArtpiece.type" value="photography">Photography</input><input type="radio" name="type-craft" ng-model="newArtpiece.type" value="craft">Craft</input><br />
+    Length: <input type="text" name="length" ng-model="newArtpiece.length" placeholder="length"><br/>
+    Height: <input type="text" name="height" ng-model="newArtpiece.height" placeholder="Height"><br/>
+    Depth: <input type="text" name="depth" ng-model="newArtpiece.depth" placeholder="depth"><br/>
+    Insurance: <input type="radio" ng-model="newArtpiece.insurance" name="insurance-yes" value="true">True</input><input type="radio" name="insurance-yes" ng-model="newArtpiece.insurance" value="false">False</input>
+    <input name="file" type="file" file />
+    <button ng-click="upload()">Upload</button>
+  </form>
 </div>

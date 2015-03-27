@@ -31,7 +31,7 @@ af3 = Artform.create(name: 'Photography')
   contact_number: Faker::Number.number(10)
   )
 end
-# ARTPIECES (PAINTINGS)
+# ARTPIECES (ILLUSTRATION)
 100.times do |n|
   Artpiece.create(
   name: Faker::Lorem.word,
@@ -101,7 +101,8 @@ end
   biography: Faker::Lorem.paragraph(3),
   verified: true,
   links: Faker::Internet.url, 
-  contact_number: Faker::Number.number(10)
+  contact_number: Faker::Number.number(10),
+  venue_image: "https://s3-eu-west-1.amazonaws.com/shori/store_picture/store#{n}.jpg"
   )
 end
 

@@ -10,6 +10,7 @@ gem 'underscore-rails'
 gem 'momentjs-rails'
 gem 'angularjs-file-upload-rails', '~> 1.1.6'
 gem 'carrierwave'
+gem 'gon'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'

@@ -1,5 +1,6 @@
 app.controller('ProfileController', function($scope, $http, $compile, $templateCache, $location, $routeParams, UserService, FollowService){
   console.log('I am the PROFILE controller');
+  console.log(gon.current_user);
   // Profile User Info - Others' Profile Page
   $scope.getProfileUserFollowers = function(data){
     // All Users
