@@ -1,0 +1,11 @@
+<h2>I am the GALLERY</h2>
+<div ng-repeat="art in profileUserArtpieces" class="gallery-container">
+  <li class="gallery-item">
+    <img-wit ng-src="{{art.image | trusted}}" w="200"></img-wit>
+    <h4>Title: {{art.name | ucfirst}}</h4>
+    <p>Price: {{art.price | currency:"£"}}</p>
+    <p>Dimensions: {{art.width}} in x {{art.height}} in x {{art.depth}} in</p>
+    <p>Circumference: {{art.circumference || "nil"}}</p>
+    <p>Description: {{art.description}}</p>
+  </li>
+</div>

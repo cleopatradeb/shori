@@ -2,6 +2,7 @@
 <!-- Basic Information -->
 <div ng-if="profileUser.role === 'artist'">
   <h3><span ng-if="currentUser.id === profileUser.id">Hello, </span>{{profileUser.first_name}} {{profileUser.last_name}}</h3>
+  <h4><a ng-href="/shori/gallery/{{profileUser.id}}">Gallery</a></h4>
 </div>
 <div ng-if="profileUser.role === 'venue'">
   <h3><span ng-if="currentUser.id === profileUser.id">Hello, </span>{{profileUser.venue_name}}</h3>
@@ -17,7 +18,10 @@
   <p>Their Count: {{profileUserFollowersCount}}</p>
   <h3>Followers</h3>
   <!-- If follower = artist -->
-  <p ng-repeat="follower in profileUserFollowers" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
+  <div ng-repeat="follower in profileUserFollowers" ng-if="follower.role === 'artist'">
+    <p><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
+    <p ng-repeat="art in follower.artpieces">{{art.name}} {{art.price}}</p>
+  </div>
   <!-- If follower = venue -->
   <p ng-repeat="follower in profileUserFollowers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
   <p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
@@ -57,7 +61,7 @@
     Start Date: <input type="text" name="startDate" ng-model="newPact.startDate" pick-a-date="date" placeholder="Select Date"><br/>
     
     End Date: <input type="text" name="endDate"  ng-model="newPact.endDate" pick-a-date="date" placeholder="Select Date"><br/>
-    
+
     <input type="button" ng-click="reset()" value="Reset" />
     <input type="submit" ng-click="makePact(newPact)" value="Make Pact" />
   </form>

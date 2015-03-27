@@ -4,10 +4,9 @@ User.delete_all
 
 # ARTFORMS
 
-af1 = Artform.create(name: 'sculpture')
-af2 = Artform.create(name: 'craft')
-af3 = Artform.create(name: 'painting')
-af4 = Artform.create(name: 'installation')
+af1 = Artform.create(name: 'Illustration and Painting')
+af2 = Artform.create(name: 'Craft')
+af3 = Artform.create(name: 'Photography')
 
 # USERS (ARTISTS)
 40.times do |n|
@@ -43,23 +42,25 @@ end
   price:Faker::Commerce.price,
   insurance: true, 
   description: Faker::Lorem.sentence(5),
-  artform_id: af3.id,
-  user_id: User.all.to_a[1..10].sample.id
+  artform_id: af1.id,
+  user_id: User.all.to_a[1..10].sample.id,
+  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/illu_#{n}.jpg"
   )
 end
-# ARTPIECES (SCULPTURE)
+# ARTPIECES (PHOTOGRAPHY})
 100.times do |n|
   Artpiece.create(
   name: Faker::Address.street_name,
-  height: (1..35).to_a.sample.to_i,
-  width: (1..35).to_a.sample.to_i,
+  height: (10..20).to_a.sample.to_i,
+  width: (10..20).to_a.sample.to_i,
   depth: nil,
-  circumference: (1..35).to_a.sample.to_i, 
+  circumference: nil, 
   price:Faker::Commerce.price,
   insurance: true, 
   description: Faker::Lorem.sentence(5),
-  artform_id: af1.id,
-  user_id: User.all.to_a[11..20].sample.id
+  artform_id: af3.id,
+  user_id: User.all.to_a[11..20].sample.id,
+  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/photo_#{n}.jpg"
   )
 end
 # ARTPIECES (CRAFT)
@@ -74,22 +75,8 @@ end
   insurance: true, 
   description: Faker::Lorem.sentence(5),
   artform_id: af2.id,
-  user_id: User.all.to_a[21..30].sample.id
-  )
-end
-# ARTPIECES (INSTALLATION)
-100.times do |n|
-  Artpiece.create(
-  name: Faker::Commerce.product_name,
-  height: (1..70).to_a.sample.to_i,
-  width: (1..70).to_a.sample.to_i,
-  depth: (1..70).to_a.sample.to_i,
-  circumference: nil, 
-  price:(50..100).to_a.sample.to_i,
-  insurance: true, 
-  description: Faker::Lorem.sentence(5),
-  artform_id: af4.id,
-  user_id: User.all.to_a[31..40].sample.id
+  user_id: User.all.to_a[21..30].sample.id,
+  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/craft_#{n}.jpg"
   )
 end
 

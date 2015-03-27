@@ -1,3 +1,10 @@
+// TRUSTED AWS LINK FILTER
+app.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}]);
+
 // CUSTOM FILTERS
 app.filter('roleFilter', function() {
   return function(allusers, checked) {

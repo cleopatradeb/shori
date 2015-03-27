@@ -1,7 +1,7 @@
 app.controller('ProfileController', function($scope, $http, $compile, $templateCache, $location, $routeParams, UserService, FollowService){
   console.log('I am the PROFILE controller');
-    // Profile User Info - Others' Profile Page
-    $scope.getProfileUserFollowers = function(data){
+  // Profile User Info - Others' Profile Page
+  $scope.getProfileUserFollowers = function(data){
     // All Users
     $scope.usersArr = JSON.parse(data.all_users);
     // User whose page we are on

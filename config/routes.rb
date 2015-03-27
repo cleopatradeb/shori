@@ -1,6 +1,8 @@
 Rails.application.routes.draw do  resources :artforms
   devise_for :users
+  get 'shori/gallery/:id' => 'static#index', as: 'gallery'
   get "/" => redirect("/shori/home")
+  get "/users" => redirect("/shori/dashboard")
   get '/shori/*path' => 'static#index'
   root 'static#index'
   get '/shori/home' => 'static#index', as: 'home'

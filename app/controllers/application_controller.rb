@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_update_path_for(resource)
-    home_path
+    dashboard_path
   end
 
   before_action :configure_permitted_parameters, if: :devise_controller?

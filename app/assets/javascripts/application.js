@@ -15,7 +15,6 @@
 //= require moment
 //= require underscore
 //= require twitter/bootstrap
-//= require angularjs-file-upload
 //= require angular
 //= require angular-animate
 //= require angular-route-1-2-0
