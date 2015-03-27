@@ -54,17 +54,12 @@
 <div ng-controller="PactController">
   <h3>Make a Pact</h3>
   <form name="pactForm" novalidate>
-    Start Date: <input type="text" name="startDate" ng-model="newPact.startDate" pick-a-date="date" pick-a-date-options="options" placeholder="Select Date" required><br/>
-    End Date: <input type="text" name="endDate"  ng-model="newPact.endDate" pick-a-date="date" pick-a-date-options="options" placeholder="Select Date" required><br/>
+    Start Date: <input type="text" name="startDate" ng-model="newPact.startDate" pick-a-date="date" placeholder="Select Date"><br/>
+    
+    End Date: <input type="text" name="endDate"  ng-model="newPact.endDate" pick-a-date="date" placeholder="Select Date"><br/>
+    
     <input type="button" ng-click="reset()" value="Reset" />
     <input type="submit" ng-click="makePact(newPact)" value="Make Pact" />
-    <datepicker></datepicker>
   </form>
-
-  <div>
-    {{newPact.startDate | date }} {{newPact.endDate | date }}
-  </div>
-
   <pre>form = {{newPact | json}}</pre>
-  <pre>master = {{master | json}}</pre>
 </div>
