@@ -1,3 +1,4 @@
+// Message box directive that is crashing my app
 // app.directive('message', ['$compile', '$templateCache', function factory($compile) {
 //   'use strict';
 //   var messageObject = {
@@ -11,6 +12,8 @@
 //   };
 //   return messageObject;
 // }]);
+
+// Angular file Upload
 
 app.directive('file', function() {
   return {

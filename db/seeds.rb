@@ -27,7 +27,7 @@ af3 = Artform.create(name: 'Photography')
   postcode: "#{area.shuffle.pop} #{number}#{alphabet.shuffle.pop}#{alphabet.shuffle.pop}",
   biography: Faker::Lorem.paragraph(3),
   verified: true,
-  social_media: Faker::Internet.url, 
+  website: Faker::Internet.url, 
   contact_number: Faker::Number.number(10)
   )
 end
@@ -43,7 +43,7 @@ end
   insurance: true, 
   description: Faker::Lorem.sentence(5),
   artform_id: af1.id,
-  user_id: User.all.to_a[1..10].sample.id,
+  user_id: User.all.to_a[1..13].sample.id,
   image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/illu_#{n}.jpg"
   )
 end
@@ -59,7 +59,7 @@ end
   insurance: true, 
   description: Faker::Lorem.sentence(5),
   artform_id: af3.id,
-  user_id: User.all.to_a[11..20].sample.id,
+  user_id: User.all.to_a[13..26].sample.id,
   image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/photo_#{n}.jpg"
   )
 end
@@ -75,7 +75,7 @@ end
   insurance: true, 
   description: Faker::Lorem.sentence(5),
   artform_id: af2.id,
-  user_id: User.all.to_a[21..30].sample.id,
+  user_id: User.all.to_a[27..40].sample.id,
   image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/craft_#{n}.jpg"
   )
 end
@@ -87,21 +87,23 @@ end
   number = Faker::Number.digit
   alphabet = ["A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
   first_name = Faker::Name.first_name
+  venue_name = Faker::Company.name
   email = Faker::Internet.safe_email(first_name)
   User.create(
-  first_name: first_name,
-  last_name: Faker::Name.last_name,
-  venue_name: Faker::Company.name,
-  email: email,
-  password: 'password',
-  password_confirmation: 'password',
-  role: 'venue',
-  address: Faker::Address.street_address,
-  postcode: "#{area.shuffle.pop} #{number}#{alphabet.shuffle.pop}#{alphabet.shuffle.pop}",
-  biography: Faker::Lorem.paragraph(3),
-  verified: true,
-  social_media: Faker::Internet.url, 
-  contact_number: Faker::Number.number(10)
+    first_name: first_name,
+    last_name: Faker::Name.last_name,
+    venue_name: venue_name,
+    email: email,
+    password: 'password',
+    password_confirmation: 'password',
+    role: 'venue',
+    address: Faker::Address.street_address,
+    postcode: "#{area.shuffle.pop} #{number}#{alphabet.shuffle.pop}#{alphabet.shuffle.pop}",
+    biography: Faker::Lorem.paragraph(3),
+    verified: true,
+    website: Faker::Internet.url, 
+    social_media: "http://facebook.com/" + venue_name.strip,
+    contact_number: Faker::Number.number(10)
   )
 end
 
