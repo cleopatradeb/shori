@@ -9,7 +9,7 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
   });
 
   $scope.creds = {
-    bucket: 'shori',
+    bucket: 'shori/user_artpieces_uploads',
     access_key: gon.aws_access_key,
     secret_key: gon.aws_secret_key
   }

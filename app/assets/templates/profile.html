@@ -9,41 +9,37 @@
 <h4 ng-if="profileUser.role === 'artist'"><a ng-href="/shori/gallery/{{profileUser.id}}">Gallery</a></h4>
 <h4><a ng-href="/shori/venue/{{profileUser.id}}" ng-if="profileUser.role === 'venue'">Venue View</a></h4>
 
-<p>{{profileUserFollowingCount}} Followers</p>
+<p>Following {{profileUserFollowingsCount}} Users</p>
 <h3>You are following:</h3>
 
-<div ng-repeat="follower in profileUserFollowedUsers" ng-if="follower.role === 'artist'">
+<div ng-repeat="follower in profileUserFollowings" ng-if="follower.role === 'artist'">
   <p><a ng-href="users/{{follower.id}}">{{follower.first_name}} {{follower.last_name}}</a></p>
 </div>
 
-<p ng-repeat="follower in profileUserFollowedUsers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
+<p ng-repeat="follower in profileUserFollowings" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
 
 
 <div ng-if="currentUserId === profileUserId">
   <h3>My Upcoming Pacts</h3>
-  <div ng-repeat="pact in currentVenuePacts"r>
+  <div ng-repeat="pact in currentVenuePacts" ng-if="currentVenuePacts.length > 0">
     <p>{{pact.start_date | date}}</p>
     <p>{pact.end_date | date}}</p>
   </div>
-  <div ng-repeat="pact in currentArtistPacts">
+  <div ng-repeat="pact in currentArtistPacts" ng-if="currentArtistPacts.length > 0">
     <p>{{pact.start_date | date}}</p>
     <p>{{pact.end_date | date}}</p>
   </div>
 </div>
 
 <!-- Follow & Message Buttons -->
-<div ng-if="currentUser.id != profileUser.id">
+<div ng-if="currentUserId != profileUserId">
   <button ng-click="unfollowMe(); unmakeAFollowing()" ng-if="!follow">Unfollow</button>
   <button ng-click="followMe(); makeAFollowing()" ng-show="follow">Follow</button>
   <button ng-click="openMessageBox()">Message</button>
 </div>
 
-<!-- Message Modal -->
-<!-- <message></message> -->
-
-
 <!-- Create Pact Form -->
-<div ng-controller="PactController" ng-if="currentUser.role === 'venue'">
+<div ng-controller="PactController" ng-if="currentUserId != profileUserId">
   <h3>Make a Pact</h3>
   <form name="pactForm" novalidate>
     Start Date: <input type="text" name="startDate" ng-model="newPact.startDate" pick-a-date="date" placeholder="Select Date"><br/>

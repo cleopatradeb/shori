@@ -9,7 +9,7 @@ app.controller('VenueController', ['$scope', '$http', '$location', '$routeParams
   });
 
   $scope.creds = {
-    bucket: 'shori/venue_uploads',
+    bucket: 'shori/user_venue_uploads',
     access_key: gon.aws_access_key,
     secret_key: gon.aws_secret_key
   }

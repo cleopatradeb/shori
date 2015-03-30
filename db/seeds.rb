@@ -143,3 +143,11 @@ all_venues.each do |venue|
   fo7 = Following.create(user_id:all_artists.sample.id, follower_id: venue.id)
   venue.followings << fo7
 end
+
+# VENUE PICTURES
+120.times do |n|
+  Venuepic.create(
+    url: "https://s3-eu-west-1.amazonaws.com/shori/store_picture/store_#{n}.jpg",
+    user_id: all_venues.sample.id
+    )
+end

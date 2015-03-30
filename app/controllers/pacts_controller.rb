@@ -1,8 +1,8 @@
 class PactsController < ApplicationController
   def pacts_data
-    @current_venue_pacts = Pact.where(venue_id: current_user.id).to_json(include: [:users])
-    @current_artist_pacts = Pact.where(artist_id: current_user.id).to_json(include: [:users])
-    @all_pacts = Pact.all.to_json(include: [:users])
+    @current_venue_pacts = Pact.where(venue_id: current_user.id)
+    @current_artist_pacts = Pact.where(artist_id: current_user.id)
+    @all_pacts = Pact.all
     response = {current_venue_pacts: @current_venue_pacts, current_artist_pacts: @current_artist_pacts, all_pacts: @all_pacts}
     render json: response
   end
