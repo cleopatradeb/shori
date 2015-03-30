@@ -11,7 +11,7 @@
 </div>
 
 <p>{{profileUser.biography}}</p>
-<p>{{profileUser.role | ucfirst}}</p>
+<p>Role: {{profileUser.role | ucfirst}}</p>
 
 <!-- If logged in user viewing others' profile page -->
 <div ng-if="currentUser.id != profileUser.id">
@@ -20,8 +20,7 @@
   <h3>Followers</h3>
   <!-- If follower = artist -->
   <div ng-repeat="follower in profileUserFollowers" ng-if="follower.role === 'artist'">
-    <p><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
-    <p ng-repeat="art in follower.artpieces">{{art.name}} {{art.price}}</p>
+    <p class="profile-follower"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
   </div>
   <!-- If follower = venue -->
   <p ng-repeat="follower in profileUserFollowers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
@@ -41,7 +40,6 @@
 
   <h3>My Upcoming Pacts</h3>
   <div ng-repeat="pact in currentVenuePacts" ng-if="profileUser.role==='venue'">
-    <h3>{{pact}}</h3>
     <p>Start Date: {{pact.start_date | date}}</p>
     <p>End Date: {{pact.end_date | date}}</p>
     <p>Revenue: {{pact.revenue | currency}}</p>
@@ -92,5 +90,4 @@
     <input type="submit" ng-click="makePact(newPact)" value="Make Pact" />
   </form>
   <pre>form = {{newPact | json}}</pre>
-
 </div>

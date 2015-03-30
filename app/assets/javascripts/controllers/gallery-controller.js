@@ -1,17 +1,13 @@
-app.controller('GalleryController', function($scope, $http, $location, $routeParams, UserService, FollowService){
+app.controller('GalleryController', ['$scope', '$http', '$location', '$routeParams', 'UserService', 'FollowService', function($scope, $http, $location, $routeParams, UserService, FollowService){
   console.log('I am the GALLERY controller');
   UserService.userHash()
   .then(function(data){
     $scope.allUsers = JSON.parse(data.data.all_users);
     $scope.userId = JSON.parse($routeParams.id);
     $scope.profileUser = _.filter($scope.allUsers, function(user){ return user.id === $scope.userId;})[0];
-    console.log($scope.profileUser);
     $scope.profileUserArtpieces = $scope.profileUser.artpieces
-    console.log($scope.profileUserArtpieces);
   });
 
-  console.log(gon.aws_access_key)
-  console.log(gon.aws_secret_key)
   $scope.creds = {
     bucket: 'shori',
     access_key: gon.aws_access_key,
@@ -19,15 +15,7 @@ app.controller('GalleryController', function($scope, $http, $location, $routePar
   }
  
   $scope.upload = function() {
-    console.log($scope.newArtpiece.name)
-    console.log($scope.newArtpiece.description)
-    console.log($scope.newArtpiece.length)
-    console.log($scope.newArtpiece.depth)
-    console.log($scope.newArtpiece.height)
-    console.log($scope.newArtpiece.price)
-    console.log($scope.newArtpiece.insurance)
-    console.log($scope.file.name)
-    console.log(gon.current_user_id)
+
     // Configure The S3 Object 
     AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
     AWS.config.region = 'us-east-1';
@@ -69,4 +57,4 @@ app.controller('GalleryController', function($scope, $http, $location, $routePar
       user_id: gon.current_user_id
     });
   }
-});
+}]);

@@ -1,4 +1,4 @@
-app.controller('PactController', function($scope, $http, $routeParams, UserService, PactService){
+app.controller('PactController', ['$scope', '$http', '$routeParams', 'UserService', 'PactService', function($scope, $http, $routeParams, UserService, PactService){
   console.log('I am the PACT controller');
   UserService.userHash()
   .then(function(data){
@@ -47,16 +47,13 @@ app.controller('PactController', function($scope, $http, $routeParams, UserServi
         artist_id:$scope.artistId, 
         selected_artpieces: $scope.art
       }
-      console.log(pact_data);
       // get pact data from form
       PactService.createPact(pact_data)
       .then(function(response){
         // dynamically show pact
-        console.log('passed pact factory');
         $scope.newPact = angular.copy($scope.master);
       })
-      console.log('make pact')
     };
   })
-});
+}]);
 

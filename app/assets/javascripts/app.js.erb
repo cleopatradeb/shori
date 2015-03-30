@@ -1,7 +1,7 @@
 var app = angular.module('shoriApp', ['ngAnimate', 'ngRoute', 'ngResource', 'angular.filter', 'angular-datepicker', 'angular-wurfl-image-tailor', 'ngMaterial', "checklist-model"]);
 console.log('ANGULAR RUNNING');
 
-app.config(function($routeProvider, $locationProvider){
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
   .when('/home', {
     controller: "HomeController",
@@ -31,4 +31,4 @@ app.config(function($routeProvider, $locationProvider){
     redirectTo: '/home'
   });
   $locationProvider.html5Mode(true);
-});
+}]);

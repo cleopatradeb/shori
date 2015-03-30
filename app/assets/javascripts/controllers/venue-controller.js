@@ -1,17 +1,13 @@
-app.controller('VenueController', function($scope, $http, $location, $routeParams, UserService, FollowService){
+app.controller('VenueController', ['$scope', '$http', '$location', '$routeParams', 'UserService', 'FollowService', function($scope, $http, $location, $routeParams, UserService, FollowService){
   console.log('I am the venue controller');
   UserService.userHash()
   .then(function(data){
     $scope.allUsers = JSON.parse(data.data.all_users);
     $scope.userId = JSON.parse($routeParams.id);
     $scope.profileUser = _.filter($scope.allUsers, function(user){ return user.id === $scope.userId;})[0];
-    console.log($scope.profileUser);
     $scope.profileUserArtpieces = $scope.profileUser.artpieces
-    console.log($scope.profileUserArtpieces);
   });
 
-  console.log(gon.aws_access_key)
-  console.log(gon.aws_secret_key)
   $scope.creds = {
     bucket: 'shori/venue_uploads',
     access_key: gon.aws_access_key,
@@ -19,7 +15,6 @@ app.controller('VenueController', function($scope, $http, $location, $routeParam
   }
  
   // $scope.upload = function() {
-
   //   // Configure The S3 Object 
   //   AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
   //   AWS.config.region = 'us-east-1';
@@ -61,4 +56,4 @@ app.controller('VenueController', function($scope, $http, $location, $routeParam
   //     user_id: gon.current_user_id
   //   });
   // }
-});
+}]);

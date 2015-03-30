@@ -1,11 +1,9 @@
-app.controller('DashboardController', function($scope, $http, UserService){
-
+app.controller('DashboardController', ['$scope', '$http', 'UserService', 'FollowService', 'PactService', function($scope, $http, UserService, FollowService, PactService){
   UserService.userHash()
   .then(function(data){
     // Defining general JSON variables 
     $scope.currentUser = JSON.parse(data.data.current_user);
-    $scope.allUsers = data.data.all_users;
-    usersArr = JSON.parse($scope.allUsers);
+    $scope.usersArr = JSON.parse(data.data.all_users);
     // Getting users signed up in past week
     $scope.filteredArr = _.filter(usersArr, function(user){return moment(user.created_at).isAfter(LastWeekStart())});
     // Current user's art pieces
@@ -22,6 +20,4 @@ app.controller('DashboardController', function($scope, $http, UserService){
       }
     });
   })
-});
-
-// create a moment-formatted join date
+}]);

@@ -14,7 +14,7 @@
   <p>Followers Count: {{currentUserFollowersCount}}</p>
   <h5>Followers</h5>
   <!-- If follower = artist -->
-  <p ng-repeat="follower in currentUserFollowers" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
+  <p ng-repeat="follower in currentUserFollowings" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
   <!-- If follower = venue -->
   <p ng-repeat="follower in currentUserFollowers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
   <p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
