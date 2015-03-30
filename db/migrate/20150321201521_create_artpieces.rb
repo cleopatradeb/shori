@@ -14,7 +14,7 @@ class CreateArtpieces < ActiveRecord::Migration
       t.boolean :insurance
       t.string :image
       t.string :qr_code
-      t.string :status
+      t.string :status, default: 'available'
       t.timestamps null: false
     end
   end

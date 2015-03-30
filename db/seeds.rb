@@ -73,7 +73,8 @@ end
   description: Faker::Lorem.sentence(5),
   artform_id: af1.id,
   user_id: User.all.to_a[1..13].sample.id,
-  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/illu_#{n}.jpg"
+  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/illu_#{n}.jpg",
+  qr_code: RQRCode::QRCode.new("http://localhost:3000/shori/artpiece/#{n}", :size => 10, :level => :h)
   )
 end
 # ARTPIECES (PHOTOGRAPHY)
@@ -89,7 +90,8 @@ end
   description: Faker::Lorem.sentence(5),
   artform_id: af3.id,
   user_id: User.all.to_a[13..26].sample.id,
-  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/photo_#{n}.jpg"
+  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/photo_#{n}.jpg",
+  qr_code: RQRCode::QRCode.new("http://localhost:3000/shori/artpiece/#{n}", :size => 10, :level => :h)
   )
 end
 # ARTPIECES (CRAFT)
@@ -105,13 +107,16 @@ end
   description: Faker::Lorem.sentence(5),
   artform_id: af2.id,
   user_id: User.all.to_a[27..40].sample.id,
-  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/craft_#{n}.jpg"
+  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/craft_#{n}.jpg",
+  qr_code: RQRCode::QRCode.new("http://localhost:3000/shori/artpiece/#{n}", :size => 10, :level => :h)
   )
 end
 
+
 all_artpieces = Artpiece.all
 299.times do |n|
-  all_artpieces.find(n+1).qr_code = RQRCode::QRCode.new("https://shori.herokuapp.com/shori/artpiece/#{n+1}", :size => 10, :level => :h).to_s
+  artpiece = all_artpieces[n]
+  artpiece.qr_code = RQRCode::QRCode.new("http://localhost:3000/shori/artpiece/#{n+1}", :size => 10, :level => :h)
 end
 
 all_venues = User.where(role: 'venue')
