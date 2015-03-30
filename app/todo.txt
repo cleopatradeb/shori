@@ -1,2 +1,1 @@
-seed venue pics 
 get all pages working minimally

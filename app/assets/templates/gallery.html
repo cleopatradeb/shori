@@ -2,7 +2,7 @@
 <div ng-repeat="art in profileUserArtpieces" class="gallery-container">
   <li class="gallery-item">
     <img-wit ng-src="{{art.image | trusted}}" w="300"></img-wit>
-    <h4>Title: {{art.name | ucfirst}}</h4>
+    <a ng-href="/shori/artpiece/{{art.id}}"><h4>Title: {{art.name | ucfirst}}</h4></a>
     <p>Price: {{art.price | currency:"£"}}</p>
     <p>Dimensions: {{art.width}} in x {{art.height}} in x {{art.depth}} in</p>
     <p>Circumference: {{art.circumference || "nil"}}</p>

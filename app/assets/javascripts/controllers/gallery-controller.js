@@ -1,5 +1,5 @@
 app.controller('GalleryController', ['$scope', '$http', '$location', '$routeParams', 'UserService', 'FollowService', function($scope, $http, $location, $routeParams, UserService, FollowService){
-  console.log('I am the GALLERY controller');
+  console.log('GalleryController');
   UserService.userHash()
   .then(function(data){
     $scope.allUsers = JSON.parse(data.data.all_users);
@@ -44,7 +44,7 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
       // No File Selected
       alert('No File Selected');
     }
-    $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/' + $scope.file.name;
+    $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/u ser_artpieces_uploads' + $scope.file.name;
     $http.post('/artpieces', {
       name: $scope.newArtpiece.name, 
       description: $scope.newArtpiece.description, 

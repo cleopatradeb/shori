@@ -1,6 +1,10 @@
 class ArtpiecesController < ApplicationController
-  before_action :authenticate_user!
   
+  def artpieces_data
+    @all_artpieces = Artpieces.all.to_json(include: [:users, :artforms, :pacts])
+    render json: @all_artpieces
+  end
+
   def create
   end
 
