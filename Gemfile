@@ -22,7 +22,8 @@ gem 'thin'
 gem 'chunky_png'
 gem 'rqrcode_png'
 gem 'dragonfly', '~> 1.0.7'
-gem 'dragonfly-s3_data_store'
+gem 'dragonfly-s3_data_store', '~> 1.0.4'
+gem 'fog', '~> 1.28.0'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'
