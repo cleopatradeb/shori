@@ -14,6 +14,12 @@ gem 'angularjs-file-upload-rails', '~> 1.1.6'
 gem 'carrierwave'
 gem 'gon'
 gem 'rqrcode-with-patches'
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+gem 'rails_12factor', group: :production
+gem 'thin'
+gem 'chunky_png'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'
@@ -26,11 +32,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem "therubyracer"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
-gem 'rails_12factor', group: :production
-gem 'thin'
 
 group :development, :test do
   gem 'pry-byebug'
