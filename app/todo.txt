@@ -1,1 +1,2 @@
-get all pages working minimally
+qr code
+stripe
