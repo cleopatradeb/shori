@@ -1,3 +1,5 @@
+require 'rqrcode'
+
 Artform.delete_all
 Artpiece.delete_all
 User.delete_all
@@ -105,6 +107,11 @@ end
   user_id: User.all.to_a[27..40].sample.id,
   image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/craft_#{n}.jpg"
   )
+end
+
+all_artpieces = Artpiece.all
+299.times do |n|
+  all_artpieces.find(n+1).qr_code = RQRCode::QRCode.new("https://shori.herokuapp.com/shori/artpiece/#{n+1}", :size => 10, :level => :h).to_s
 end
 
 all_venues = User.where(role: 'venue')

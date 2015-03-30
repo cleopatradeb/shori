@@ -13,6 +13,8 @@ class CreateArtpieces < ActiveRecord::Migration
       t.integer :price
       t.boolean :insurance
       t.string :image
+      t.string :qr_code
+      t.string :status
       t.timestamps null: false
     end
   end

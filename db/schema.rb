@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150327142149) do
     t.integer  "price"
     t.boolean  "insurance"
     t.string   "image"
+    t.string   "qr_code"
+    t.string   "status"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
