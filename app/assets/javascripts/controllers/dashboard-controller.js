@@ -1,23 +1,24 @@
 app.controller('DashboardController', ['$scope', '$http', 'UserService', 'FollowService', 'PactService', function($scope, $http, UserService, FollowService, PactService){
+  console.log('dashboard controller')
+
   UserService.userHash()
   .then(function(data){
-    // Defining general JSON variables 
     $scope.currentUser = JSON.parse(data.data.current_user);
     $scope.usersArr = JSON.parse(data.data.all_users);
-    // Getting users signed up in past week
-    $scope.filteredArr = _.filter(usersArr, function(user){return moment(user.created_at).isAfter(LastWeekStart())});
-    // Current user's art pieces
-    $scope.artpieces = $scope.currentUser.artpieces;
-    // Current user's followings data
-    $scope.followingsData = $scope.currentUser.followings;
-    $scope.followings = _.pluck($scope.followingsData, 'following_id');
-    console.log($scope.followings)
-    $scope.followingsUsers = [];
-    // Getting user's followings user instances
-    _.map(usersArr, function(user){
-      if (_.contains($scope.followings, user.id) === true) {
-        $scope.followingsUsers.push(user);
+
+    // New Users Feed
+    $scope.filteredArr = _.filter($scope.usersArr, function(user){return moment(user.created_at).isAfter(LastWeekStart())});
+
+    // Dashboard - Followings
+    $scope.currentUserFollowings = $scope.currentUser.followings;
+    $scope.currentUserFollowingsCount = $scope.currentUserFollowings.length;
+    $scope.currentUserFollowingsIds = _.pluck($scope.currentUserFollowings, 'follower_id');
+    $scope.currentUserFollowedUsers = [];
+    _.map($scope.usersArr, function(user){
+      if (_.contains($scope.currentUserFollowingsIds, user.id) === true) {
+        $scope.currentUserFollowedUsers.push(user);
       }
     });
+
   })
 }]);

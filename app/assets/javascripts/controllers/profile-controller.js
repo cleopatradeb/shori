@@ -1,23 +1,22 @@
-app.controller('ProfileController', ['$scope', '$http', '$location', '$routeParams', 'UserService', 'FollowService', 'PactService', function($scope, $http, $compile, $templateCache, $location, $routeParams, UserService, FollowService, PactService){
-  // Profile User Info - Others' Profile Page
-  $scope.getProfileUserFollowers = function(data){
-    $scope.usersArr = JSON.parse(data.all_users);
-    $scope.userId = JSON.parse($routeParams.id);
-    $scope.currentUser = JSON.parse(data.current_user);
-    $scope.profileUser = _.filter($scope.usersArr, function(user){ return user.id === $scope.userId;})[0]
+app.controller('ProfileController', ['$scope', '$http', '$location', '$routeParams', 'UserService', 'FollowService', 'PactService', function($scope, $http, $location, $routeParams, UserService, FollowService, PactService){
 
-    // Profile user's followers - Others' Profile Page
+  // Profile User Info - Others' Profile Page
+  UserService.userHash()
+  .then(function(data){
+    $scope.usersArr = JSON.parse(data.data.all_users);
+    $scope.currentUser = JSON.parse(data.data.current_user);
+    $scope.currentUserId = $scope.currentUser.id;
+    $scope.profileUserId = JSON.parse($routeParams.id);
+    $scope.profileUser = _.filter($scope.usersArr, function(user){ return user.id === $scope.profileUserId;})[0]
+
+    // Followings
     $scope.profileUserFollowings = $scope.profileUser.followings
-    // Number of followers profile has - Others' Profile Page 
-    $scope.profileUserFollowersCount = $scope.profileUserFollowings.length
-    // console.log($scope.profileUserFollowersCount);
-    // // ID of all profile's followers - Others' Profile Page
-    $scope.profileUserFollwersIds = _.map($scope.profileUserFollowings, function(following){return following.follower_id})
-    // Name of profile's followers - Others' Profile Page
-    $scope.profileUserFollowers = [];
+    $scope.profileUserFollowingCount = $scope.profileUserFollowings.length
+    $scope.profileUserFollowingsIds = _.pluck($scope.profileUserFollowings, 'follower_id');
+    $scope.profileUserFollowedUsers = [];
     _.map($scope.usersArr, function(user){
-      if (_.contains($scope.profileUserFollwersIds, user.id) === true) {
-        $scope.profileUserFollowers.push(user);
+      if (_.contains($scope.profileUserFollowingsIds, user.id) === true) {
+        $scope.profileUserFollowedUsers.push(user);
       }
     });
 
@@ -28,7 +27,7 @@ app.controller('ProfileController', ['$scope', '$http', '$location', '$routePara
       $scope.currentArtistPacts = data.data.current_artist_pacts
       $scope.allPacts = data.data.all_pacts
     })
-  }
+  });
   
   // Dynamically add Following
   UserService.userHash()
@@ -79,7 +78,6 @@ app.controller('ProfileController', ['$scope', '$http', '$location', '$routePara
   // Unfollow User
   $scope.unmakeAFollowing = function() {
     $scope.followingToDelete = _.where($scope.profileUser.followings, {follower_id: $scope.currentUser.id})
-    // console.log($scope.followingToDelete[0].id)
     data = {following_id: $scope.followingToDelete[0].id}
     FollowService.destroyFollowing(data)
     .then(function(response){

@@ -1,44 +1,30 @@
 <h1>Dashboard</h1>
-<div class="user-info">
-  <h2>Profile Details</h2>
-  <p>Aloha, {{currentUser.first_name}} {{currentUser.last_name}}!</p>
-  <p>Verified account: {{currentUser.verified}}</p>
+<div class="dashboard-user-info">
+  <p>Hey there, {{currentUser.first_name}} {{currentUser.last_name}}!</p>
+  <p>Verified account: {{currentUser.verified | ucfirst}}</p>
   <p>Account type: {{currentUser.role | ucfirst}}</p>
   <p>{{currentUser.biography}}</p>
   <p>Address: {{currentUser.address}} {{currentUser.postcode}}</p>
 </div>
 
-<div class="user-followings">
-  <h2>Who I'm Following</h2>
-  <!-- Followers -->
-  <p>Followers Count: {{currentUserFollowersCount}}</p>
-  <h5>Followers</h5>
+<div class="dashboard-user-followings">
+  <h2>Following News Feed</h2>
+  <h4>Followers Count: {{currentUserFollowingsCount}}</h4>
+  <h4>Followers</h4>
   <!-- If follower = artist -->
-  <p ng-repeat="follower in currentUserFollowings" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}}</a></p>
+  <p ng-repeat="follower in currentUserFollowedUsers" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}} {{follower.last_name}}</a></p>
   <!-- If follower = venue -->
-  <p ng-repeat="follower in currentUserFollowers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
-  <p><a ng-href="{{profileUser.links}}">{{profileUser.links}}</a></p>
+  <p ng-repeat="follower in currentUserFollowedUsers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
 </div>
 
 <div class="user-pacts">
-  <h2>My Pacts</h2>
+  <h2>My Upcoming Pacts</h2>
+  
 </div>
 
-<div class="new-user-feed">
-  <h2>New User Feed</h2>
-  <div ng-repeat="user in filteredArr | limitTo: 5">
-    <a ng-href="users/{{user.id}}"><p>{{user.first_name}} {{user.last_name}}</p></a>
+<div class="dashboard-new-user-feed">
+  <h2>New Users Feed</h2>
+  <div class="dashboard-new-user" ng-repeat="user in filteredArr | limitTo: 7">
+    <a ng-href="users/{{user.id}}"><p>{{user.first_name}} {{user.last_name}} - {{user.role | ucfirst}}</p></a>
   </div>
 </div>
-
-<div ng-if="user.role === 'artist'">
-  <div class="user-gallery">
-    <h2>My Gallery</h2>
-    <p ng-repeat="artpiece in artpieces">
-      Artpiece Name: {{artpiece.name}}
-    </p>
-  </div>
-</div>
-<div ng-if="user.role === 'venue'">
-</div>
-
