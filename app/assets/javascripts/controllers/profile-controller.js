@@ -1,4 +1,4 @@
-app.controller('ProfileController', function($scope, $http, $compile, $templateCache, $location, $routeParams, UserService, FollowService){
+app.controller('ProfileController', function($scope, $http, $compile, $templateCache, $location, $routeParams, UserService, FollowService, PactService){
   console.log('I am the PROFILE controller');
   console.log(gon.current_user);
   // Profile User Info - Others' Profile Page
@@ -7,19 +7,17 @@ app.controller('ProfileController', function($scope, $http, $compile, $templateC
     $scope.usersArr = JSON.parse(data.all_users);
     // User whose page we are on
     $scope.userId = JSON.parse($routeParams.id);
+
     // Current User Info - Own Profile Page
     $scope.currentUser = JSON.parse(data.current_user);
     $scope.profileUser = _.filter($scope.usersArr, function(user){ return user.id === $scope.userId;})[0]
-    // console.log($scope.profileUser)
     // Profile user's followers - Others' Profile Page
     $scope.profileUserFollowings = $scope.profileUser.followings
-    // console.log($scope.profileUserFollowings);
     // Number of followers profile has - Others' Profile Page 
     $scope.profileUserFollowersCount = $scope.profileUserFollowings.length
     // console.log($scope.profileUserFollowersCount);
     // // ID of all profile's followers - Others' Profile Page
     $scope.profileUserFollwersIds = _.map($scope.profileUserFollowings, function(following){return following.follower_id})
-    // console.log($scope.profileUserFollwersIds);
     // Name of profile's followers - Others' Profile Page
     $scope.profileUserFollowers = [];
     _.map($scope.usersArr, function(user){
@@ -27,12 +25,15 @@ app.controller('ProfileController', function($scope, $http, $compile, $templateC
         $scope.profileUserFollowers.push(user);
       }
     });
-    console.log($scope.profileUserFollowers);
 
     // Pacts
-    $scope.myPacts = $scope.currentUser.pacts
-    console.log($scope.currentUser);
-    }
+    PactService.getPacts()
+    .then(function(data){
+      $scope.currentVenuePacts = data.data.current_venue_pacts
+      $scope.currentArtistPacts = data.data.current_artist_pacts
+      $scope.allPacts = data.data.all_pacts
+    })
+  }
   
   // Dynamically add Following
   UserService.userHash()
@@ -73,7 +74,6 @@ app.controller('ProfileController', function($scope, $http, $compile, $templateC
     });
   });
 
-
   // Follow User
   $scope.makeAFollowing = function() {
     data = {user_id: $scope.userId, follower_id: $scope.currentUser.id}
@@ -102,7 +102,7 @@ app.controller('ProfileController', function($scope, $http, $compile, $templateC
       })
     });
   }
-
+  // Message Box
   $scope.messageClicked = function() {
     console.log('message button clicked');
     // $scope.messageTemplate = $compile($templateCache.get('message.html'));

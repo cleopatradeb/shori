@@ -1,6 +1,7 @@
 Rails.application.routes.draw do  resources :artforms
   devise_for :users
   get 'shori/gallery/:id' => 'static#index', as: 'gallery'
+  get 'shori/venue/:id' => 'static#index', as: 'venue'
   get "/" => redirect("/shori/home")
   get "/users" => redirect("/shori/dashboard")
   get '/shori/*path' => 'static#index'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do  resources :artforms
   get '/shori/home' => 'static#index', as: 'home'
   get '/shori/dashboard' => 'static#index', as: 'dashboard'
   get 'users/user_data' => 'users#user_data'
+  get 'pacts/pacts_data' => 'pacts#pacts_data'
   resources :artpieces
   resources :followings
   resources :artforms

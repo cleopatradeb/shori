@@ -1,4 +1,4 @@
-var app = angular.module('shoriApp', ['ngAnimate', 'ngRoute', 'ngResource', 'angular.filter', 'angular-datepicker', 'angular-wurfl-image-tailor']);
+var app = angular.module('shoriApp', ['ngAnimate', 'ngRoute', 'ngResource', 'angular.filter', 'angular-datepicker', 'angular-wurfl-image-tailor', 'ngMaterial', "checklist-model"]);
 console.log('ANGULAR RUNNING');
 
 app.config(function($routeProvider, $locationProvider){
@@ -22,6 +22,10 @@ app.config(function($routeProvider, $locationProvider){
   .when('/gallery/:id', {
     controller: 'GalleryController',
     templateUrl: '<%= asset_path('gallery.html') %>'
+  })
+  .when('/venue/:id', {
+    controller: 'VenueController',
+    templateUrl: '<%= asset_path('venue.html') %>'
   })
   .otherwise({
     redirectTo: '/home'

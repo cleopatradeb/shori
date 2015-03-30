@@ -8,9 +8,25 @@ app.controller('PactController', function($scope, $http, $routeParams, UserServi
     // Current User Info - Own Profile Page
     $scope.currentUser = JSON.parse(data.data.current_user);
     $scope.profileUser = _.filter($scope.usersArr, function(user){ return user.id === $scope.userId;})[0]
+    // Profile User's Artpieces To Be Added To Pact
+    $scope.profileUserArtpieces = $scope.profileUser.artpieces
     $scope.reset = function(){
       $scope.newPact = angular.copy($scope.master);
     }
+    $scope.profileUserArtpiecesId = _.map($scope.profileUser.artpieces, function(artpiece){return artpiece.id})
+    $scope.profileUserArtpiecesLength = $scope.profileUserArtpieces.length
+
+    $scope.pactForm = {};
+
+    // Checkboxes 
+    $scope.art = $scope.profileUserArtpiecesId;
+    $scope.newPact = {};
+    $scope.checkAll = function() {
+      $scope.newPact.art = angular.copy($scope.art);
+    };
+    $scope.uncheckAll = function() {
+      $scope.newPact.art = [];
+    };
     // Make a Pact instance
     if($scope.currentUser.role === 'artist') {
       $scope.artistId = $scope.currentUser.id
@@ -20,16 +36,17 @@ app.controller('PactController', function($scope, $http, $routeParams, UserServi
       $scope.artistId = $scope.profileUser.id
       $scope.venueId = $scope.currentUser.id
     }
-
-    console.log($scope.artistId)
-    console.log($scope.venueId)
-    $scope.pactForm = {};
+    // makePact function
     $scope.makePact = function(newPact) {
       $scope.start_date = pactForm.startDate.value
       $scope.end_date = pactForm.endDate.value
-      console.log(pactForm.startDate.value);
-      console.log(pactForm.endDate.value);
-      pact_data = {start_date: $scope.start_date, end_date:$scope.end_date, user_id:$scope.currentUser.id, venue_id:$scope.venueId, artist_id:$scope.artistId}
+      pact_data = {
+        start_date: $scope.start_date, 
+        end_date:$scope.end_date, 
+        venue_id:$scope.venueId, 
+        artist_id:$scope.artistId, 
+        selected_artpieces: $scope.art
+      }
       console.log(pact_data);
       // get pact data from form
       PactService.createPact(pact_data)
@@ -38,7 +55,7 @@ app.controller('PactController', function($scope, $http, $routeParams, UserServi
         console.log('passed pact factory');
         $scope.newPact = angular.copy($scope.master);
       })
-      // console.log('make pact')
+      console.log('make pact')
     };
   })
 });

@@ -17,6 +17,7 @@
 //= require twitter/bootstrap
 //= require angular
 //= require angular-animate
+//= require angular-aria
 //= require angular-route-1-2-0
 //= require angular-resource
 //= require accountingjs

@@ -4,6 +4,7 @@ class CreateArtpieces < ActiveRecord::Migration
       t.string :name
       t.integer :user_id
       t.integer :artform_id
+      t.integer :pact_id
       t.text :description
       t.integer :height
       t.integer :width

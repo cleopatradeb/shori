@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150327142149) do
     t.string   "name"
     t.integer  "user_id"
     t.integer  "artform_id"
+    t.integer  "pact_id"
     t.text     "description"
     t.integer  "height"
     t.integer  "width"
