@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.4'
+
 # MY GEMS
 gem 'biz'
 gem 'acts-as-taggable-on', '~> 3.4'
