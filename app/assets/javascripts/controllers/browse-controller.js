@@ -1,6 +1,7 @@
-app.controller('BrowseController', ['$scope', '$http', '$location', 'UserService', function($scope, $http, $location, UserService, ArtpieceService){
+app.controller('BrowseController', ['$scope', '$http', '$location', 'UserService', 'ArtpieceService', function($scope, $http, $location, UserService, ArtpieceService){
   console.log('BrowseController');
   $scope.roleQuery = '';
+  $scope.artformQuery = '';
 
   UserService.userHash()
   .then(function(data){
@@ -19,6 +20,10 @@ app.controller('BrowseController', ['$scope', '$http', '$location', 'UserService
   };
 
   ArtpieceService.getArt()
+  .then(function(data){
+    $scope.artpieceArr = data.data;
+    $scope.artform = {painting:false, photography:false, craft:false};
+  })
 }]);
 
 

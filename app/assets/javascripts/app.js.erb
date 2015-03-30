@@ -16,15 +16,15 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   })
   .when('/users/:id', {
     controller: 'ProfileController',
-    templateUrl: '<%= asset_path('profile.html') %>'
+    templateUrl: "<%= asset_path('profile.html') %>"
   })
   .when('/gallery/:id', {
     controller: 'GalleryController',
-    templateUrl: '<%= asset_path('gallery.html') %>'
+    templateUrl: "<%= asset_path('gallery.html') %>"
   })
   .when('/venue/:id', {
     controller: 'VenueController',
-    templateUrl: '<%= asset_path('venue.html') %>'
+    templateUrl: "<%= asset_path('venue.html') %>"
   })
   .otherwise({
     redirectTo: '/home'

@@ -1,7 +1,7 @@
 class ArtpiecesController < ApplicationController
   
   def artpieces_data
-    @all_artpieces = Artpieces.all.to_json(include: [:users, :artforms, :pacts])
+    @all_artpieces = Artpiece.all.to_json(include: [:user, :artform, :pact])
     render json: @all_artpieces
   end
 

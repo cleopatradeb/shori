@@ -7,26 +7,33 @@ app.filter('trusted', ['$sce', function ($sce) {
 
 // CUSTOM FILTERS
 app.filter('browseFilter', function() {
-  return function(allusers, checked) {
-    console.log(allusers)
+  return function(allitems, checked) {
+    console.log(allitems)
     if (checked.all === true) {
-      return allusers
+      return allitems
     }
     if (checked.artist === true) {
-      var artists = _.filter(allusers, function(user){return user.role === 'artist'})
+      var artists = _.filter(allitems, function(user){return user.role === 'artist'})
       return artists;
     }
     if (checked.venue === true) {
-      var venues = _.filter(allusers, function(user){return user.role === 'venue'})
+      var venues = _.filter(allitems, function(user){return user.role === 'venue'})
       return venues;
     }
     if (checked.painting === true) {
-      var paintings = _.filter(allusers, function(user){return user.role === 'venue'})
+      console.log('searching paintings');
+      var paintings = _.filter(allitems, function(art){return art.artform.name === 'Illustration and Painting'})
       return paintings;
     }
     if (checked.photography === true) {
-      var photographs = _.filter(allusers, function(user){return user.role === 'venue'})
+      console.log('searching photo');
+      var photographs = _.filter(allitems, function(art){return art.artform.name === 'Photography'})
       return photographs;
+    }
+    if (checked.craft === true) {
+      console.log('searching crafts');
+      var crafts = _.filter(allitems, function(art){return art.artform.name === 'Craft'})
+      return crafts;
     }
   }
 })
