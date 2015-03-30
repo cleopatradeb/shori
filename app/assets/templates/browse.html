@@ -1,20 +1,41 @@
 <h1>ANGULAR FILTERED BROWSE</h1>
+<md-tabs md-selected="tabData.selectedIndex" class="browse-tags">
+  <md-tab id="roletype-browse-tab">
+    <md-tab-label>by Roletype</md-tab-label>
+    <md-tab-template>
+      <form class="search-form">
+        <input ng-model="roleQuery" type="text" placeholder="search a name" autofocus>
+        <input type="checkbox" ng-model="roletype.all">All
+        <input type="checkbox" ng-model="roletype.artist">Artist
+        <input type="checkbox" ng-model="roletype.venue">Venue
 
-
-<form class="search-form">
-  <input ng-model="query" type="text" placeholder="search anything" autofocus>
-  <input type="checkbox" ng-model="roletype.all">All
-  <input type="checkbox" ng-model="roletype.artist">Artist
-  <input type="checkbox" ng-model="roletype.venue">Venue
-
-  <div ng-if="roletype.artist || roletype.venue || all">
-    <div ng-repeat="user in usersArr| filter:{first_name:query} | roleFilter:roletype | orderBy: 'first_name'">
-        <h2 ng-if="user.role === 'artist'"><a ng-href="users/{{ user.id }}">{{ user.first_name }}</a></h2>
-        <div ng-repeat="artpiece in user.artpieces" ng-if="user.role === 'artist'">{{artpiece.name}}</div>
-        <div ng-if="user.role === 'venue'">
-        <h2><a ng-href="users/{{ user.id }}">{{ user.venue_name }}</a></h2>
-        <p>{{user.biography}}</p>
+        <div ng-if="roletype.all || roletype.venue || roletype.artist">
+          <div ng-repeat="user in usersArr| filter:{first_name:roleQuery} | browseFilter: roletype | orderBy: 'first_name'">
+            <h2 ng-if="user.role === 'artist'"><a ng-href="users/{{ user.id }}">{{ user.first_name }}</a></h2>
+            <div ng-repeat="artpiece in user.artpieces" ng-if="user.role === 'artist'">{{artpiece.name}}</div>
+            <div ng-if="user.role === 'venue'">
+            <h2><a ng-href="users/{{ user.id }}">{{ user.venue_name }}</a></h2>
+            <p>{{user.biography}}</p>
+            </div>
+          </div>
         </div>
-    </div>
-  </div>
-</form>
+      </form>
+    </md-tab-template>
+  </md-tab>
+
+  <md-tab id="artform-browse-tab">
+    <md-tab-label>by Artform</md-tab-label>
+    <md-tab-template>
+      <form class="search-form">
+        <input ng-model="artformQuery" type="text" placeholder="search an artpiece" autofocus>
+        <input type="checkbox" ng-model="artform.painting">Painting & Illustration 
+        <input type="checkbox" ng-model="artform.photography">Photography
+        <div ng-if="artform.painting || artform.photography">
+          <div ng-repeat="art in artpieces| filter:{name:artformQuery} | browseFilter:artform | orderBy: 'name'">
+            <h2>{{art.name}}</h2>
+          </div>
+        </div>
+      </form>
+    </md-tab-template>
+  </md-tab>
+</md-tabs>

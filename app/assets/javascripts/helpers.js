@@ -6,11 +6,11 @@ app.filter('trusted', ['$sce', function ($sce) {
 }]);
 
 // CUSTOM FILTERS
-app.filter('roleFilter', function() {
+app.filter('browseFilter', function() {
   return function(allusers, checked) {
-    console.log(checked);
-    if ((checked.all) === true) {
-      console.log('hello');
+    console.log(allusers)
+    if (checked.all === true) {
+      return allusers
     }
     if (checked.artist === true) {
       var artists = _.filter(allusers, function(user){return user.role === 'artist'})
@@ -19,6 +19,14 @@ app.filter('roleFilter', function() {
     if (checked.venue === true) {
       var venues = _.filter(allusers, function(user){return user.role === 'venue'})
       return venues;
+    }
+    if (checked.painting === true) {
+      var paintings = _.filter(allusers, function(user){return user.role === 'venue'})
+      return paintings;
+    }
+    if (checked.photography === true) {
+      var photographs = _.filter(allusers, function(user){return user.role === 'venue'})
+      return photographs;
     }
   }
 })

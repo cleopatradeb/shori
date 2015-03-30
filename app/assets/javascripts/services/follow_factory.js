@@ -1,4 +1,4 @@
-app.factory('FollowService', ['$http', '$scope', function($http, $scope) {
+app.factory('FollowService', ['$http', '$rootScope', function ($http, $rootScope) {
   var FollowService = {
     createFollowing: function(data){
       return $http.post('/followings', data)
