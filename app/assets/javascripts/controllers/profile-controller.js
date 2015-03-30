@@ -29,6 +29,31 @@ app.controller('ProfileController', ['$scope', '$http', '$location', '$routePara
     })
   });
   
+  // Follow User
+  $scope.makeAFollowing = function() {
+    data = {user_id: $scope.userId, follower_id: $scope.currentUser.id}
+    FollowService.createFollowing(data)
+    .then(function(response){
+      $http.get('/users/user_data')
+      .success(function(data){
+        $scope.getProfileUserFollowers(data);
+        $scope.currentUserFollowers = JSON.parse(data.all_users);
+      })
+    });
+  }
+  // Unfollow User
+  $scope.unmakeAFollowing = function() {
+    $scope.followingToDelete = _.where($scope.profileUserFollowings, {follower_id: $scope.currentUserId})
+    data = {following_id: $scope.followingToDelete[0].id}
+    FollowService.destroyFollowing(data)
+    .then(function(response){
+      $http.get('/users/user_data')
+      .success(function(data){
+        $scope.getProfileUserFollowers(data);
+        $scope.currentUserFollowers = JSON.parse(data.all_users);
+      })
+    });
+  }
   // Dynamically add Following
   UserService.userHash()
   .then(function(data){
@@ -63,31 +88,6 @@ app.controller('ProfileController', ['$scope', '$http', '$location', '$routePara
     });
   });
 
-  // Follow User
-  $scope.makeAFollowing = function() {
-    data = {user_id: $scope.userId, follower_id: $scope.currentUser.id}
-    FollowService.createFollowing(data)
-    .then(function(response){
-      $http.get('/users/user_data')
-      .success(function(data){
-        $scope.getProfileUserFollowers(data);
-        $scope.currentUserFollowers = JSON.parse(data.all_users);
-      })
-    });
-  }
-  // Unfollow User
-  $scope.unmakeAFollowing = function() {
-    $scope.followingToDelete = _.where($scope.profileUser.followings, {follower_id: $scope.currentUser.id})
-    data = {following_id: $scope.followingToDelete[0].id}
-    FollowService.destroyFollowing(data)
-    .then(function(response){
-      $http.get('/users/user_data')
-      .success(function(data){
-        $scope.getProfileUserFollowers(data);
-        $scope.currentUserFollowers = JSON.parse(data.all_users);
-      })
-    });
-  }
 
   // Message Box
   $scope.messageClicked = function() {
