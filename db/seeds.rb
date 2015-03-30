@@ -145,9 +145,17 @@ all_venues.each do |venue|
 end
 
 # VENUE PICTURES
-120.times do |n|
+39.times do |n|
   Venuepic.create(
     url: "https://s3-eu-west-1.amazonaws.com/shori/store_picture/store_#{n}.jpg",
-    user_id: all_venues.sample.id
-    )
+    user_id: all_venues[n].id
+  )
 end
+
+80.times do |n|
+  Venuepic.create(
+    url: "https://s3-eu-west-1.amazonaws.com/shori/store_picture/store_#{n+39}.jpg",
+    user_id: all_venues.sample.id
+  )
+end
+

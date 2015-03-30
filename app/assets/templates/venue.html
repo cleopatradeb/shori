@@ -1,1 +1,6 @@
-<h1>I am the Venue page.</h1>
+<div ng-if="profileUser.role === 'venue'">
+  <h1>I am the Venue page.</h1>
+  <div ng-repeat="venuepic in profileUserVenuepics" class="venue-page-venue-pic">
+    <img-wit ng-src="{{venuepic.url | trusted}}" w="300"></img-wit>
+  </div>
+</div>

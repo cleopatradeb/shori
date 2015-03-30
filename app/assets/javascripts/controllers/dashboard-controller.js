@@ -1,6 +1,7 @@
 app.controller('DashboardController', ['$scope', '$http', 'UserService', 'FollowService', 'PactService', function($scope, $http, UserService, FollowService, PactService){
   console.log('dashboard controller')
 
+
   UserService.userHash()
   .then(function(data){
     $scope.currentUser = JSON.parse(data.data.current_user);

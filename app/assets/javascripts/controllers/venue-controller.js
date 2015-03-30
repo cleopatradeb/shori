@@ -5,7 +5,7 @@ app.controller('VenueController', ['$scope', '$http', '$location', '$routeParams
     $scope.allUsers = JSON.parse(data.data.all_users);
     $scope.userId = JSON.parse($routeParams.id);
     $scope.profileUser = _.filter($scope.allUsers, function(user){ return user.id === $scope.userId;})[0];
-    $scope.profileUserArtpieces = $scope.profileUser.artpieces
+    $scope.profileUserVenuepics = $scope.profileUser.venuepics
   });
 
   $scope.creds = {
