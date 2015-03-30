@@ -8,4 +8,5 @@ class Artpiece < ActiveRecord::Base
   validates :price, numericality: { greater_than: 0 }
   validates :price, exclusion: { in: %w(£ ¢ $ €), message: "%{value} cannot be included" }
 
+  dragonfly_accessor :qr_code
 end

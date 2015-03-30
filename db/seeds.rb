@@ -1,4 +1,6 @@
 require 'rqrcode'
+require 'rqrcode_png'
+require 'dragonfly'
 
 Artform.delete_all
 Artpiece.delete_all
