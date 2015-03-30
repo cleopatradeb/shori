@@ -13,6 +13,7 @@ gem 'momentjs-rails'
 gem 'angularjs-file-upload-rails', '~> 1.1.6'
 gem 'carrierwave'
 gem 'gon'
+gem 'rqrcode-with-patches'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'

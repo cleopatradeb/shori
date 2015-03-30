@@ -1,0 +1,13 @@
+<h1>I am the artpiece page</h1>
+
+<div class="artpiece-page-info">
+  <img-wit ng-src="{{selectedArtpiece.image | trusted}}" w="300"></img-wit></br>
+  <p>Title: {{selectedArtpiece.name}}</p>
+  <p>Price: {{selectedArtpiece.price | currency:'£'}}</p>
+  <p>Width: {{selectedArtpiece.width}} inches</p>
+  <p>Height: {{selectedArtpiece.height}} inches</p>
+  <p>Depth: {{selectedArtpiece.depth}} inches</p>
+  <p>Circumference: {{selectedArtpiece.circumference}} inches</p>
+  <p>{{selectedArtpiece.description}}</p>
+
+</div>

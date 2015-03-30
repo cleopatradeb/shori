@@ -26,6 +26,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     controller: 'VenueController',
     templateUrl: "<%= asset_path('venue.html') %>"
   })
+  .when('/artpiece/:id', {
+    controller: 'ArtpieceController',
+    templateUrl: "<%= asset_path('artpiece.html') %>"
+  })
   .otherwise({
     redirectTo: '/home'
   });
