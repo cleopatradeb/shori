@@ -10,7 +10,9 @@
   <p>Circumference: {{selectedArtpiece.circumference}} inches</p>
   <p>{{selectedArtpiece.description}}</p>
   <p>{{selectedArtpieceQrImg}}</p>
-  <div class="artpiece-page-qr">
-    <qrcode data="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" error-correction-level="M" size="200"></qrcode>
-  </div>
 </div>
+
+<!-- <button ng-click="printDiv('print-section')"><i class="fa fa-print"></i> Print!</button> -->
+
+<!-- href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" -->
+<qrcode data="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" size='300'></qrcode>
