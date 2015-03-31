@@ -45,8 +45,13 @@
   <% if (current_page? edit_user_registration_path)%>
     <%= yield %>
   <% end %>  
-
+  
   <ng-view></ng-view>
+
+  <% if request.original_url.include?('/shori/artpiece/') %>
+    <%= yield %>
+  <% end %>
+
 
 </body>
 </html>

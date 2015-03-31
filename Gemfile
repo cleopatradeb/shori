@@ -15,9 +15,10 @@ gem 'carrierwave'
 gem 'gon'
 gem "therubyracer"
 gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'rails_12factor', group: :production
 gem 'thin'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'

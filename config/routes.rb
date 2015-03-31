@@ -17,5 +17,6 @@ Rails.application.routes.draw do  resources :artforms
   resources :artforms
   resources :pacts
   resources :pacts_users
+  resources :charges
 
 end

@@ -1,1 +1,15 @@
-<h1>SHORI</h1>
+<% if request.fullpath.include?('/shori/artpiece/') %>
+  <% form_tag charges_path do %>
+    <% selected_artpiece_id = request.fullpath.scan( /\d+$/ ).first %>
+    <% art = Artpiece.find(selected_artpiece_id) %>
+    <% @price = art.price * 100 %>
+    <% @name = art.name %>
+    
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="purchasing with Shori"
+            data-amount="<%= @price %>"
+            data-currency="gbp"
+            data-name="<%= @name %>"></script>
+  <% end %>
+<% end %>
