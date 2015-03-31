@@ -12,6 +12,7 @@ Rails.application.routes.draw do  resources :artforms
   get 'users/user_data' => 'users#user_data'
   get 'pacts/pacts_data' => 'pacts#pacts_data'
   get 'artpieces/artpieces_data' => 'artpieces#artpieces_data'
+  get 'artpieces/buy_art' => 'artpieces#buy_art'
   resources :artpieces
   resources :followings
   resources :artforms
