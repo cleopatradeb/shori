@@ -13,7 +13,7 @@ gem 'momentjs-rails'
 gem 'angularjs-file-upload-rails', '~> 1.1.6'
 gem 'carrierwave'
 gem 'gon'
-gem "therubyracer"
+gem 'therubyracer'
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'rails_12factor', group: :production

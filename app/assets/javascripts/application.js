@@ -21,4 +21,5 @@
 //= require angular-route-1-2-0
 //= require angular-resource
 //= require accountingjs
+//= require angular-payments
 //= require_tree .

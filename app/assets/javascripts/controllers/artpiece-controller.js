@@ -18,6 +18,6 @@ app.controller('ArtpieceController', ['$scope', '$http', '$location', '$routePar
     popupWin.document.close();
   } 
 
-  console.log(gon.stripe_publishable_key)
-  Stripe.setPublishableKey('gon.stripe_publishable_key');
+  Stripe.setPublishableKey(gon.stripe_publishable_key);
+
 }]);
