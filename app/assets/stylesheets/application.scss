@@ -14,133 +14,109 @@
  *= require_self
  */
 
-*, p, div {
-  font-family: 'Roboto Slab', serif;
-  font-weight: 300;
-  text-align: center;
-  margin: 0 auto;
+// FONT FACES
+@font-face {
+  font-family: 'Airbag';
+  font-weight: normal;
+  src: font-url("Airbag-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Aleo';
+  font-weight: normal;
+  src: font-url("Aleo-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Aleo';
+  font-weight: light;
+  src: font-url("Aleo-Light.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Aleo';
+  font-weight: bold;
+  src: font-url("Aleo-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Blanch Caps';
+  font-weight: normal;
+  src: font-url("BLANCH_CAPS.otf") format("opentype");
 }
 
-.hide {
-  display: none;
+@font-face {
+  font-family: 'Blanch Caps';
+  font-weight: light;
+  src: font-url("BLANCH_CAPS_LIGHT.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Blanch Condensed';
+  font-weight: normal;
+  src: font-url("BLANCH_CONDENSED.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Blanch Condensed';
+  font-weight: light;
+  src: font-url("BLANCH_CONDENSED_LIGHT.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Canter Bold';
+  font-weight: bold;
+  src: font-url("canter_bold.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Canter Bold 3D';
+  font-weight: normal;
+  src: font-url("canter_bold_3d.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Canter Bold Shadow';
+  font-weight: normal;
+  src: font-url("canter_bold_shadow.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Canter Bold Stripes';
+  font-weight: normal;
+  src: font-url("canter_bold_stripes.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Canter Light';
+  font-weight: normal;
+  src: font-url("canter_bold_light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Canter Outline';
+  font-weight: normal;
+  src: font-url("canter_bold_outline.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Flagship Slab';
+  font-weight: normal;
+  src: font-url("flagship_slab_regular.otf") format("opentype");
+}
+@font-face {
+  font-family: 'Flagship Slab';
+  font-weight: bold;
+  src: font-url("flagship_slab_bold.otf") format("opentype");
 }
 
 // MIXIN FONTS
-@mixin airbag {
-  @font-face {
-  font-family: 'Airbag';
-  font-weight: normal;
-  src: url("/Airbag-Regular.otf") format("opentype");
-  }
-}
-
-@mixin aleo {
-  @font-face {
-  font-family: 'Aleo';
-  font-weight: normal;
-  src: url("/Aleo-Regular.otf") format("opentype");
-  }
-}
-@mixin aleo-light {
-  @font-face {
-  font-family: 'Aleo';
-  font-weight: light;
-  src: url("/Aleo-Light.otf") format("opentype");
-  }
-}
-@mixin aleo-bold {
-  @font-face {
-  font-family: 'Aleo';
-  font-weight: bold;
-  src: url("/Aleo-Bold.otf") format("opentype");
-  }
-}
-@mixin blanch-caps {
-  @font-face {
-  font-family: 'Blanch Caps';
-  font-weight: normal;
-  src: url("/BLANCH_CAPS.otf") format("opentype");
-  }
-}
-
-@mixin blanch-caps-light {
-  @font-face {
-  font-family: 'Blanch Caps';
-  font-weight: light;
-  src: url("/BLANCH_CAPS_LIGHT.otf") format("opentype");
-  }
-}
-@mixin blanch-cond {
-  @font-face {
-  font-family: 'Blanch Condensed';
-  font-weight: normal;
-  src: url("/BLANCH_CONDENSED.otf") format("opentype");
-  }
-}
-@mixin blanch-cond-light {
-  @font-face {
-  font-family: 'Blanch Condensed';
-  font-weight: light;
-  src: url("/BLANCH_CONDENSED_LIGHT.otf") format("opentype");
-  }
-}
-
-@mixin canter-bold {
-  @font-face {
-  font-family: 'Canter Bold';
-  font-weight: bold;
-  src: url("/canter_bold.otf") format("opentype");
-  }
-}
-@mixin canter-bold-3d {
-  @font-face {
-  font-family: 'Canter Bold 3D';
-  font-weight: normal;
-  src: url("/canter_bold_3d.otf") format("opentype");
-  }
-}
-@mixin canter-bold-shadow {
-  @font-face {
-  font-family: 'Canter Bold Shadow';
-  font-weight: normal;
-  src: url("/canter_bold_shadow.otf") format("opentype");
-  }
-}
-@mixin canter-bold-stripes {
-  @font-face {
-  font-family: 'Canter Bold Stripes';
-  font-weight: normal;
-  src: url("/canter_bold_stripes.otf") format("opentype");
-  }
-}
-@mixin canter-light {
-  @font-face {
-  font-family: 'Canter Light';
-  font-weight: normal;
-  src: url("/canter_bold_light.otf") format("opentype");
-  }
-}
-@mixin canter-outline {
-  @font-face {
-  font-family: 'Canter Outline';
-  font-weight: normal;
-  src: url("/canter_bold_outline.otf") format("opentype");
-  }
-}
-@mixin flagship-slab {
-  @font-face {
-  font-family: 'Flagship Slab';
-  font-weight: normal;
-  src: url("/flagship_slab_regular.otf") format("opentype");
-  }
-}
-@mixin flagship-slab-bold {
-  @font-face {
-  font-family: 'Flagship Slab';
-  font-weight: bold;
-  src: url("/flagship_slab_bold.otf") format("opentype");
-  }
-}
+@mixin airbag {font-family: 'Airbag';}
+@mixin aleo {font-family: 'Aleo';}
+@mixin aleo-light {font-family: 'Aleo'; font-weight: light;}
+@mixin aleo-bold {font-family: 'Aleo'; font-weight: bold;}
+@mixin blanch-caps {  font-family: 'Blanch Caps';}
+@mixin blanch-caps-light {font-family: 'Blanch Caps'; font-weight: light;}
+@mixin blanch-cond {  font-family: 'Blanch Condensed';}
+@mixin blanch-cond-light {font-family: 'Blanch Condensed';font-weight: light;}
+@mixin canter-bold {font-family: 'Canter Bold'; font-weight: bold;}
+@mixin canter-bold-3d {font-family: 'Canter Bold 3D';}
+@mixin canter-bold-shadow {  font-family: 'Canter Bold Shadow';}
+@mixin canter-bold-stripes {  font-family: 'Canter Bold Stripes';}
+@mixin canter-light {font-family: 'Canter Light';}
+@mixin canter-outline {font-family: 'Canter Outline';}
+@mixin flagship-slab {font-family: 'Flagship Slab';}
+@mixin flagship-slab-bold {font-family: 'Flagship Slab';font-weight: bold;}
 
 
 //  MIXIN COLORS
@@ -161,4 +137,26 @@
   padding: 0px;
 }
 
+@mixin center {
+  text-align: center;
+  display: 0 auto;
+}
 
+*, div{
+  @include aleo;
+  @include center;
+  @include no-space;
+
+  p {
+    font-size: 16px;
+  }
+
+  h1 {
+    @include canter-bold-3d;
+    font-size: 70px;
+  }
+}
+
+.hide {
+  display: none;
+}
