@@ -6,11 +6,10 @@ class ArtpiecesController < ApplicationController
   end
 
   def create
-    binding.pry
     @artpiece = Artpiece.create(
       name: params[:name],
       description: params[:description],
-      length: params[:length],
+      width: params[:length],
       height: params[:height],
       depth: params[:depth],
       price: params[:price],
@@ -18,10 +17,14 @@ class ArtpiecesController < ApplicationController
       image: params[:image],
       user_id: params[:user_id]
       )
-    artform_id = params[:artform]
-    artform = Artform.where(id: artform_id)
+    artform_id = params[:type]
+    artform = Artform.find(artform_id.to_i)
     @artpiece.artform = artform
-    render json: Pact.all
+    @artpiece.save
+    @user = User.find(params[:user_id]).artpieces << @artpiece
+    @user.save
+    render json: Artpiece.all
+
   end
 
 

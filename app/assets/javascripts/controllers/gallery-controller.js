@@ -1,25 +1,27 @@
 app.controller('GalleryController', ['$scope', '$http', '$location', '$routeParams', 'UserService', 'FollowService', function($scope, $http, $location, $routeParams, UserService, FollowService){
   console.log('GalleryController');
 
-  UserService.userHash()
-  .then(function(data){
-    $scope.allUsers = JSON.parse(data.data.all_users);
-    $scope.currentUser = JSON.parse(data.data.current_user);
-    $scope.currentUserId = $scope.currentUser.id;
-    $scope.userId = JSON.parse($routeParams.id);
-    $scope.profileUser = _.filter($scope.allUsers, function(user){ return user.id === $scope.userId;})[0];
-    $scope.profileUserArtpieces = $scope.profileUser.artpieces
-  });
+  $scope.getUserDataForGallery = function(){
+    UserService.userHash()
+    .then(function(data){
+      $scope.allUsers = JSON.parse(data.data.all_users);
+      $scope.currentUser = JSON.parse(data.data.current_user);
+      $scope.currentUserId = $scope.currentUser.id;
+      $scope.userId = JSON.parse($routeParams.id);
+      $scope.profileUser = _.filter($scope.allUsers, function(user){ return user.id === $scope.userId;})[0];
+      $scope.profileUserArtpieces = $scope.profileUser.artpieces
+    });    
+  }
+
+  $scope.getUserDataForGallery();
 
   $scope.creds = {
-    bucket: 'shori/user_artpieces_uploads',
+    bucket: 'shori',
     access_key: gon.aws_access_key,
     secret_key: gon.aws_secret_key
   }
  
   $scope.upload = function() {
-
-    // Configure The S3 Object 
     AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
     AWS.config.region = 'us-east-1';
     var bucket = new AWS.S3({ params: { Bucket: $scope.creds.bucket } });
@@ -29,38 +31,35 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
    
       bucket.putObject(params, function(err, data) {
         if(err) {
-          // There Was An Error With Your S3 Config
           alert(err.message);
           return false;
         }
         else {
-          // Success!
           alert('Upload Done');
         }
       })
       .on('httpUploadProgress',function(progress) {
-        // Log Progress Information
         console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
       })
     }
     else {
-      // No File Selected
       alert('No File Selected');
     }
-    $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/u ser_artpieces_uploads' + $scope.file.name;
-    $scope.newArtpiece.user = $scope.currentUserId
+    $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/' + $scope.file.name;
+    $scope.newArtpiece.user = $scope.currentUserId;
     $http.post('/artpieces', {
       name: $scope.newArtpiece.name, 
       description: $scope.newArtpiece.description, 
-      length: $scope.newArtpiece.length, 
+      width: $scope.newArtpiece.width, 
       height: $scope.newArtpiece.height, 
       depth: $scope.newArtpiece.depth, 
       type: $scope.newArtpiece.type, 
       price: $scope.newArtpiece.price, 
       insurance: $scope.newArtpiece.insurance, 
       image: $scope.imageUrl,
-      user_id: $scope.newArtpiece.user,
+      user_id: $scope.newArtpiece.user
     });
+    $scope.getUserDataForGallery();
   }
 
   $(function(){

@@ -1,5 +1,6 @@
-<!-- GALLERY -->
+<h2>{{profileUser.first_name}} {{profileUser.last_name}}'s Gallery</h3>
 
+<!-- GALLERY -->
 <div class="row-fluid">
   <div class="col col-lg-12">
     <div masonry class="gallery">
@@ -53,8 +54,8 @@
     </div>
     <div layout layout-sm="column">
       <md-input-container flex>
-        <label>Length (in)</label>
-        <input required type="number" name="length" ng-model="newArtpiece.length" placeholder="length">
+        <label>Width (in)</label>
+        <input required type="number" name="length" ng-model="newArtpiece.width" placeholder="width">
       </md-input-container>
       <md-input-container flex>
         <label>Height (in)</label>
@@ -77,7 +78,7 @@
   </div>
 </md-content>
 
-<pre>form = {{newArtpiece | json}}</pre>
+<!-- <pre>form = {{newArtpiece | json}}</pre> -->
 
     
 
