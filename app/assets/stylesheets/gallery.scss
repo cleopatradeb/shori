@@ -101,3 +101,16 @@
   width: 70%;
   margin: 0 auto;
 }
+
+#gallery-user-title {
+  @include canter-bold-3d;
+  font-size: 55px;
+  background-color: rgba($shori-mint, 0.6);
+  color: $shori-red;
+  text-align: center;
+  text-transform: capitalize;
+  position: fixed;
+  top: 60px;
+  z-index: 999999;
+  padding: 5px;
+}

@@ -1,10 +1,22 @@
 .browse-tags {
-  border: 1px black solid;
-  height: 50%;
-
+  height: 100%;
+  width:70%;
+  margin: 0 auto;
+  text-align: center;
   #roletype-browse-tab, #artform-browse-tab {
-    font-size: 17px;
     margin:0;
     padding:5px;
   }
+}
+
+
+md-tab-label.ng-scope {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 2px;
+  font-size: 20px;
+  width:270px;
+}
+
+div.md-header-items {
+  margin: 0 auto;
 }

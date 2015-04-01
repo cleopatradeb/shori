@@ -1,18 +1,20 @@
-<h1>I am the artpiece page</h1>
-
-<div class="artpiece-page-info">
-  <img-wit ng-src="{{selectedArtpiece.image | trusted}}" w="300"></img-wit></br>
-  <p>Title: {{selectedArtpiece.name}}</p>
-  <p>Price: {{selectedArtpiece.price | currency:'£'}}</p>
-  <p>Width: {{selectedArtpiece.width}} inches</p>
-  <p>Height: {{selectedArtpiece.height}} inches</p>
-  <p>Depth: {{selectedArtpiece.depth}} inches</p>
-  <p>Circumference: {{selectedArtpiece.circumference}} inches</p>
-  <p>{{selectedArtpiece.description}}</p>
-  <p>{{selectedArtpieceQrImg}}</p>
+<div id="artpiece-page-info">
+  <div id="artpiece-wrapper">
+    <img-wit ng-src="{{selectedArtpiece.image | trusted}}" w="500"></img-wit></br>
+  </div>
+  <div id="artpiece-text-wrapper">
+    <div id="artpiece-title">{{selectedArtpiece.name}}</div>
+    <div class="qrcode">
+      <qrcode data="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" size='100'></qrcode>
+    </div>
+    <p>{{selectedArtpiece.price | currency:'£'}}</p>
+    <p>Width: {{selectedArtpiece.width}} inches</p>
+    <p>Height: {{selectedArtpiece.height}} inches</p>
+    <p>Depth: {{selectedArtpiece.depth}} inches</p>
+    <p>Circumference: {{selectedArtpiece.circumference}} inches</p>
+    <p>{{selectedArtpiece.description}}</p>
+    <p>{{selectedArtpieceQrImg}}</p>
+  </div>
 </div>
 
 <!-- <button ng-click="printDiv('print-section')"><i class="fa fa-print"></i> Print!</button> -->
-
-<!-- href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" -->
-<qrcode data="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" size='300'></qrcode>

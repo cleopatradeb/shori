@@ -1,5 +1,3 @@
-<h1>Profile Page</h1>
-<!-- Basic Information -->
 <h3>{{profileUser.first_name}} {{profileUser.last_name}}</h3>
 <h3 ng-if="profileUser.role === 'venue'">{{profileUser.venue_name}}</h3>
 
@@ -38,35 +36,53 @@
   <button ng-click="openMessageBox()">Message</button>
 </div>
 
-<!-- Create Pact Form -->
 <div ng-controller="PactController" ng-if="currentUserId != profileUserId">
-  <h3>Make a Pact</h3>
-  <form name="pactForm" novalidate>
-    Start Date: <input type="text" name="startDate" ng-model="newPact.startDate" pick-a-date="date" placeholder="Select Date"><br/>
-    
-    End Date: <input type="text" name="endDate"  ng-model="newPact.endDate" pick-a-date="date" placeholder="Select Date"><br/>
+<div ng-controller="RightController">
+<section layout="row" flex>
+  <md-content flex class="md-padding">
+    <div layout="column" layout-fill layout-align="top center">
+        <md-button ng-click="toggleRight()"
+          class="md-primary">Create A Pact</md-button>
+      </div>
+    </div>
+    <div flex></div>
+  </md-content>
+  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-toolbar class="md-theme-light">
+      <h3 class="md-toolba-tools">Pact Details</h3>
+    </md-toolbar>
+    <md-content ng-controller="RightCtrl" class="md-padding">
+      <form name="pactForm" novalidate>
+        Start Date: <input type="text" name="startDate" ng-model="newPact.startDate" pick-a-date="date" placeholder="Select Date"><br/>
+        
+        End Date: <input type="text" name="endDate"  ng-model="newPact.endDate" pick-a-date="date" placeholder="Select Date"><br/>
 
-    <table class="pact-artpiece-table">
-      <tr class="properties">
-        <th>Select</th>
-        <th>Name</th>
-        <th>Image</th>
-        <th>Price</th>
-        <th>Insured</th>
-      </tr>
-      <tr class="artpiece" ng-repeat="art in profileUserArtpieces">
-        <td><input type="checkbox" checklist-model="newPact.art" checklist-value="art.id"></td>
-        <td><img-wit ng-src="{{art.image | trusted}}" w="50"></img-wit></td>
-        <td>{{ art.name }}</td>
-        <td>{{ art.price | currency:"£"}}</td>
-        <td>{{ art.insurance}}</td>
-      </tr>
-    </table>
-    <input type="button" ng-click="checkAll()" value="Check All" />
-    <input type="button" ng-click="uncheckAll()" value="Uncheck All" /><br/>
+        <table class="pact-artpiece-table">
+          <tr class="properties">
+            <th>Select</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Insured</th>
+          </tr>
+          <tr class="artpiece" ng-repeat="art in profileUserArtpieces">
+            <td><input type="checkbox" checklist-model="newPact.art" checklist-value="art.id"></td>
+            <td><img-wit ng-src="{{art.image | trusted}}" w="50"></img-wit></td>
+            <td>{{ art.name }}</td>
+            <td>{{ art.price | currency:"£"}}</td>
+            <td>{{ art.insurance}}</td>
+          </tr>
+        </table>
+        <input type="button" ng-click="checkAll()" value="Check All" />
+        <input type="button" ng-click="uncheckAll()" value="Uncheck All" /><br/>
 
-    <input type="button" ng-click="reset()" value="Reset" />
-    <input type="submit" ng-click="makePact(newPact)" value="Make Pact" />
-  </form>
-  <pre>form = {{newPact | json}}</pre>
+        <input type="button" ng-click="reset()" value="Reset" />
+        <input type="submit" ng-click="makePact(newPact)" value="Make Pact" />
+      </form>
+      <pre>form = {{newPact | json}}</pre>
+      <md-button ng-click="close()" class="md-primary">Close</md-button>
+    </md-content>
+  </md-sidenav>
+</section>
+</div>
 </div>
