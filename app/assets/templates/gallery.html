@@ -3,13 +3,14 @@
 <div class="row-fluid">
   <div class="col col-lg-12">
     <div masonry class="gallery">
-      <div class="masonry-brick gallery-item hvr-grow" ng-repeat="art in profileUserArtpieces" >
+      <div class="masonry-brick gallery-item hvr-grow" ng-repeat="art in profileUserArtpieces">
         <img-wit ng-src="{{art.image | trusted}}" w="300"></img-wit>
-          <div class="gallery-overlay cl-effect-1" ng-href="/shori/artpiece/{{art.id}}">
-            <p><a ng-href="/shori/artpiece/{{art.id}}" class="gallery-name">{{art.name}}</a>
-            <br class="gallery-text">{{art.description}}</br></p>
+        <div class="gallery-overlay" ng-href="/shori/artpiece/{{art.id}}">
+          <div class="cl-effect-1">
+            <p><a ng-href="/shori/artpiece/{{art.id}}" class="gallery-name">{{art.name}}</a></p>
           </div>
-          </div>
+          <p><a ng-href="/shori/artpiece/{{art.id}}" id="gallery-text">{{art.description}}</a></p>
+        </div>
       </div>
     </div>
   </div>
@@ -21,18 +22,63 @@
 
 <!-- ADD PHOTO -->
 
-<!-- <div class="gallery-add-photo">
+<div id="gallery-button-wrap">
+  <button class="hvr-reveal" id="gallery-add-button">ADD ARTPIECE</button>
+</div>
+
+<md-content class="md-padding hide" id="gallery-add-photo">
   <form name="new-artpiece-form" novalidate>  
-    Name: <input type="text" name="name" ng-model="newArtpiece.name" placeholder="Name"><br/>
-    Description: <input type="text" name="description" ng-model="newArtpiece.description" placeholder="Description"><br/>
-    Price: <input type="text" name="price" ng-model="newArtpiece.price" placeholder="price"><br/>
-    Type: <input type="radio" ng-model="newArtpiece.type" name="type-illustration" value="illustration">Illustration</input><input type="radio" name="type-photography" ng-model="newArtpiece.type" value="photography">Photography</input><input type="radio" name="type-craft" ng-model="newArtpiece.type" value="craft">Craft</input><br />
-    Length: <input type="text" name="length" ng-model="newArtpiece.length" placeholder="length"><br/>
-    Height: <input type="text" name="height" ng-model="newArtpiece.height" placeholder="Height"><br/>
-    Depth: <input type="text" name="depth" ng-model="newArtpiece.depth" placeholder="depth"><br/>
-    Insurance: <input type="radio" ng-model="newArtpiece.insurance" name="insurance-yes" value="true">True</input><input type="radio" name="insurance-yes" ng-model="newArtpiece.insurance" value="false">False</input>
-    <input name="file" type="file" file />
-    <button ng-click="upload()">Upload</button>
+    <div layout layout-sm="column">
+      <md-input-container flex>
+        <label>Name</label>
+        <input type="text" name="name" ng-model="newArtpiece.name" placeholder="Name">
+      </md-input-container>
+      <md-input-container flex>
+        <label>Price (£)</label>
+        <input required type="number" name="price" ng-model="newArtpiece.price" placeholder="price">
+      </md-input-container>
+      <md-input-container flex>
+        <md-radio-group ng-model="newArtpiece.insurance">
+          <md-radio-button name="insurance-yes" value="true">Insured</md-radio-button>
+          <md-radio-button name="insurance-no" value="false">Not insured</md-radio-button>
+        </md-radio-group>
+      </md-input-container>
+      <md-input-container flex>
+        <md-radio-group ng-model="newArtpiece.type">
+          <md-radio-button name="type-illustration" value=1>Illustration</md-radio-button>
+          <md-radio-button name="type-photography" value=3>Photography</md-radio-button>
+          <md-radio-button name="type-craft" value=2>Craft</md-radio-button>
+        </md-radio-group>
+      </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+      <md-input-container flex>
+        <label>Length (in)</label>
+        <input required type="number" name="length" ng-model="newArtpiece.length" placeholder="length">
+      </md-input-container>
+      <md-input-container flex>
+        <label>Height (in)</label>
+        <input required type="number" name="height" ng-model="newArtpiece.height" placeholder="Height">
+      </md-input-container>
+      <md-input-container flex>
+        <label>Depth (in)</label>
+        <input required type="number" name="depth" ng-model="newArtpiece.depth" placeholder="depth">
+      </md-input-container>
+    </div>
+    <md-input-container flex>
+      <label>Description</label>
+      <textarea required name="description" ng-model="newArtpiece.description" placeholder="description"></textarea>
+    </md-input-container>
+    <input ng-model="newArtpiece.user" type="hidden">
   </form>
-</div> -->
+  <input name="file" type="file" file />
+  <div id="gallery-submit-wrap">
+    <button id="gallery-submit-art"ng-click="upload()" class="hvr-reveal">ADD TO GALLERY</button>
+  </div>
+</md-content>
+
+<pre>form = {{newArtpiece | json}}</pre>
+
+    
+
  

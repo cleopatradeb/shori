@@ -4,6 +4,8 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
   UserService.userHash()
   .then(function(data){
     $scope.allUsers = JSON.parse(data.data.all_users);
+    $scope.currentUser = JSON.parse(data.data.current_user);
+    $scope.currentUserId = $scope.currentUser.id;
     $scope.userId = JSON.parse($routeParams.id);
     $scope.profileUser = _.filter($scope.allUsers, function(user){ return user.id === $scope.userId;})[0];
     $scope.profileUserArtpieces = $scope.profileUser.artpieces
@@ -46,16 +48,18 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
       alert('No File Selected');
     }
     $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/u ser_artpieces_uploads' + $scope.file.name;
+    $scope.newArtpiece.user = $scope.currentUserId
     $http.post('/artpieces', {
       name: $scope.newArtpiece.name, 
       description: $scope.newArtpiece.description, 
       length: $scope.newArtpiece.length, 
       height: $scope.newArtpiece.height, 
       depth: $scope.newArtpiece.depth, 
+      type: $scope.newArtpiece.type, 
       price: $scope.newArtpiece.price, 
       insurance: $scope.newArtpiece.insurance, 
       image: $scope.imageUrl,
-      user_id: gon.current_user_id
+      user_id: $scope.newArtpiece.user,
     });
   }
 
@@ -67,7 +71,15 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
         $('.gallery-up-arrow').removeClass('show');
       }
     });
-     });
+    $('#gallery-add-button').click(function(){
+      $('#gallery-add-photo').toggleClass('hide');
+      $('html, body').animate({ scrollTop: $(document).height()-$(window).height() }, 300);
+    });
+    $('#gallery-submit-art').click(function(){
+      $('#gallery-add-photo').toggleClass('hide');
+      $("html, body").animate({ scrollTop: 0 }, 300);
+    });
+  });
 
   $scope.scrollToTop = function() {
     verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;

@@ -1,6 +1,6 @@
-var app = angular.module('shoriApp', ['angularPayments', 'ngAnimate', 'ngRoute', 'ngResource', 'angular.filter', 'angular-datepicker', 'angular-wurfl-image-tailor', 'ngMaterial', 'checklist-model', 'monospaced.qrcode', 'wu.masonry']);
+var app = angular.module('shoriApp', ['angularPayments', 'ngAnimate', 'ngRoute', 'ngResource', 'angular.filter', 'angular-datepicker', 'angular-wurfl-image-tailor', 'ngMaterial', 'ngMessages', 'checklist-model', 'monospaced.qrcode', 'wu.masonry']);
 
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+app.config(['$routeProvider', '$locationProvider', '$mdThemingProvider', function($routeProvider, $locationProvider, $mdThemingProvider){
   $routeProvider
   .when('/home', {
     controller: "HomeController",
@@ -34,4 +34,28 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     redirectTo: '/home'
   });
   $locationProvider.html5Mode(true);
+
+  $mdThemingProvider.definePalette('shoriPalette', {
+    '50': '#EFEBE9',
+    '100': '#D7CCC8',
+    '200': '#BCAAA4',
+    '300': '#A1887F',
+    '400': '#8D6E63',
+    '500': '#8D6E63',
+    '600': '#8D6E63',
+    '700': '#8D6E63',
+    '800': '#8D6E63',
+    '900': '#8D6E63',
+    'A100': 'ff8a80',
+    'A200': 'ff5252',
+    'A400': 'ff5252',
+    'A700': 'ff5252',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': ['50', '100', 
+     '200', '300', '400', 'A100'],
+    'contrastLightColors': undefined
+  });
+
+  $mdThemingProvider.theme('default')
+  .primaryPalette('shoriPalette');
 }]);
