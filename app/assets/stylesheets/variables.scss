@@ -1,18 +1,3 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
 
 // FONT FACES
 @font-face {
@@ -127,6 +112,13 @@
 @mixin shori-mint {color: #EFF8E2;}
 @mixin shori-text {color: #2A2A30;}
 
+$shori-red: #C12926;
+$shori-peach: #FFB9AD;
+$shori-neutral-dark: #C3A995;
+$shori-neutral-light: #E8DACE;
+$shori-mint: #EFF8E2;
+$shori-text: #2A2A30;
+
 // MIXIN STYLES
 @mixin no-deco {
   text-decoration: none;
@@ -142,12 +134,18 @@
   display: 0 auto;
 }
 
-*, div{
-  @include aleo;
-  @include center;
-  @include no-space;
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
-  p {
+*{
+  font-family: 'Roboto Slab';
+
+  p, div {
     font-size: 16px;
   }
 

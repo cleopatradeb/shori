@@ -19,26 +19,25 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
+  <div id="cssmenu">
+    <ul>
       <% if user_signed_in? %>
-        <li><%= current_user.email %></li>
-        <li><%= link_to "Edit Profile", edit_user_registration_path, target: "_self"%></li>
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to "Browse",  "/shori/browse"%></li>
-        <li><%= link_to "Dashboard",  "/shori/dashboard"%></li>
-        <li><%= link_to "My Profile",  "/shori/users/#{current_user.id}"%></li>
+        <li><%= link_to "dashboard",  "/shori/dashboard"%></li>
+        <li><%= link_to "browse",  "/shori/browse"%></li>
+        <li><%= link_to "profile",  "/shori/users/#{current_user.id}"%></li>
+        <li class='active'><%= link_to "edit profile", edit_user_registration_path, target: "_self"%></li>
+        <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
         <% if current_user.role === "artist" %>
-          <li><%= link_to "My Gallery",  "/shori/gallery/#{current_user.id}"%></li>
+          <li class='last'><%= link_to "gallery",  "/shori/gallery/#{current_user.id}"%></li>
         <% else %>
-          <li><%= link_to "My Venue", "/shori/venue/#{current_user.id}"%></li>
+          <li class='last'><%= link_to "venue", "/shori/venue/#{current_user.id}"%></li>
         <% end %>
       <% else %>
         <li><%= link_to "Login", new_user_session_path, target: "_self"%></li>
         <li><%= link_to "Sign Up", new_user_registration_path, target: "_self"%></li>
       <% end %>
-    </div>
-  </nav>
+    </ul>
+  </div>
 
   <% if (current_page? new_user_session_path) || (current_page? new_user_registration_path)%>
     <%= yield %>
