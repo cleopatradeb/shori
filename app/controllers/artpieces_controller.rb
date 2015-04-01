@@ -20,9 +20,7 @@ class ArtpiecesController < ApplicationController
     artform_id = params[:type]
     artform = Artform.find(artform_id.to_i)
     @artpiece.artform = artform
-    @artpiece.save
     @user = User.find(params[:user_id]).artpieces << @artpiece
-    @user.save
     render json: Artpiece.all
 
   end
