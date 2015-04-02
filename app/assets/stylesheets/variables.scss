@@ -109,14 +109,14 @@
 @mixin shori-peach {color: #FF9F8E;}
 @mixin shori-neutral-dark {color: #C3A995;}
 @mixin shori-neutral-light {color: #E8DACE;}
-@mixin shori-mint {color: #EFF8E2;}
+@mixin shori-mint {color: #90CDBD;}
 @mixin shori-text {color: #2A2A30;}
 
 $shori-red: #C12926;
 $shori-peach: #FFB9AD;
 $shori-neutral-dark: #C3A995;
 $shori-neutral-light: #E8DACE;
-$shori-mint: #EFF8E2;
+$shori-mint: #90CDBD;
 $shori-text: #2A2A30;
 
 // MIXIN STYLES
@@ -308,4 +308,34 @@ $shori-text: #2A2A30;
 
 .hide {
   display: none;
+}
+
+
+
+@mixin crater($top, $left, $size) {
+  content: '';
+  position: absolute;
+  top: $top;
+  left: $left;
+  width: $size;
+  height: $size;
+  background-color: #EFEEDA;
+  border-radius: 100%;
+  border: 4px solid #DEE1C5;
+}
+
+@mixin cloudBubble($top, $right, $width, $height, $deg) {
+  content: '';
+  display: block;
+  position: relative;
+  top: $top;
+  right: $right;
+  width: $width;
+  height: $height;
+  border: 8px solid #D4D4D2;
+  border-radius: 100%;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotateZ($deg);
+  background-color: #fff;
 }

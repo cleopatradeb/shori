@@ -3,7 +3,9 @@
     <md-tab-label>SEARCH ALL</md-tab-label>
     <md-tab-template>
       <form class="search-form">
-        <input ng-model="allQuery" type="text" placeholder="search a name" autofocus><br/>
+        <md-input-container id="search-all-input">
+          <input type="text" name="all" ng-model="allQuery" placeholder="a name, company, or artpiece"  id="search-input">
+        </md-input-container>
         <input type="checkbox" ng-model="everything.all">All
         <div ng-if="everything.all">
           <div ng-repeat="user in usersArr| filter:{first_name:allQuery} | browseFilter: everything">
@@ -19,7 +21,9 @@
     <md-tab-label>by Roletype</md-tab-label>
     <md-tab-template>
       <form class="search-form">
-        <input ng-model="roleQuery" type="text" placeholder="search a name" autofocus><br/>
+        <md-input-container id="search-all-input">
+          <input type="text" name="all" ng-model="roleQuery" placeholder="a name, company, or artpiece" id="search-input">
+        </md-input-container>
         <input type="checkbox" ng-model="roletype.all">All
         <input type="checkbox" ng-model="roletype.artist">Artist
         <input type="checkbox" ng-model="roletype.venue">Venue
@@ -38,7 +42,9 @@
     <md-tab-label>by Artform</md-tab-label>
     <md-tab-template>
       <form class="search-form">
-        <input ng-model="artformQuery" type="text" placeholder="search an artpiece" autofocus><br/>
+        <md-input-container id="search-all-input">
+          <input type="text" name="all" ng-model="artformQuery" placeholder="an artpiece" id="search-input">
+        </md-input-container>
         <input type="checkbox" ng-model="artform.painting">Painting & Illustration 
         <input type="checkbox" ng-model="artform.photography">Photography
         <input type="checkbox" ng-model="artform.craft">Craft
@@ -53,4 +59,8 @@
     </md-tab-template>
   </md-tab>
 </md-tabs>
+
+
+
+
 

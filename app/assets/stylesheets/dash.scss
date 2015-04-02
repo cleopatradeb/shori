@@ -1,0 +1,70 @@
+.dashboard-user-info {
+  text-align: center;
+  margin: 0 auto;
+  width: 55%;
+  padding-top: 20px;
+  p {
+    @include aleo;
+    font-size: 25px;
+    line-height: 1.2;
+  }
+
+  #dash-bio {
+    font-size: 30px;
+    color: $shori-peach;
+    @include aleo-bold;
+  }
+}
+
+#dash-highlight {
+    font-size: 30px;
+    color: $shori-red;
+    @include aleo-bold;
+}
+
+.dashboard-user-followings {
+  text-align: center;
+  margin: 0 auto;
+  width: 55%;
+  padding-top: 20px;
+}
+
+
+h2 {
+  font-size: 30px;
+  color: $shori-text;
+  @include aleo;
+}
+
+#dash-followings {
+  display: inline-block;
+  @include aleo;
+  padding: 4px;
+  a {
+    @include reset;
+    text-decoration: none;
+    @include aleo;
+    color: $shori-text;
+    margin-right: 3px;
+    font-size: 19px;
+  }
+
+  a:hover {
+    color: $shori-mint;
+  }
+}
+
+.user-pacts {
+  text-align: center;
+  margin: 0 auto;
+  width: 55%;
+  padding-top: 20px;
+}
+
+.dashboard-new-user-feed {
+  text-align: center;
+  margin: 0 auto;
+  width: 55%;
+  padding-top: 20px;
+  line-height: 1.1;
+}

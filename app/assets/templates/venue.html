@@ -1,6 +1,11 @@
 <div ng-if="profileUser.role === 'venue'">
-  <h1>I am the Venue page.</h1>
-  <div ng-repeat="venuepic in profileUserVenuepics" class="venue-page-venue-pic">
-    <img-wit ng-src="{{venuepic.url | trusted}}" w="300"></img-wit>
+  <div class="row-fluid">
+    <div class="col col-lg-12">
+      <div masonry class="gallery">
+        <div class="masonry-brick gallery-item hvr-grow" ng-repeat="venuepic in profileUserVenuepics">
+          <img-wit ng-src="{{venuepic.url | trusted}}" w="300"></img-wit>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
