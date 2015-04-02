@@ -5,3 +5,17 @@ md-sidenav.md-closed.md-locked-open-add-active {
     width: 85vw !important;
     max-width: 800px !important;
 } 
+
+.profile-wrapper {
+  text-align: center;
+  margin: 0 auto;
+  @include aleo-light;
+  color: $shori-text;
+  width: 60%;
+
+  #profile-title {
+    @include canter-bold-3d;
+    font-size: 60px;
+    color: $shori-red;
+  }
+}
