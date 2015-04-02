@@ -1,18 +1,17 @@
 <div class="profile-wrapper">
 <h3 id="profile-title">{{profileUser.first_name}} {{profileUser.last_name}}</h3>
 <h3 id="profile-title" ng-if="profileUser.role === 'venue'">{{profileUser.venue_name}}</h3>
+<p id="profile-role">{{profileUser.role | ucfirst}}</p>
 
-<p>{{profileUser.biography}}</p>
-<p>{{profileUser.role | ucfirst}}</p>
+<p id="profile-bio">{{profileUser.biography}}</p>
 
-<h4 ng-if="profileUser.role === 'artist'"><a ng-href="/shori/gallery/{{profileUser.id}}">Gallery</a></h4>
-<h4><a ng-href="/shori/venue/{{profileUser.id}}" ng-if="profileUser.role === 'venue'">Venue View</a></h4>
+<h4 id="profile-link" ng-if="profileUser.role === 'artist'"><a ng-href="/shori/gallery/{{profileUser.id}}">Gallery</a></h4>
+<h4 id="profile-link"><a ng-href="/shori/venue/{{profileUser.id}}" ng-if="profileUser.role === 'venue'">Venue View</a></h4>
 
-<p>Following {{profileUserFollowingsCount}} Users</p>
-<h3>You are following:</h3>
+<p>This person is following {{profileUserFollowingsCount}} peeps</p>
 
 <div ng-repeat="follower in profileUserFollowings" ng-if="follower.role === 'artist'">
-  <p><a ng-href="users/{{follower.id}}">{{follower.first_name}} {{follower.last_name}}</a></p>
+  <a ng-href="users/{{follower.id}}">{{follower.first_name}} {{follower.last_name}}</a>
 </div>
 
 <p ng-repeat="follower in profileUserFollowings" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>

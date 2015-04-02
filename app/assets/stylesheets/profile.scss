@@ -15,7 +15,34 @@ md-sidenav.md-closed.md-locked-open-add-active {
 
   #profile-title {
     @include canter-bold-3d;
-    font-size: 60px;
+    font-size: 75px;
     color: $shori-red;
+    margin: 0px;
+    padding-top: 30px;
+  }
+
+  #profile-role {
+    @include blanch-caps;
+    font-size: 55px;
+    line-height: 0.8;
+  }
+
+  #profile-bio {
+    @include aleo-light;
+    font-size: 30px;
+  }
+
+  #profile-link {
+    @include canter-bold-3d;
+    font-size: 55px;
+    color: $shori-peach;
+    margin: 0px;
+  }
+  a {
+    text-decoration: none;
+    color: $shori-peach; 
+  }
+  a:hover {
+    color: $shori-mint;
   }
 }
