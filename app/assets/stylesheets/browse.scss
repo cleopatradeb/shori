@@ -7,6 +7,16 @@
     margin:0;
     padding:5px;
   }
+
+  a {
+    @include aleo;
+    font-size: 20px;
+    color: $shori-text;
+  }
+
+  a:hover {
+    color: $shori-mint;
+  }
 }
 
 

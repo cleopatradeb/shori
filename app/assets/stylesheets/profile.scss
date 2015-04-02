@@ -32,11 +32,12 @@ md-sidenav.md-closed.md-locked-open-add-active {
     font-size: 30px;
   }
 
-  #profile-link {
+  #profile-link a {
     @include canter-bold-3d;
     font-size: 55px;
     color: $shori-peach;
     margin: 0px;
+    padding: 20px;
   }
   a {
     text-decoration: none;

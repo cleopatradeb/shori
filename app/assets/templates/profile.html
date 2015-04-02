@@ -5,8 +5,8 @@
 
 <p id="profile-bio">{{profileUser.biography}}</p>
 
-<h4 id="profile-link" ng-if="profileUser.role === 'artist'"><a ng-href="/shori/gallery/{{profileUser.id}}">Gallery</a></h4>
-<h4 id="profile-link"><a ng-href="/shori/venue/{{profileUser.id}}" ng-if="profileUser.role === 'venue'">Venue View</a></h4>
+<h4 class="cl-effect-6" id="profile-link" ng-if="profileUser.role === 'artist'"><a ng-href="/shori/gallery/{{profileUser.id}}">GALLERY</a></h4>
+<h4 class="cl-effect-6" id="profile-link"><a ng-href="/shori/venue/{{profileUser.id}}" ng-if="profileUser.role === 'venue'">VENUE VIEW</a></h4>
 
 <p>This person is following {{profileUserFollowingsCount}} peeps</p>
 
@@ -31,11 +31,12 @@
 
 <!-- Follow & Message Buttons -->
 <div ng-if="currentUserId != profileUserId">
-  <button ng-click="unfollowMe(); unmakeAFollowing()" ng-if="!follow">Unfollow</button>
-  <button ng-click="followMe(); makeAFollowing()" ng-show="follow">Follow</button>
-  <button ng-click="openMessageBox()">Message</button>
+  <button class="hvr-reveal" ng-click="unfollowMe(); unmakeAFollowing()" ng-if="!follow">Unfollow</button>
+  <button class="hvr-reveal" ng-click="followMe(); makeAFollowing()" ng-show="follow">Follow</button>
+  <button class="hvr-reveal" ng-click="openMessageBox()">Message</button>
 </div>
 
+<div ng-if="currentUser.role === 'venue'">
 <div ng-controller="PactController" ng-if="currentUserId != profileUserId">
 <div ng-controller="RightController">
 <section layout="row" flex>
@@ -44,6 +45,7 @@
         <md-button ng-click="toggleRight()"
           class="md-primary">Create A Pact</md-button>
       </div>
+    </div>
     </div>
     <div flex></div>
   </md-content>
