@@ -16,6 +16,7 @@ app.controller('PactController', ['$scope', '$http', '$routeParams', 'UserServic
     $scope.profileUserArtpiecesId = _.map($scope.profileUser.artpieces, function(artpiece){return artpiece.id})
     $scope.profileUserArtpiecesLength = $scope.profileUserArtpieces.length
 
+    console.log($scope.profileUserArtpieces)
     $scope.pactForm = {};
 
     // Checkboxes 

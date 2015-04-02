@@ -44,13 +44,13 @@
         <md-input-container id="search-all-input">
           <input type="text" name="all" ng-model="artformQuery" placeholder="an artpiece" id="search-input">
         </md-input-container>
-        <input type="checkbox" ng-model="artform.painting">Painting & Illustration 
+        <input type="checkbox" ng-model="artform.painting">Painting & Illustration
         <input type="checkbox" ng-model="artform.photography">Photography
         <input type="checkbox" ng-model="artform.craft">Craft
         
         <div ng-if="artform.painting || artform.photography || artform.craft">
           <div ng-repeat="artpiece in artpieceArr | filter:{name:artformQuery} | browseFilter: artform | orderBy:'name'">
-            <h4>{{artpiece.name}}</h4>
+            <h4><a ng-href="artpiece/{{ artpiece.id }}">{{artpiece.name}}</h4></a>
             <p>{{artpiece.artform.name}}</p>
           </div>
         </div>

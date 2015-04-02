@@ -1,42 +1,44 @@
 <div class="profile-wrapper">
-<h3 id="profile-title">{{profileUser.first_name}} {{profileUser.last_name}}</h3>
-<h3 id="profile-title" ng-if="profileUser.role === 'venue'">{{profileUser.venue_name}}</h3>
-<p id="profile-role">{{profileUser.role | ucfirst}}</p>
+  <h3 id="profile-title">{{profileUser.first_name}} {{profileUser.last_name}}</h3>
+  <h3 id="profile-title" ng-if="profileUser.role === 'venue'">{{profileUser.venue_name}}</h3>
+  <p id="profile-role">{{profileUser.role | ucfirst}}</p>
+  <p id="profile-bio">{{profileUser.biography}}</p>
 
-<p id="profile-bio">{{profileUser.biography}}</p>
+  <h4 id="profile-link" ng-if="profileUser.role === 'artist'"><a ng-href="/shori/gallery/{{profileUser.id}}">GALLERY</a></h4>
+  <h4 id="profile-link"><a ng-href="/shori/venue/{{profileUser.id}}" ng-if="profileUser.role === 'venue'">VENUE VIEW</a></h4>
 
-<h4 class="cl-effect-6" id="profile-link" ng-if="profileUser.role === 'artist'"><a ng-href="/shori/gallery/{{profileUser.id}}">GALLERY</a></h4>
-<h4 class="cl-effect-6" id="profile-link"><a ng-href="/shori/venue/{{profileUser.id}}" ng-if="profileUser.role === 'venue'">VENUE VIEW</a></h4>
+  <p>This person is following {{profileUserFollowingsCount}} peeps</p>
 
-<p>This person is following {{profileUserFollowingsCount}} peeps</p>
-
-<div ng-repeat="follower in profileUserFollowings" ng-if="follower.role === 'artist'">
-  <a ng-href="users/{{follower.id}}">{{follower.first_name}} {{follower.last_name}}</a>
-</div>
-
-<p ng-repeat="follower in profileUserFollowings" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
-
-
-<div ng-if="currentUserId === profileUserId">
-  <h3>My Upcoming Pacts</h3>
-  <div ng-repeat="pact in currentVenuePacts" ng-if="currentVenuePacts.length > 0">
-    <p>{{pact.start_date | date}}</p>
-    <p>{pact.end_date | date}}</p>
+  <div ng-repeat="follower in profileUserFollowings" ng-if="follower.role === 'artist'">
+    <a ng-href="users/{{follower.id}}">{{follower.first_name}} {{follower.last_name}}</a>
   </div>
-  <div ng-repeat="pact in currentArtistPacts" ng-if="currentArtistPacts.length > 0">
-    <p>{{pact.start_date | date}}</p>
-    <p>{{pact.end_date | date}}</p>
+
+  <p ng-repeat="follower in profileUserFollowings" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></p>
+
+
+  <div ng-if="currentUserId === profileUserId">
+    <h3>My Upcoming Pacts</h3>
+    <div ng-repeat="pact in currentVenuePacts" ng-if="currentVenuePacts.length > 0">
+      <p>Start: {{pact.start_date | date}}</p>
+      <p>End: {{pact.end_date | date}}</p>
+    </div>
+    <div ng-repeat="pact in currentArtistPacts" ng-if="currentArtistPacts.length > 0">
+      <p>Start: {{pact.start_date | date}}</p>
+      <p>End: {{pact.end_date | date}}</p>
+    </div>
+  </div>
+
+  <!-- Follow & Message Buttons -->
+  <div ng-if="currentUserId != profileUserId">
+    <button class="hvr-reveal" ng-click="unfollowMe(); unmakeAFollowing()" ng-if="!follow">Unfollow</button>
+    <button class="hvr-reveal" ng-click="followMe(); makeAFollowing()" ng-show="follow">Follow</button>
+    <button class="hvr-reveal" ng-click="openMessageBox()">Message</button>
   </div>
 </div>
 
-<!-- Follow & Message Buttons -->
-<div ng-if="currentUserId != profileUserId">
-  <button class="hvr-reveal" ng-click="unfollowMe(); unmakeAFollowing()" ng-if="!follow">Unfollow</button>
-  <button class="hvr-reveal" ng-click="followMe(); makeAFollowing()" ng-show="follow">Follow</button>
-  <button class="hvr-reveal" ng-click="openMessageBox()">Message</button>
-</div>
 
-<div ng-if="currentUser.role === 'venue'">
+
+
 <div ng-controller="PactController" ng-if="currentUserId != profileUserId">
 <div ng-controller="RightController">
 <section layout="row" flex>
@@ -44,10 +46,7 @@
     <div layout="column" layout-fill layout-align="top center">
         <md-button ng-click="toggleRight()"
           class="md-primary">Create A Pact</md-button>
-      </div>
     </div>
-    </div>
-    <div flex></div>
   </md-content>
   <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
     <md-toolbar class="md-theme-light">
@@ -81,11 +80,8 @@
         <input type="button" ng-click="reset()" value="Reset" />
         <input type="submit" ng-click="makePact(newPact)" value="Make Pact" />
       </form>
-      <pre>form = {{newPact | json}}</pre>
       <md-button ng-click="close()" class="md-primary">Close</md-button>
     </md-content>
   </md-sidenav>
 </section>
-</div>
-</div>
 </div>
