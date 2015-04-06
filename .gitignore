@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-/.bowerrc
 /Rakefile
 
 # Ignore all logfiles and tempfiles.
