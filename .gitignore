@@ -6,9 +6,10 @@
 
 # Ignore bundler config.
 /.bundle
-/Rakefile
 
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
+/Rakefile
+/Procfile
