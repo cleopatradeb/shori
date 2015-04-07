@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.1.4'
 
 # MY GEMS
-gem 'biz'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'accountingjs-rails'
 gem 'devise'
@@ -14,10 +13,11 @@ gem 'angularjs-file-upload-rails', '~> 1.1.6'
 gem 'carrierwave'
 gem 'gon'
 gem 'therubyracer'
-gem "less-rails"
+gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'rails_12factor', group: :production
 gem 'thin'
+gem 'rake_commit' 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # RAILS GEMS
