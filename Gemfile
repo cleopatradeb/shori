@@ -2,6 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.1.4'
 
+# OPTIMISATION 
+gem 'thin'
+gem 'rails_12factor', group: :production
+gem 'unicorn'
+
 # MY GEMS
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'accountingjs-rails'
@@ -15,8 +20,6 @@ gem 'gon'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
-gem 'rails_12factor', group: :production
-gem 'thin'
 gem 'rake_commit' 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
