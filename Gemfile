@@ -5,6 +5,8 @@ ruby '2.1.4'
 # OPTIMISATION 
 gem 'rails_12factor', group: :production
 gem 'thin'
+gem 'memcachier'
+gem 'dalli'
 
 # MY GEMS
 gem 'acts-as-taggable-on', '~> 3.4'
