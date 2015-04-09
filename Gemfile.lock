@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/thedarkone/rails-dev-boost.git
+  revision: 15ebc37b3f1b424ce7f5a160d2a8f890023208e6
+  specs:
+    rails-dev-boost (0.3.0)
+      railties (>= 3.0)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: a980110740490b25bd2d60b33967306991348f70
   specs:
@@ -268,6 +275,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   rails (= 4.2.0)
+  rails-dev-boost!
   rails_12factor
   rake_commit
   sass-rails (~> 5.0)
