@@ -3,9 +3,8 @@ source 'https://rubygems.org'
 ruby '2.1.4'
 
 # OPTIMISATION 
-gem 'thin'
 gem 'rails_12factor', group: :production
-gem 'unicorn'
+gem 'thin'
 
 # MY GEMS
 gem 'acts-as-taggable-on', '~> 3.4'
