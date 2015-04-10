@@ -1,6 +1,7 @@
 var app = angular.module('shoriApp', ['angularPayments', 'ngAnimate', 'ngRoute', 'ngResource', 'angular.filter', 'angular-datepicker', 'angular-wurfl-image-tailor', 'ngMaterial', 'ngMessages', 'checklist-model', 'monospaced.qrcode', 'wu.masonry']);
 
-app.config(['$routeProvider', '$locationProvider', '$mdThemingProvider', function($routeProvider, $locationProvider, $mdThemingProvider){
+app.config(['$routeProvider', '$locationProvider', '$mdThemingProvider', '$httpProvider', function($routeProvider, $locationProvider, $mdThemingProvider, $httpProvider){
+  $httpProvider.useApplyAsync(true);
   $routeProvider
   .when('/home', {
     controller: "HomeController",
@@ -60,21 +61,7 @@ app.config(['$routeProvider', '$locationProvider', '$mdThemingProvider', functio
   .primaryPalette('shoriPalette');
 
   $(document).ready(function(){
-    if(window.location.pathname == "/shori/home") {
-    $('.window').windows({
-      snapping: true,
-      snapSpeed: 400,
-      snapInterval: 200,
-      onScroll: function(scrollPos){
-          // scrollPos:Number
-      },
-      onSnapComplete: function($el){
-          // after window ($el) snaps into place
-      },
-      onWindowEnter: function($el){
-          // when new window ($el) enters viewport
-      }
-    })
-  }
+    $('#cssmenu').scrollupbar();
+    $('#topbar').scrollupbar();
   })
 }]);

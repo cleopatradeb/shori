@@ -1,14 +1,14 @@
 <div class="dash-wrapper">
 <div class="dashboard-user-info">
-  <p>Hey there, <span id="dash-highlight">{{currentUser.first_name}} {{currentUser.last_name}}!</span> It is: <span id="dash-highlight">{{currentUser.verified | ucfirst}},</span> that you're verified. We always need more <span id="dash-highlight">{{currentUser.role | ucfirst}}s</span> like you! Welcome! You're interested in opportunities near <span id="dash-highlight">{{currentUser.address}} {{currentUser.postcode}}</span>. And this is what you have to say for yourself: <span id="dash-bio">{{currentUser.biography}}</span></p>
+  <p>Hey there, <span id="dash-highlight">{{::currentUser.first_name}} {{::currentUser.last_name}}!</span> We always need more <span id="dash-highlight">{{::currentUser.role | ucfirst}}s</span> like you! Welcome! You're interested in opportunities near <span id="dash-highlight">{{currentUser.address}} {{currentUser.postcode}}</span>. And this is what you have to say for yourself: <span id="dash-bio">{{currentUser.biography}}</span></p>
 </div>
 
 <div class="dashboard-user-followings">
   <h2>It's a slow news day for the <span id="dash-highlight">{{currentUserFollowingsCount}}</span> people you follow.</h4>
   <!-- If follower = artist -->
-  <div id="dash-followings" ng-repeat="follower in currentUserFollowedUsers" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}} {{follower.last_name}}</a></div>
+  <div id="dash-followings" ng-repeat="follower in currentUserFollowedUsers track by follower.id" ng-if="follower.role === 'artist'"><a ng-href="users/{{follower.id}}">{{follower.first_name}} {{follower.last_name}}</a></div>
   <!-- If follower = venue -->
-  <div id="dash-followings" ng-repeat="follower in currentUserFollowedUsers" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></div>
+  <div id="dash-followings" ng-repeat="follower in currentUserFollowedUsers track by follower.id" ng-if="follower.role === 'venue'"><a ng-href="users/{{follower.id}}">{{follower.venue_name}}</a></div>
 </div>
 
 <div class="user-pacts">
@@ -18,6 +18,6 @@
 
 <div class="dashboard-new-user-feed">
   <h2>These lovely folk just joined us! Say hi!</h2>
-  <div id="dash-followings" ng-repeat="user in filteredArr | limitTo: 7"><a ng-href="users/{{user.id}}"><p>{{user.first_name}} {{user.last_name}} - {{user.role | ucfirst}}</a></div>
+  <div id="dash-followings" ng-repeat="user in filteredArr track by user.id | limitTo: 7"><a ng-href="users/{{user.id}}"><p>{{user.first_name}} {{user.last_name}} - {{user.role | ucfirst}}</a></div>
 </div>
 </div>

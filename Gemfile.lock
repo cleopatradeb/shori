@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/thedarkone/rails-dev-boost.git
+  revision: 15ebc37b3f1b424ce7f5a160d2a8f890023208e6
+  specs:
+    rails-dev-boost (0.3.0)
+      railties (>= 3.0)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: a980110740490b25bd2d60b33967306991348f70
   specs:
@@ -121,6 +128,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
@@ -176,6 +184,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rake_commit (1.2.0)
+    rb-fsevent (0.9.4)
     rdoc (4.2.0)
       json (~> 1.4)
     ref (1.0.5)
@@ -259,13 +268,16 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
+  memcachier
   momentjs-rails
   pg
   pry-byebug
   pry-rails
   rails (= 4.2.0)
+  rails-dev-boost!
   rails_12factor
   rake_commit
+  rb-fsevent (>= 0.9.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

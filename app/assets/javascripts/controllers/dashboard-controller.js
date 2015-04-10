@@ -1,5 +1,4 @@
 app.controller('DashboardController', ['$scope', '$http', 'UserService', 'FollowService', 'PactService', function($scope, $http, UserService, FollowService, PactService){
-  console.log('DashboardController')
 
   UserService.userHash()
   .then(function(data){

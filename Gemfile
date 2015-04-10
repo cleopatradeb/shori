@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 ruby '2.1.4'
 
 # OPTIMISATION 
-gem 'rails_12factor', group: :production
 gem 'thin'
+gem 'memcachier'
 
 # MY GEMS
 gem 'acts-as-taggable-on', '~> 3.4'
@@ -33,6 +33,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'pry-byebug'
@@ -41,4 +42,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
+  gem 'rb-fsevent', '>= 0.9.1'
 end
