@@ -20,9 +20,12 @@ The following libraries/ frameworks were used in the making of this project.
 > This project is still in production but the following code snippets may come in handy for reference. I have categorized them via **main functionality** and **front-end highlights**. Please feel free to reference them! Tweet me [@natbatwat](http://www.twitter.com/natbatwat), or email me at  <a href="mailto:hi@natalieloh.com">hi@natalieloh.com</a> if you have any questions! 
 
 > I plan to write tutorials on these topics soon. Check my blog [natalieloh.com/blog](http://natalieloh.com/blog) for updates.
+
+
 ## Key Functionality
 
 #### 1. Angular Filtered Browse
+> Filtering `Users` and `Artpieces` by user role type (artist, venue) and artpiece type (painting, illustration, craft). 
 
 *Note: The browse tabs use Material.js. Refer below for the code for that bit.*
 
@@ -36,8 +39,9 @@ $scope.artform = {painting:false, photography:false, craft:false};
 ```
 
 ```html
-<md-tab id="roletype-browse-tab">
-  <md-tab-label>by Roletype</md-tab-label>
+<md-tabs md-selected="tabData.selectedIndex" class="browse-tags">
+  <md-tab id="roletype-browse-tab">
+    <md-tab-label>by Roletype</md-tab-label>
     <md-tab-template>
       <form class="search-form">
         <md-input-container id="search-all-input">
@@ -45,7 +49,6 @@ $scope.artform = {painting:false, photography:false, craft:false};
         </md-input-container>
         <input type="checkbox" ng-model="roletype.artist">Artist
         <input type="checkbox" ng-model="roletype.venue">Venue
-
         <div ng-if="roletype.all || roletype.venue || roletype.artist">
           <div ng-repeat="user in usersArr| filter:{first_name:roleQuery} | browseFilter: roletype | orderBy: 'first_name'">
             <h4 ng-if="user.role === 'artist'"><a ng-href="users/{{ user.id }}">{{ user.first_name }} {{user.last_name}}</a></h4>
@@ -54,7 +57,8 @@ $scope.artform = {painting:false, photography:false, craft:false};
         </div>
       </form>
     </md-tab-template>
-  </md-tab> 
+  </md-tab>
+</md-tabs>
 ```
 
 ---
