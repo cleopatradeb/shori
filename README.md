@@ -1,5 +1,5 @@
 # Shori
-#####[Shori (Live Demo)](https://www.shori.herokuapp.com)
+#####[Shori (Demo) https://www.shori.herokuapp.com](https://www.shori.herokuapp.com)
 > *Bringing together venues and budding artists. A win-win situation.*
 > Shori is Japanese for "win", pointing to the underlying philosophy of the app - to create a win-win situation: for budding artists looking to showcase their art, and venues looking for free decor and diversifying their products risk-free.
 

@@ -44,4 +44,5 @@ group :development, :test do
   gem 'spring'
   gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
   gem 'rb-fsevent', '>= 0.9.1'
+
 end
