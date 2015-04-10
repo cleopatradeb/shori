@@ -15,22 +15,66 @@ The following libraries/ frameworks were used in the making of this project.
 - Twitter Bootstrap
 - jQuery
 
-> **NOTE** 
-> Shori was my final project of WDI at GA London. This project is still in production but the following code snippets may come in handy for reference. I have categorized them via **main functionality** and **front-end highlights**. Please feel free to reference them! Tweet me [@natbatwat](http://www.twitter.com/natbatwat), or email me at  <a href="mailto:hi@natalieloh.com">hi@natalieloh.com</a> if you have any questions! 
+#### NOTE:
 
+> This project is still in production but the following code snippets may come in handy for reference. I have categorized them via **main functionality** and **front-end highlights**. Please feel free to reference them! Tweet me [@natbatwat](http://www.twitter.com/natbatwat), or email me at  <a href="mailto:hi@natalieloh.com">hi@natalieloh.com</a> if you have any questions! 
+
+> I plan to write tutorials on these topics soon. Check my blog [natalieloh.com/blog](http://natalieloh.com/blog) for updates.
 ## Key Functionality
 
-#### Angular Filtered Browse
+#### 1. Angular Filtered Browse
+
+*Note: The browse tabs use Material.js. Refer below for the code for that bit.*
+
+```javascript
+#browse-controller.js
+
+$scope.roleQuery = '';
+$scope.artformQuery = '';
+$scope.roletype = {artist:false, venue:false};
+$scope.artform = {painting:false, photography:false, craft:false};
+```
+
+```html
+<md-tab id="roletype-browse-tab">
+  <md-tab-label>by Roletype</md-tab-label>
+    <md-tab-template>
+      <form class="search-form">
+        <md-input-container id="search-all-input">
+          <input type="text" name="all" ng-model="roleQuery" placeholder="a name, company, or artpiece" id="search-input">
+        </md-input-container>
+        <input type="checkbox" ng-model="roletype.artist">Artist
+        <input type="checkbox" ng-model="roletype.venue">Venue
+
+        <div ng-if="roletype.all || roletype.venue || roletype.artist">
+          <div ng-repeat="user in usersArr| filter:{first_name:roleQuery} | browseFilter: roletype | orderBy: 'first_name'">
+            <h4 ng-if="user.role === 'artist'"><a ng-href="users/{{ user.id }}">{{ user.first_name }} {{user.last_name}}</a></h4>
+            <div ng-if="user.role === 'venue'"><h4><a ng-href="users/{{ user.id }}">{{ user.first_name }} {{user.last_name}} : {{ user.venue_name }}</a></h4></div>
+          </div>
+        </div>
+      </form>
+    </md-tab-template>
+  </md-tab> 
+```
 
 ---
+
+#### 2. Angular QR Code Generation
+
+---
+
+#### 3. Seeding Data with AWS S3 and Faker Gem
+
 
 
 
 ## Front-end Highlights 
 
-#### Masonry Gallery
+#### 1. Masonry Gallery
 
-#### Material.js Forms
+---
+
+#### 2. Material.js Forms
 
 ## To Do
 1. Write tests for both Rails and Angular code 
