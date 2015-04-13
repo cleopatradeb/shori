@@ -9,6 +9,7 @@
       <qrcode data="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" size='100'></qrcode>
     </div>
     <p>{{selectedArtpiece.price | currency:'£'}}</p>
+    <p>{{selectedArtpiece.status}}</p>
     <p>Width: {{selectedArtpiece.width}} inches</p>
     <p>Height: {{selectedArtpiece.height}} inches</p>
     <p>Depth: {{selectedArtpiece.depth}} inches</p>
@@ -19,7 +20,8 @@
 </div>
 </div>
 
-<div class="stripe-payment">
+
+<div class="stripe-payment" ng-if="{{selectedArtpiece.status}} === 'available'">
   <form action={{artpiecePaymentRoute}} method="POST">
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
