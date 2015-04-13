@@ -5,7 +5,8 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @amount = Artpiece.find(params[:artpiece_id].to_i).price * 100
+    @artpiece = Artpiece.find(params[:artpiece_id].to_i)
+    @amount = @artpiece.price * 100
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -18,9 +19,10 @@ class ChargesController < ApplicationController
       :description => 'Shori Stripe Customer',
       :currency    => 'gbp'
     )
-
+    @artpiece.status = "sold"
+    @artpiece.save
     redirect_to "artpieces/#{params[:artpiece_id]}"
-    
+
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to "artpieces/#{params[:artpiece_id]}"
