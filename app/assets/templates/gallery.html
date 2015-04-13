@@ -8,6 +8,7 @@
           <div class="cl-effect-1">
             <p><a ng-href="/shori/artpiece/{{art.id}}" class="gallery-name">{{art.name}}</a></p>
           </div>
+          <p class="gallery-status" ng-if="art.status === 'sold'">SOLD</p>
           <p><a ng-href="/shori/artpiece/{{art.id}}" id="gallery-text">{{art.description}}</a></p>
         </div>
       </div>
