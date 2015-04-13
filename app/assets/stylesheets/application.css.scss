@@ -12,19 +12,19 @@
  */
 
 @import "variables";
-@import "animate";
-@import "creative-link-effects";
-@import "icon-hover-effects";
-@import "creative-button-effects";
-@import "cssnav";
+@import "resources/animate";
+@import "resources/creative-link-effects";
+@import "resources/icon-hover-effects";
+@import "resources/creative-button-effects";
+@import "resources/hover";
+@import "resources/date_themes";
+@import "nav";
 @import "profile";
 @import "browse";
-@import "home";
 @import "artpiece";
+@import "home";
 @import "dash";
 @import "charges";
 @import "gallery";
-@import "hover";
 @import "login";
 @import "venuepage";
-@import "date_themes";
