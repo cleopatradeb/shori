@@ -3,10 +3,11 @@ app.controller('ArtpieceController', ['$scope', '$http', '$location', '$routePar
 
   ArtpieceService.getArt()
   .then(function(data){
-  $scope.artpieceArr = data.data;
+    $scope.artpieceArr = data.data;
     $scope.selectedArtpieceId = JSON.parse($routeParams.id)
     $scope.selectedArtpiece = _.where($scope.artpieceArr, {id: $scope.selectedArtpieceId})[0]
-    console.log($scope.selectedArtpiece)
+    $scope.artpiecePaymentRoute = "/artpieces/" + $scope.selectedArtpieceId + "/charges"
+    console.log($scope.artpiecePaymentRoute);
   })
 
   // $scope.printDiv = function(divName) {

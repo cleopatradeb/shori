@@ -5,9 +5,7 @@ class ChargesController < ApplicationController
   end
 
   def create
-    binding.pry
-    selected_artpiece_id = request.fullpath.scan( /\d+$/ ).first
-    @amount = @price
+    @amount = Artpiece.find(params[:artpiece_id].to_i).price * 100
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -21,9 +19,11 @@ class ChargesController < ApplicationController
       :currency    => 'gbp'
     )
 
+    redirect_to "artpieces/#{params[:artpiece_id]}"
+    
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to artpiece_path(artpiece)
+      redirect_to "artpieces/#{params[:artpiece_id]}"
   end
 end
 
