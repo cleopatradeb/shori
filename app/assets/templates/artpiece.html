@@ -18,4 +18,18 @@
   </div>
 </div>
 </div>
+
+<div class="stripe-payment">
+  <form action="/charges" method="POST">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_LnWTbe63zonC0wcLaycQNwtJ"
+      data-image="{{selectedArtpiece.image | trusted}}"
+      data-name="{{selectedArtpiece.name}}"
+      data-description="{{selectedArtpiece.description}}"
+      data-currency="gbp"
+      data-amount="{{selectedArtpiece.price * 100}}"
+    </script>
+  </form>
+</div>
 <!-- <button ng-click="printDiv('print-section')"><i class="fa fa-print"></i> Print!</button> -->

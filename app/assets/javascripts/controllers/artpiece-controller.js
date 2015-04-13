@@ -19,6 +19,7 @@ app.controller('ArtpieceController', ['$scope', '$http', '$location', '$routePar
   // } 
 
   Stripe.setPublishableKey(gon.stripe_publishable_key);
+  $scope.stripe_publishable_key = gon.stripe_publishable_key
 
   $scope.creds = {
     bucket: 'shori/qr_code_pictures',

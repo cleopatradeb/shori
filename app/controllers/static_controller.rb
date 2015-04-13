@@ -5,4 +5,5 @@ class StaticController < ApplicationController
     gon.stripe_publishable_key = ENV["STRIPE_PUBLISHABLE_KEY"]
     gon.stripe_secret_key = ENV["STRIPE_SECRET_KEY"]
   end
+
 end

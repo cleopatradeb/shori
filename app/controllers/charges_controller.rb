@@ -1,4 +1,6 @@
 class ChargesController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
+
   def new
   end
 
@@ -8,7 +10,7 @@ class ChargesController < ApplicationController
     @amount = @price
 
     customer = Stripe::Customer.create(
-      :email => 'example@stripe.com',
+      :email => params[:stripeEmail],
       :card  => params[:stripeToken]
     )
 
