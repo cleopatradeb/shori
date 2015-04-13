@@ -1,3 +1,5 @@
+require 'rqrcode_png'
+
 Artform.delete_all
 Artpiece.delete_all
 User.delete_all
@@ -62,51 +64,57 @@ end
 # ARTPIECES (ILLUSTRATION)
 100.times do |n|
   Artpiece.create(
-  name: Faker::Lorem.word,
-  height: (1..35).to_a.sample.to_i,
-  width: (1..35).to_a.sample.to_i,
-  depth: Faker::Number.number(1),
-  circumference: nil, 
-  price:Faker::Commerce.price,
-  insurance: true, 
-  description: Faker::Lorem.sentence(5),
-  artform_id: af1.id,
-  user_id: User.all.to_a[1..13].sample.id,
-  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/illu_#{n+1}.jpg"
+    name: Faker::Lorem.word,
+    height: (1..35).to_a.sample.to_i,
+    width: (1..35).to_a.sample.to_i,
+    depth: Faker::Number.number(1),
+    circumference: nil, 
+    price:Faker::Commerce.price,
+    insurance: true, 
+    description: Faker::Lorem.sentence(5),
+    artform_id: af1.id,
+    user_id: User.all.to_a[1..13].sample.id,
+    image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/illu_#{n+1}.jpg"
   )
 end
 # ARTPIECES (PHOTOGRAPHY)
 100.times do |n|
   Artpiece.create(
-  name: Faker::Address.street_name,
-  height: (10..20).to_a.sample.to_i,
-  width: (10..20).to_a.sample.to_i,
-  depth: nil,
-  circumference: nil, 
-  price:Faker::Commerce.price,
-  insurance: true, 
-  description: Faker::Lorem.sentence(5),
-  artform_id: af3.id,
-  user_id: User.all.to_a[13..26].sample.id,
-  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/photo_#{n}.jpg"
+    name: Faker::Address.street_name,
+    height: (10..20).to_a.sample.to_i,
+    width: (10..20).to_a.sample.to_i,
+    depth: nil,
+    circumference: nil, 
+    price:Faker::Commerce.price,
+    insurance: true, 
+    description: Faker::Lorem.sentence(5),
+    artform_id: af3.id,
+    user_id: User.all.to_a[13..26].sample.id,
+    image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/photo_#{n}.jpg"
   )
 end
 # ARTPIECES (CRAFT)
 100.times do |n|
   Artpiece.create(
-  name: Faker::Commerce.color + ' ' + Faker::Lorem.word,
-  height: (1..12).to_a.sample.to_i,
-  width: (1..12).to_a.sample.to_i,
-  depth: (1..7).to_a.sample.to_i,
-  circumference: (1..10).to_a.sample.to_i, 
-  price:Faker::Commerce.price,
-  insurance: true, 
-  description: Faker::Lorem.sentence(5),
-  artform_id: af2.id,
-  user_id: User.all.to_a[27..40].sample.id,
-  image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/craft_#{n}.jpg"
+    name: Faker::Commerce.color + ' ' + Faker::Lorem.word,
+    height: (1..12).to_a.sample.to_i,
+    width: (1..12).to_a.sample.to_i,
+    depth: (1..7).to_a.sample.to_i,
+    circumference: (1..10).to_a.sample.to_i, 
+    price:Faker::Commerce.price,
+    insurance: true, 
+    description: Faker::Lorem.sentence(5),
+    artform_id: af2.id,
+    user_id: User.all.to_a[27..40].sample.id,
+    image: "https://s3-eu-west-1.amazonaws.com/shori/product_pictures/craft_#{n}.jpg"
   )
 end
+
+# 300.times do |n|
+#   qr_png = RQRCode::QRCode.new( "http://localhost:3000/shori/artpiece/#{n}", :size => 10, :level => :h ).to_img
+#   qr_png.resize(90, 90).save("qr_#{n}.png")
+#   Artpiece.find(n).qr_code = qr_png
+# end
 
 all_venues = User.where(role: 'venue')
 all_artists = User.where(role: 'artist')

@@ -43,7 +43,7 @@ app.controller('VenueController', ['$scope', '$http', '$location', '$routeParams
   //     // No File Selected
   //     alert('No File Selected');
   //   }
-  //   $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/' + $scope.file.name;
+  //   $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/user_venue_uploads/' + $scope.file.name;
   //   $http.post('/artpieces', {
   //     name: $scope.newArtpiece.name, 
   //     description: $scope.newArtpiece.description, 

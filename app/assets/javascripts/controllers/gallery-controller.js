@@ -1,5 +1,4 @@
 app.controller('GalleryController', ['$scope', '$http', '$location', '$routeParams', 'UserService', 'FollowService', function($scope, $http, $location, $routeParams, UserService, FollowService){
-  console.log('GalleryController');
 
   $scope.getUserDataForGallery = function(){
     UserService.userHash()
@@ -16,7 +15,7 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
   $scope.getUserDataForGallery();
 
   $scope.creds = {
-    bucket: 'shori',
+    bucket: 'shori/user_artpieces_uploads',
     access_key: gon.aws_access_key,
     secret_key: gon.aws_secret_key
   }
@@ -45,7 +44,7 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
     else {
       alert('No File Selected');
     }
-    $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/' + $scope.file.name;
+    $scope.imageUrl = 'https://s3-eu-west-1.amazonaws.com/shori/user_artpieces_uploads/' + $scope.file.name;
     $scope.newArtpiece.user = $scope.currentUserId;
     $http.post('/artpieces', {
       name: $scope.newArtpiece.name, 
@@ -63,7 +62,7 @@ app.controller('GalleryController', ['$scope', '$http', '$location', '$routePara
   }
 
   $(function(){
-    $(document).on( 'scroll', function(){
+    $(document).on('scroll', function(){
       if ($(window).scrollTop() > 100) {
         $('.gallery-up-arrow').addClass('show');
       } else {
