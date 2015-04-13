@@ -19,8 +19,8 @@ gem 'gon'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
-gem 'rake_commit' 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'rqrcode_png'
 
 # RAILS GEMS
 gem 'rails', '4.2.0'
