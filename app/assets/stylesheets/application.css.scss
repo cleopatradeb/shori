@@ -12,17 +12,18 @@
  */
 
 @import "variables";
+@import "resources/normalize";
 @import "resources/animate";
 @import "resources/creative-link-effects";
 @import "resources/icon-hover-effects";
 @import "resources/creative-button-effects";
 @import "resources/hover";
 @import "resources/date_themes";
+@import "home";
 @import "nav";
 @import "profile";
 @import "browse";
 @import "artpiece";
-@import "home";
 @import "dash";
 @import "charges";
 @import "gallery";
