@@ -17,7 +17,8 @@ class ChargesController < ApplicationController
       :customer    => customer.id,
       :amount      => @amount,
       :description => 'Shori Stripe Customer',
-      :currency    => 'gbp'
+      :currency    => 'gbp',
+      :receipt_email => "natalielohht@gmail.com"
     )
     @artpiece.status = "sold"
     @artpiece.save

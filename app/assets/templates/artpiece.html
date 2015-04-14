@@ -21,7 +21,7 @@
 </div>
 
 
-<div class="stripe-payment" ng-if="{{selectedArtpiece.status}} === 'available'">
+<div class="stripe-payment" ng-if="selectedArtpiece.status === 'available'">
   <form action={{artpiecePaymentRoute}} method="POST">
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
