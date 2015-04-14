@@ -3,42 +3,41 @@
 <head>
   <title>Shori</title>
   <base href="/shori/">
-  <%= stylesheet_link_tag    'application'%>
   <%= include_gon %>
+  <%= stylesheet_link_tag 'application'%>
   <%= javascript_include_tag 'application'%>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
   <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js" %>
   <%= javascript_include_tag "//code.angularjs.org/1.3.0-beta.11/angular-messages.js" %>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <%= javascript_include_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js" %>
   <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-resource.min.js" %>
   <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.4/angular-filter.min.js" %>
+  <%= javascript_include_tag "//cdn.jsdelivr.net/jquery.midnight/1.1.0/midnight.jquery.min.js" %>
   <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 
 </head>
 <body>
-  <div id="cssmenu">
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= link_to "dashboard",  "/shori/dashboard"%></li>
-        <li><%= link_to "browse",  "/shori/browse"%></li>
-        <li><%= link_to "profile",  "/shori/users/#{current_user.id}"%></li>
-        <li class='active'><%= link_to "edit profile", edit_user_registration_path, target: "_self"%></li>
-        <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
-        <% if current_user.role === "artist" %>
-          <li class='last'><%= link_to "gallery",  "/shori/gallery/#{current_user.id}"%></li>
-        <% else %>
-          <li class='last'><%= link_to "venue", "/shori/venue/#{current_user.id}"%></li>
-        <% end %>
+  <ul>
+    <% if user_signed_in? %>
+      <li><%= link_to "dashboard",  "/shori/dashboard"%></li>
+      <li><%= link_to "browse",  "/shori/browse"%></li>
+      <li><%= link_to "profile",  "/shori/users/#{current_user.id}"%></li>
+      <li class='active'><%= link_to "edit profile", edit_user_registration_path, target: "_self"%></li>
+      <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+      <% if current_user.role === "artist" %>
+        <li class='last'><%= link_to "gallery",  "/shori/gallery/#{current_user.id}"%></li>
       <% else %>
-        <li><% link_to "Login", new_user_session_path, target: "_self"%></li>
-        <li><% link_to "Sign Up", new_user_registration_path, target: "_self"%></li>
+        <li class='last'><%= link_to "venue", "/shori/venue/#{current_user.id}"%></li>
       <% end %>
-    </ul>
-  </div>
+    <% else %>
+      <li><% link_to "Login", new_user_session_path, target: "_self"%></li>
+      <li><% link_to "Sign Up", new_user_registration_path, target: "_self"%></li>
+    <% end %>
+  </ul>
 
   <% if (current_page? new_user_session_path) || (current_page? new_user_registration_path)%>
     <%= yield %>
@@ -49,6 +48,7 @@
 
   <ng-view></ng-view>
 
+  <!-- REVIEW: Might not be necessary -->
   <script>Stripe.setPublishableKey('ENV["STRIPE_PUBLISHABLE_KEY"]')</script>
 </body>
 </html>
