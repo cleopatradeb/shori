@@ -5,12 +5,14 @@ html {
 .home {
   height: 100%;
   width: 100%;
+  font-size: 0px;
   .container {
     height: 100%;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: inline-block;
+    font-size: 0px;
     img {
       width: 50%;
       height: 100%;
@@ -27,6 +29,15 @@ html {
     .blur {
       -webkit-filter: blur(10px);
               filter: blur(10px);
+    }
+    #logo {
+      background-color:red;
+      position: fixed;
+      width: 30%;
+      margin-top: 30px;
+      clear: both;
+      left: 50%;
+      margin-left: -15%; /* Half of the width */
     }
   }
 }

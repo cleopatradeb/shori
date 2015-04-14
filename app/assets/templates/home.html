@@ -1,40 +1,40 @@
 <div class="home">
-  <nav class="fixed">
-    <div class="midnightHeader default">
-      <div class="logo-holder">
-        <h1 class="shori-logo">SHORI</h1>
-      </div>
-    </div>
-  </nav>
-
+  <div class="container logo-container">
+    <p id="logo">SHORI</p>
+  </div>
   <div class="container">
     <img class="image-1" src="https://s3-eu-west-1.amazonaws.com/shori/front-end/wallspace.jpg"></img>
     <div class="intro">
-      <p>Container One</p>
+      <i class="wow fadeInDown fa fa-4x fa-file-image-o"></i>
+      <p class="wow fadeIn">Pinterest keffiyeh single-origin coffee Bushwick, banjo Etsy plaid fingersggings. Put a bird on it leggings cliche hoodie Pinterest, Pitchfork banh mi cray Helvetica selfies. Salvia tilde High Life biodiesel, swag direct trade heirloom artisan fap brunch McSweeney's mlkshk Helvetica. Freegan narwhal plaid pickled brunch photo booth. Literally Marfa Banksy heirloom kogi.</p>
     </div>
   </div>
   <div class="container">
     <img class="image-2" src="https://s3-eu-west-1.amazonaws.com/shori/front-end/art1.jpg"></img>
     <div class="intro">
-      <p>Container Two</p>
+      <i class="wow fadeInDown fa fa-4x fa-coffee"></i>
+      <p class="wow fadeIn">Brunch kale chips keffiyeh, farm-to-table Marfa quinoa freegan seitan authentic cray asymmetrical flexitarian photo booth typewriter cronut. Biodiesel XOXO lo-fi dreamcatcher keytar. Tofu chillwave dreamcatcher, Odd Future single-origin coffee narwhal Brooklyn hellaa bird on it meggings. Thundercats whatever hella Intelligentsia, vegan pour-over jean shorts umami. Biodiesel craft beer normcore lomo, four dollar toast asymmetrical irony health goth Blue Bottle Marfa iPhone Odd Future hoodie organic.</p>
     </div>
   </div>
   <div class="container">
     <img class="image-3" src="https://s3-eu-west-1.amazonaws.com/shori/front-end/wallspace2.jpg"></img>
     <div class="intro">
-      <p>Container Three</p>
+      <i class="wow fadeInDown fa fa-4x fa-filter"></i>
+      <p class="wow fadeIn">Fap lomo gluten-free pickled put a bird on it lo-fi four dollar toast, master cleanse hashtagts shabby chic. Health goth retro four loko, tofu direct trade Godard sustainable fap cred Williamsburg DIY. Slow-carb Echo Park locavore Austin, Tumblr Helvetica street art. Kickstarter twee fingerstache Marfa. Hashtag brunch flexitarian, twee mlkshk four loko banh mi readymade Pinterest locavore roof party normcore slow-carb keffiyeh.</p>
     </div>
   </div>
   <div class="container">
     <img class="image-4" src="https://s3-eu-west-1.amazonaws.com/shori/front-end/art2.jpg"></img>
     <div class="intro">
-      <p>Container Four</p>
+      <i class="wow fadeInDown fa fa-4x fa-ticket"></i>
+      <p class="wow fadeIn">Blog banjo vinyl, tousled authentic 3 wolf moon Bushwick High Life before they sold out Etsy single-origin coffee health goth ethical migas. Echo Park bitters deep v leggings, four dollar toast heirloom keffiyeh normcore art party shabby chic Pitchfork. Echo Park street arustin. Next level meditation gentrify gluten-free, literally migas tofu pour-over cardigan tote bag retro Tumblr Intelligentsia. Irony chia Blue Bottle Pitchfork actually cray listicle, Carles before they sold out trust fund.</p>
     </div>
   </div>
   <div class="container">
     <img class="image-5" data-crossfade-end src="https://s3-eu-west-1.amazonaws.com/shori/front-end/people1.jpg"></img>
     <div class="intro">
-      <p>Container Five</p>
+      <i class="wow fadeInDown fa fa-4x fa-credit-card"></i>
+      <p class="wow fadeIn">Lumbersexual tote bag Brooklyn whatever tattooed pour-over, McSweeney's chia farm-to-table plaid pickled meggings cray kitsch. Meh hella craft beer sriracha lo-fi Vice. Farm-to-table raweggings typewriter, wolf mlkshk Brooklyn iPhone four dollar toast Vice kale chips keffiyeh PBR&B sriracha authentic.</p>
     </div>
   </div>
 </div>
@@ -42,6 +42,20 @@
   // Initialize Midnight.js
   $(document).ready(function(){
     $('nav.fixed').midnight();
-    // $('.image-1, .image-2, .image-3, .image-4, .image-5').scrollHero();
+    new WOW().init();
+    var logo = $('#logo');
+    var body = document.body;
+    var html = document.documentElement;
+    height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    $(window).scroll(function(){
+      var offset = [$(document).scrollTop()/height] * $(window).height();
+      TweenLite.to(logo, 0.5, {top: offset});
+      console.log(offset);
+    })
+    var waypoint = new Waypoint({
+      element: $('.image-1'),
+      handler: function(){
+      }
+    })
   });
 </script>
