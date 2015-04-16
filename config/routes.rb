@@ -20,5 +20,5 @@ Rails.application.routes.draw do  resources :artforms
   resources :artforms
   resources :pacts
   resources :pacts_users
-
+  get '*path' => redirect('/shori/home')
 end

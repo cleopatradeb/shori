@@ -13,8 +13,31 @@ html {
     padding: 0;
     display: inline-block;
     font-size: 0px;
-    img {
+    .left-panel {
       width: 50%;
+      height: 100%;
+      float: left;
+      position: relative;
+      img {
+        width: 100%;
+      }
+      .overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        p {
+          width: 70%;
+          font-family: 'Fjalla One', sans-serif;
+          font-size: 30px;
+          color: white;
+          text-decoration: underline;
+          @include vertical-align;
+          margin: 0 auto;
+          text-align: center;
+        }
+      }
+    }
+    img {
       height: 100%;
       float: left;
       margin: 0;
@@ -23,21 +46,58 @@ html {
     .intro {
       width: 50%;
       height: 100%;
-      border: 2px black solid;
       float: right;
-    }
-    .blur {
-      -webkit-filter: blur(10px);
-              filter: blur(10px);
+      @include vertical-align;
+      display: table;
+      p {
+        display: table-cell;
+        vertical-align: middle;
+        margin: 0 auto;
+        padding: 10%;
+      }
+      i {
+        padding-bottom: 15px;
+      }
     }
     #logo {
-      background-color:red;
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 7vh;
+      background-color:white;
       position: fixed;
-      width: 30%;
-      margin-top: 30px;
+      width: 20%;
+      margin-top: 40px;
       clear: both;
-      left: 50%;
-      margin-left: -15%; /* Half of the width */
+      left: 25%;
+      margin-left: -10%; /* Half of the width */
+      z-index: 10000;
     }
   }
+}
+
+
+.icon-container {
+  margin-top: 250px;
+  i {
+    font-size: 5vh;
+    padding: 10px;
+    margin: 20px;
+    color: black;
+  }
+}
+
+#arrow {
+  margin: 0 auto;
+  position: absolute;
+  padding-bottom: 40px;
+  bottom: 0;
+  left: 50%;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 0;
+  right:0;
+  z-index: 1000;
+  padding: 2%;
+  cursor: pointer;
 }
