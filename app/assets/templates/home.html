@@ -1,5 +1,5 @@
 <div class="home">
-  <div class="scroll-to-top"><i class="fa fa-angle-double-up fa-2x"></i></div>
+  <div class="scroll-to-top hide"><i class="fa fa-angle-double-up fa-2x"></i></div>
   <div class="container snap-window logo-container">
     <p id="logo">SHORI</p>
     <div class="icon-container">
@@ -87,9 +87,11 @@
       handler: function(){
       $(window).bind('mousewheel', function(event) {
         if (event.originalEvent.wheelDelta >= 0) {
+          $('#arrow').fadeIn("slow");
         }
         else {
           $('#arrow').fadeOut("slow");
+          $('.scroll-to-top').addClass("animated fadeInUpBig").removeClass('hide');
         }
       });
       }
@@ -106,8 +108,8 @@
     // Snap to container
      $('.snap-window').windows({
         snapping: true,
-        snapSpeed: 500,
-        snapInterval: 800,
+        snapSpeed: 300,
+        snapInterval: 500,
         onScroll: function(scrollPos){
         },
         onSnapComplete: function($el){
@@ -125,7 +127,6 @@
       var offset = [$(document).scrollTop()/height] * [$(window).height()*1.3];
       var logoScroll = TweenLite.to(logo, 0.5, {top: offset});
       if($(document).scrollTop() > [$(window).height() + $(window).height()*0.2]){
-        console.log('now');
         logoScroll.pause();
       }
     })
