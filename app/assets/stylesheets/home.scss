@@ -77,6 +77,15 @@ html {
 
 .icon-container {
   margin-top: 250px;
+  font-size: 4vh; 
+  a {
+    font-family: 'Fjalla One', sans-serif;
+    text-decoration: none;
+    color: $shori-text;
+  }
+  a:hover {
+    
+  }
   i {
     font-size: 5vh;
     padding: 10px;
