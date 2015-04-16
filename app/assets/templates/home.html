@@ -82,7 +82,7 @@
 
 
     // Fade out arrow 
-    var waypoint = new Waypoint({
+    var arrow_waypoint = new Waypoint({
       element: $('.logo-container'),
       handler: function(){
       $(window).bind('mousewheel', function(event) {
@@ -94,6 +94,14 @@
           $('.scroll-to-top').addClass("animated fadeInUpBig").removeClass('hide');
         }
       });
+      }
+    })
+
+    var logo_to_black_inview = new Waypoint.Inview({
+      element: $('.icon-container'),
+      enter: function(direction) {
+        console.log('hi');
+        $('#logo').animate({"color":"black", "background-color":"none", "border-color": "none"}, 1500);
       }
     })
     // Scroll to Top
@@ -116,6 +124,15 @@
         },
         onWindowEnter: function($el){
         }
+    })
+
+    // Changing logo color 
+    var logo_to_white_inview = new Waypoint.Inview({
+      element: $('.icon-container')[0],
+      exit: function(direction) {
+        console.log('Exit triggered with direction ' + direction)
+        $('#logo').animate({"color":"white", "background-color":"rgba(0,0,0,0.2)", "border": "1vh solid white"}, 1000);
+      }
     })
 
     // Logo Scrolling
