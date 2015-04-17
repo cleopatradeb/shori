@@ -61,7 +61,7 @@ html {
     }
     #logo {
       font-family: 'Fjalla One', sans-serif;
-      font-size: 7.5vh;
+      font-size: 4.5vw;
       position: fixed;
       width: 20%;
       margin-top: 40px;
@@ -83,7 +83,17 @@ html {
     color: $shori-text;
   }
   a:hover {
-    
+    text-decoration: none;
+    color: gray;
+  }
+  #section-1-icon:hover, 
+  #section-2-icon:hover, 
+  #section-3-icon:hover, 
+  #section-4-icon:hover, 
+  #section-5-icon:hover {
+    i {
+      color: gray;
+    }
   }
   i {
     font-size: 5vh;
@@ -93,12 +103,18 @@ html {
   }
 }
 
+
 #arrow {
   margin: 0 auto;
   position: absolute;
   padding-bottom: 40px;
   bottom: 0;
   left: 50%;
+  cursor: pointer;
+}
+
+#arrow:hover {
+  color: gray;
 }
 
 .scroll-to-top {

@@ -9,7 +9,7 @@
       <a href="#section-4" class="hvr-float" id="section-4-icon"><i class="fa fa-5x fa-ticket"></i>PACT</a>
       <a href="#section-5" class="hvr-float" id="section-5-icon"><i class="fa fa-5x fa-credit-card"></i>EARN</a>
     </div>
-    <div id="arrow"><i class="fa fa-4x fa-rotate-180 fa-angle-up"></i></div>
+    <div class="hvr-sink" id="arrow"><i class="fa fa-4x fa-rotate-180 fa-angle-up"></i></div>
   </div>
 
   <div class="container snap-window" id="section-1">
@@ -79,6 +79,11 @@
     $('#section-3-icon').scrollTo({speed: 1000, easing: 'easeOutQuint'});
     $('#section-4-icon').scrollTo({speed: 1000, easing: 'easeOutQuint'});
     $('#section-5-icon').scrollTo({speed: 1000, easing: 'easeOutQuint'});
+    $('#arrow').click(function() {
+      $('html, body').animate({
+          scrollTop: $("#section-1").offset().top
+      }, 900);
+    });;
 
 
     // Fade out arrow 
@@ -96,12 +101,20 @@
       });
       }
     })
-
+    // Changing logo color
     var logo_to_black_inview = new Waypoint.Inview({
       element: $('.icon-container'),
       enter: function(direction) {
         console.log('hi');
         $('#logo').animate({"color":"black", "background-color":"none", "border-color": "none"}, 1500);
+      }
+    })
+
+    var logo_to_white_inview = new Waypoint.Inview({
+      element: $('.icon-container')[0],
+      exit: function(direction) {
+        console.log('Exit triggered with direction ' + direction)
+        $('#logo').animate({"color":"white", "background-color":"rgba(0,0,0,0.2)", "border": "1vh solid white"}, 1000);
       }
     })
     // Scroll to Top
@@ -124,15 +137,6 @@
         },
         onWindowEnter: function($el){
         }
-    })
-
-    // Changing logo color 
-    var logo_to_white_inview = new Waypoint.Inview({
-      element: $('.icon-container')[0],
-      exit: function(direction) {
-        console.log('Exit triggered with direction ' + direction)
-        $('#logo').animate({"color":"white", "background-color":"rgba(0,0,0,0.2)", "border": "1vh solid white"}, 1000);
-      }
     })
 
     // Logo Scrolling
