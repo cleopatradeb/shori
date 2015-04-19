@@ -1,7 +1,15 @@
 <div class="home">
   <div class="scroll-to-top hide"><i class="fa fa-angle-double-up fa-2x"></i></div>
-  <div class="container snap-window logo-container">
+  <div class="container snap-window landing-container">
     <p id="logo">SHORI</p>
+    <div class="sign-in-container">
+      <i class="sign-in-icon fa fa-hand-o-right"></i>
+      <div class="sign-in">LOG IN</div>
+    </div>
+    <div class="sign-up-container">
+      <i class="sign-up-icon fa fa-user-plus"></i>
+      <div class="sign-up">SIGN IN</div>
+    </div>
     <div class="icon-container">
       <a href="#section-1" class="hvr-float" id="section-1-icon"><i class="fa fa-5x fa-file-image-o"></i>ART</a>
       <a href="#section-2" class="hvr-float" id="section-2-icon"><i class="fa fa-5x fa-coffee"></i>SPACE</a>
@@ -73,6 +81,33 @@
     // WOW
     new WOW().init();
 
+    // Sign In Link
+    $('.sign-in-container').click(function(){
+      window.location.pathname = "/users/sign_in"
+    })
+    // Sign In Button
+    $('.sign-in-container').mouseenter(function(){
+      var sign_in_logo_in = TweenLite.to($('.sign-in-icon'), 0.3, {transform: 'translateX(-5vw)'});
+      var sign_in_text_out = TweenLite.to($('.sign-in'), 0.3, {transform: 'translateX(10vw)'});
+    });
+    $('.sign-in-container').mouseleave(function(){
+      var sign_in_logo_out = TweenLite.to($('.sign-in-icon'), 0.3, {transform: 'translateX(-15vw)'});
+      var sign_in_text_in = TweenLite.to($('.sign-in'), 0.3, {transform: 'none'});
+    });
+    // Sign Up Link
+    $('.sign-up-container').click(function(){
+      window.location.pathname = "/users/sign_up"
+    })
+    // Sign In Button
+    $('.sign-up-container').mouseenter(function(){
+      var sign_up_logo_in = TweenLite.to($('.sign-up-icon'), 0.4, {transform: 'translateX(-5vw)'});
+      var sign_up_text_out = TweenLite.to($('.sign-up'), 0.5, {transform: 'translateX(10vw)'});
+    });
+    $('.sign-up-container').mouseleave(function(){
+      var sign_up_logo_out = TweenLite.to($('.sign-up-icon'), 0.4, {transform: 'translateX(-15vw)'});
+      var sign_up_text_in = TweenLite.to($('.sign-up'), 0.5, {transform: 'none'});
+    });
+
     // Menu ScrollTo
     $('#section-1-icon').scrollTo({speed: 1000, easing: 'easeOutQuint'});
     $('#section-2-icon').scrollTo({speed: 1000, easing: 'easeOutQuint'});
@@ -88,7 +123,7 @@
 
     // Fade out arrow 
     var arrow_waypoint = new Waypoint({
-      element: $('.logo-container'),
+      element: $('.landing-container'),
       handler: function(){
       $(window).bind('mousewheel', function(event) {
         if (event.originalEvent.wheelDelta >= 0) {
