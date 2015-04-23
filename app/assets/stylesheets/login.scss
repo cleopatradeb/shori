@@ -5,3 +5,37 @@
 .venue-signup {
   display: none;
 }
+
+.log-in-title {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 60px;
+  text-align: left;
+}
+
+.log-in-container {
+  text-align: left;
+  font-family: 'Fjalla One', sans-serif;
+  margin-left: 10%;
+  .field, label, .actions {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: left;
+    margin: 10px;
+    width: 50%;
+  }  
+}
+
+.log-in-container {
+  a {
+    text-align: left;
+    font-family: 'Fjalla One', sans-serif;
+    margin-left: 10%;
+    text-decoration: none;
+    color: $shori-peach;
+  }
+  a:hover {
+    text-decoration: none;
+    color: $shori-text;
+  }
+}

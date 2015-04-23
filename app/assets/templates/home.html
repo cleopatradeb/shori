@@ -8,7 +8,7 @@
     </div>
     <div class="sign-up-container">
       <i class="sign-up-icon fa fa-user-plus"></i>
-      <div class="sign-up">SIGN IN</div>
+      <div class="sign-up">SIGN UP</div>
     </div>
     <div class="icon-container">
       <a href="#section-1" class="hvr-float" id="section-1-icon"><i class="fa fa-5x fa-file-image-o"></i>ART</a>
@@ -73,6 +73,14 @@
     </div>
     <div class="intro">
       <p class="wow fadeIn"><i class="wow fadeInDown fa fa-4x fa-credit-card"></i></br>Lumbersexual tote bag Brooklyn whatever tattooed pour-over, McSweeney's chia farm-to-table plaid pickled meggings cray kitsch. Meh hella craft beer sriracha lo-fi Vice. Farm-to-table raweggings typewriter, wolf mlkshk Brooklyn iPhone four dollar toast Vice kale chips keffiyeh PBR&B sriracha authentic.</p>
+      <div class="sign-in-bottom">
+        <i class="sign-in-icon fa fa-hand-o-right"></i>
+        <div class="sign-in">LOG IN</div>
+      </div>
+      <div class="sign-up-bottom">
+        <i class="sign-up-icon fa fa-user-plus"></i>
+        <div class="sign-up">SIGN UP</div>
+      </div>
     </div>
   </div>
 </div>
@@ -83,6 +91,9 @@
 
     // Sign In Link
     $('.sign-in-container').click(function(){
+      window.location.pathname = "/users/sign_in"
+    })
+    $('.sign-in-bottom').click(function(){
       window.location.pathname = "/users/sign_in"
     })
     // Sign In Button
@@ -98,6 +109,9 @@
     $('.sign-up-container').click(function(){
       window.location.pathname = "/users/sign_up"
     })
+    $('.sign-up-bottom').click(function(){
+      window.location.pathname = "/users/sign_up"
+    })
     // Sign In Button
     $('.sign-up-container').mouseenter(function(){
       var sign_up_logo_in = TweenLite.to($('.sign-up-icon'), 0.4, {transform: 'translateX(-5vw)'});
@@ -107,6 +121,15 @@
       var sign_up_logo_out = TweenLite.to($('.sign-up-icon'), 0.4, {transform: 'translateX(-15vw)'});
       var sign_up_text_in = TweenLite.to($('.sign-up'), 0.5, {transform: 'none'});
     });
+
+    // Bottom Sign In / Log In Links
+    var arrow_waypoint = new Waypoint({
+      element: $('#section-5'),
+      handler: function(){
+        $('.sign-in-bottom').removeClass('hide')
+        $('.sign-up-bottom').removeClass('hide')
+      }
+    })
 
     // Menu ScrollTo
     $('#section-1-icon').scrollTo({speed: 1000, easing: 'easeOutQuint'});

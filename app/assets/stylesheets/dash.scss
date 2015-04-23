@@ -1,0 +1,52 @@
+.nav-bar {
+  text-decoration: none;
+  list-style-type: none;
+  width: 90%;
+  margin: 50px 0px;
+  a {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: $shori-text;
+  }
+  a:hover {
+    color: $shori-peach;
+    text-decoration: none;
+  }
+  li {
+    display: inline-block;
+    width: 180px;
+  }
+}
+
+.dash-wrapper {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  column-count: 2;
+  .dashboard-user-info {
+    width: 45%;
+    border: 1px solid black;
+    height: 20vw;
+    display: inline-block;
+  }
+  .dashboard-user-followings {
+    width: 45%;
+    border: 1px solid black;
+    height: 20vw;
+    display: inline-block;
+  }
+  .user-pacts {
+    width: 45%;
+    border: 1px solid black;
+    height: 20vw;
+    display: inline-block;
+  }
+  .dashboard-new-user-feed {
+    width: 45%;
+    border: 1px solid black;
+    height: 20vw;
+    overflow: scroll;
+    display: inline-block;
+  }
+}
