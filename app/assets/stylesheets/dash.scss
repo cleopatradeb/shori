@@ -3,13 +3,17 @@
   list-style-type: none;
   width: 90%;
   margin: 50px 0px;
+  ul {
+    margin: 0 auto;
+    text-align: center;
+  }
   a {
     font-family: 'Fjalla One', sans-serif;
     font-size: 20px;
     text-transform: uppercase;
     color: $shori-text;
   }
-  a:hover {
+  a:hover, a:active {
     color: $shori-peach;
     text-decoration: none;
   }
@@ -20,33 +24,54 @@
 }
 
 .dash-wrapper {
-  width: 70%;
+  width: 80%;
   height: 100%;
   margin: 0 auto;
   column-count: 2;
   .dashboard-user-info {
     width: 45%;
-    border: 1px solid black;
     height: 20vw;
     display: inline-block;
   }
   .dashboard-user-followings {
     width: 45%;
-    border: 1px solid black;
     height: 20vw;
     display: inline-block;
   }
   .user-pacts {
     width: 45%;
-    border: 1px solid black;
     height: 20vw;
     display: inline-block;
   }
   .dashboard-new-user-feed {
     width: 45%;
-    border: 1px solid black;
     height: 20vw;
     overflow: scroll;
     display: inline-block;
+  }
+}
+
+.dash-container {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 20px;
+  background-color: #FFE8EC;
+  border: 5px solid #9CCCD8; 
+  border-bottom: 15px solid #9CCCD8;
+  box-shadow: 10px 10px 0px #313E56;
+  margin: 10px;
+  padding: 15px;
+  color: $shori-text;
+  p {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 20px;
+    line-height: 1;
+  }
+  a {
+    line-height: 1;
+    font-size: 16px;
+    color: #9CCCD8;
+  }
+  a:hover {
+    text-decoration: none;
   }
 }

@@ -144,7 +144,7 @@
     });;
 
 
-    // Fade out arrow 
+    // Fade out arrow
     var arrow_waypoint = new Waypoint({
       element: $('.landing-container'),
       handler: function(){
@@ -160,7 +160,7 @@
       }
     })
     // Changing logo color
-    var logo_to_black_inview = new Waypoint.Inview({
+    var logo_to_black_inview = new  ({
       element: $('.icon-container'),
       enter: function(direction) {
         console.log('hi');
@@ -183,7 +183,7 @@
       offsetTop = offset.top;
       $('html, body').animate({scrollTop: offsetTop}, 600, 'easeOutQuint');
     })
-    
+
     // Snap to container
      $('.snap-window').windows({
         snapping: true,

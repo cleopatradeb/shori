@@ -16,12 +16,7 @@
     <p>Circumference: {{selectedArtpiece.circumference}} inches</p>
     <p>{{selectedArtpiece.description}}</p>
     <p>{{selectedArtpieceQrImg}}</p>
-  </div>
-</div>
-</div>
-
-
-<div class="stripe-payment" ng-if="selectedArtpiece.status === 'available'">
+    <div class="stripe-payment" ng-if="selectedArtpiece.status === 'available'">
   <form action={{artpiecePaymentRoute}} method="POST">
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -33,5 +28,8 @@
       data-amount="{{selectedArtpiece.price * 100}}"
     </script>
   </form>
+</div>
+  </div>
+</div>
 </div>
 <!-- <button ng-click="printDiv('print-section')"><i class="fa fa-print"></i> Print!</button> -->
