@@ -39,6 +39,7 @@ $scope.artform = {painting:false, photography:false, craft:false};
 ```
 
 ```html
+# browse.html
 <md-tabs md-selected="tabData.selectedIndex" class="browse-tags">
   <md-tab id="roletype-browse-tab">
     <md-tab-label>by Roletype</md-tab-label>
@@ -65,7 +66,8 @@ $scope.artform = {painting:false, photography:false, craft:false};
 
 #### 2. Angular QR Code Generation
 Inject the `monospaced.qrcode` Angular directive.
-```
+```html
+# gallery.html
 <div class="qrcode">
   <qrcode data="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" size='100'></qrcode>
 </div>
@@ -75,7 +77,8 @@ Inject the `monospaced.qrcode` Angular directive.
 #### 3. Seeding Data with AWS S3 and Faker Gem
 Add to gemfile: `gem 'faker'`
 Seeding data from AWS:
-```
+```ruby
+# seeds.rb
 20.times do |n|
   Venuepic.create(
     url: "https://s3-eu-west-1.amazonaws.com/path/path_to_bucket/image_#{n}.jpg",
@@ -89,7 +92,7 @@ end
 #### 1. Masonry Gallery & `img-wit` Directive
 Add `'angular-wurfl-image-tailor'` and `'wu.masonry'` Angular directives.
 
-```
+```html
 # gallery.html
 <div class="row-fluid">
   <div class="col col-lg-12">
@@ -110,7 +113,63 @@ Add `'angular-wurfl-image-tailor'` and `'wu.masonry'` Angular directives.
 ```
 ---
 
-#### 2. Material.js Forms
+#### 2. Snap to Grid
+```javascript
+// Logo Scrolling
+var logo = $('#logo');
+var body = document.body;
+var html = document.documentElement;
+height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+$(window).scroll(function(){
+  var offset = [$(document).scrollTop()/height] * [$(window).height()*1.3];
+  var logoScroll = TweenLite.to(logo, 0.5, {top: offset});
+  if($(document).scrollTop() > [$(window).height() + $(window).height()*0.2]){
+    logoScroll.pause();
+  }
+})
+
+// Scroll to Top
+$('.scroll-to-top').click(function(){
+  verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+  element = $('body');
+  offset = element.offset();
+  offsetTop = offset.top;
+  $('html, body').animate({scrollTop: offsetTop}, 600, 'easeOutQuint');
+})
+
+// Changing logo color
+var logo_to_black_inview = new  ({
+  element: $('.icon-container'),
+  enter: function(direction) {
+    console.log('hi');
+    $('#logo').animate({"color":"black", "background-color":"none", "border-color": "none"}, 1500);
+  }
+})
+
+var logo_to_white_inview = new Waypoint.Inview({
+  element: $('.icon-container')[0],
+  exit: function(direction) {
+    console.log('Exit triggered with direction ' + direction)
+    $('#logo').animate({"color":"white", "background-color":"rgba(0,0,0,0.2)", "border": "1vh solid white"}, 1000);
+  }
+})
+
+// Fade out arrow
+var arrow_waypoint = new Waypoint({
+  element: $('.landing-container'),
+  handler: function(){
+  $(window).bind('mousewheel', function(event) {
+    if (event.originalEvent.wheelDelta >= 0) {
+      $('#arrow').fadeIn("slow");
+    }
+    else {
+      $('#arrow').fadeOut("slow");
+      $('.scroll-to-top').addClass("animated fadeInUpBig").removeClass('hide');
+    }
+  });
+  }
+})
+```
 
 ## To Do
 1. Write tests for both Rails and Angular code 
