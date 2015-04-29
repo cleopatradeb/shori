@@ -64,18 +64,50 @@ $scope.artform = {painting:false, photography:false, craft:false};
 ---
 
 #### 2. Angular QR Code Generation
-
+Inject the `monospaced.qrcode` Angular directive.
+```
+<div class="qrcode">
+  <qrcode data="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" href="http://localhost:3000/shori/artpiece/{{selectedArtpiece.id}}" size='100'></qrcode>
+</div>
+```
 ---
 
 #### 3. Seeding Data with AWS S3 and Faker Gem
-
-
-
-
+Add to gemfile: `gem 'faker'`
+Seeding data from AWS:
+```
+20.times do |n|
+  Venuepic.create(
+    url: "https://s3-eu-west-1.amazonaws.com/path/path_to_bucket/image_#{n}.jpg",
+    user_id: all_venues[n].id
+  )
+end
+```
+*NameChanger app available on the App Store for mass renaming of photos*
 ## Front-end Highlights 
 
-#### 1. Masonry Gallery
+#### 1. Masonry Gallery & `img-wit` Directive
+Add `'angular-wurfl-image-tailor'` and `'wu.masonry'` Angular directives.
 
+```
+# gallery.html
+<div class="row-fluid">
+  <div class="col col-lg-12">
+    <div masonry class="gallery">
+      <div class="masonry-brick gallery-item hvr-grow" ng-repeat="art in profileUserArtpieces">
+        <img-wit ng-src="{{art.image | trusted}}" w="300"></img-wit>
+        <div class="gallery-overlay" ng-href="/shori/artpiece/{{art.id}}">
+          <div class="cl-effect-1">
+            <p><a ng-href="/shori/artpiece/{{art.id}}" class="gallery-name">{{art.name}}</a></p>
+          </div>
+          <p class="gallery-status" ng-if="art.status === 'sold'">SOLD</p>
+          <p><a ng-href="/shori/artpiece/{{art.id}}" id="gallery-text">{{art.description}}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
 ---
 
 #### 2. Material.js Forms
